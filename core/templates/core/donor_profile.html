@@ -1,0 +1,146 @@
+{% extends 'core/dashboard_base.html' %}
+{% load static %}
+
+{% block dashboard_title %}My Profile - HemoVital{% endblock %}
+
+{% block extra_dashboard_css %}
+    <link rel="stylesheet" href="{% static 'core/css/donor_profile.css' %}">
+{% endblock %}
+
+{% block page_title %}
+    My Profile
+{% endblock %}
+
+{% block dashboard_content %}
+
+<div class="profile-page-container">
+    <div class="profile-card">
+        <form method="post" enctype="multipart/form-data" novalidate>
+            {% csrf_token %}
+
+            <!-- Form Header -->
+            <div class="profile-header">
+                <h2 class="profile-title">Edit Your Information</h2>
+                <p class="profile-subtitle">Keep your details up-to-date to receive relevant requests.</p>
+            </div>
+
+            <!-- Profile Picture Section -->
+            <div class="profile-picture-section">
+                <img src="{{ user.userprofile.profile_photo.url }}" alt="Profile Photo" class="current-photo" id="photo-preview">
+                <div class="photo-upload-wrapper">
+                    <label for="{{ form.profile_photo.id_for_label }}">Change Photo</label>
+                    {{ form.profile_photo }}
+                    <small>JPG, PNG up to 2MB.</small>
+                </div>
+            </div>
+
+            <!-- Main Form Grid -->
+            <div class="form-grid">
+                <!-- Personal Information -->
+                <div class="form-section">
+                    <h3 class="section-title"><i class="fas fa-user"></i> Personal Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="{{ form.first_name.id_for_label }}">{{ form.first_name.label }}</label>
+                            {{ form.first_name }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.last_name.id_for_label }}">{{ form.last_name.label }}</label>
+                            {{ form.last_name }}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="{{ form.gender.id_for_label }}">{{ form.gender.label }}</label>
+                            {{ form.gender }}
+                        </div>
+                         <div class="form-group">
+                            <label for="{{ form.date_of_birth.id_for_label }}">{{ form.date_of_birth.label }}</label>
+                            {{ form.date_of_birth }}
+                        </div>
+                    </div>
+                     <div class="form-row">
+                        <div class="form-group">
+                            <label for="{{ form.weight.id_for_label }}">{{ form.weight.label }}</label>
+                            {{ form.weight }}
+                        </div>
+                        <div class="form-group">
+                            <label>Blood Group</label>
+                            <input type="text" value="{{ user.userprofile.blood_group }}" class="form-control" disabled title="Blood group cannot be changed.">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact & Location -->
+                <div class="form-section">
+                    <h3 class="section-title"><i class="fas fa-map-marker-alt"></i> Contact & Location</h3>
+                    <div class="form-group">
+                        <label for="{{ form.contact_number.id_for_label }}">{{ form.contact_number.label }}</label>
+                        {{ form.contact_number }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.address.id_for_label }}">{{ form.address.label }}</label>
+                        {{ form.address }}
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="{{ form.city.id_for_label }}">{{ form.city.label }}</label>
+                            {{ form.city }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.state.id_for_label }}">{{ form.state.label }}</label>
+                            {{ form.state }}
+                        </div>
+                         <div class="form-group">
+                            <label for="{{ form.pincode.id_for_label }}">{{ form.pincode.label }}</label>
+                            {{ form.pincode }}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Availability Status -->
+                <div class="form-section">
+                    <h3 class="section-title"><i class="fas fa-toggle-on"></i> Availability Status</h3>
+                     <div class="form-group availability-toggle">
+                        <label for="{{ form.is_available.id_for_label }}">
+                            {{ form.is_available }}
+                            <span>I am currently available to donate.</span>
+                        </label>
+                        <small>Uncheck this if you are temporarily unavailable for donations.</small>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Form Footer / Submit Button -->
+            <div class="profile-footer">
+                <button type="submit" class="save-button">
+                    <i class="fas fa-save"></i> Save Changes
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_dashboard_js %}
+<script>
+    // JavaScript for live profile photo preview
+    const photoInput = document.getElementById('{{ form.profile_photo.id_for_label }}');
+    const photoPreview = document.getElementById('photo-preview');
+
+    if (photoInput && photoPreview) {
+        photoInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    photoPreview.src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+</script>
+{% endblock %}

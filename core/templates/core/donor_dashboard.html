@@ -1,0 +1,208 @@
+{% extends 'core/dashboard_base.html' %}
+{% load static %}
+
+{% block dashboard_title %}Donor Dashboard - HemoVital{% endblock %}
+
+{% block extra_dashboard_css %}
+    <link rel="stylesheet" href="{% static 'core/css/donor_dashboard.css' %}">
+{% endblock %}
+
+{% block page_title %}
+    Dashboard
+{% endblock %}
+
+{% block dashboard_content %}
+
+<!-- Welcome Header -->
+<div class="dashboard-header">
+    <h2 class="welcome-title">Welcome back, {{ user.first_name|default:user.username }}!</h2>
+    <p class="welcome-subtitle">Thank you for being a life-saver. Here's a summary of your activity.</p>
+</div>
+
+<!-- Stats Grid -->
+<div class="stats-grid">
+    <!-- Stat Card 1: Total Donations -->
+    <div class="stat-card">
+        <div class="stat-icon-wrapper blood-donations">
+            <i class="fas fa-hand-holding-heart"></i>
+        </div>
+        <div class="stat-info">
+            <span class="stat-value">{{ total_donations }}</span>
+            <p class="stat-label">Total Donations</p>
+        </div>
+    </div>
+
+    <!-- Stat Card 2: Last Donation Date -->
+    <div class="stat-card">
+        <div class="stat-icon-wrapper last-donation">
+            <i class="fas fa-calendar-check"></i>
+        </div>
+        <div class="stat-info">
+            {% if last_donation %}
+                <span class="stat-value">{{ last_donation.donation_date|date:"d M, Y" }}</span>
+            {% else %}
+                <span class="stat-value">N/A</span>
+            {% endif %}
+            <p class="stat-label">Last Donated</p>
+        </div>
+    </div>
+
+    <!-- Stat Card 3: Next Eligible Date -->
+    <div class="stat-card">
+        <div class="stat-icon-wrapper next-donation">
+            <i class="fas fa-calendar-alt"></i>
+        </div>
+        <div class="stat-info">
+            {% if next_eligible_date == "Ready to Donate!" %}
+                <span class="stat-value" style="color: var(--success);">Ready!</span>
+            {% else %}
+                <span class="stat-value">{{ next_eligible_date|date:"d M, Y" }}</span>
+            {% endif %}
+            <p class="stat-label">Eligible On</p>
+        </div>
+    </div>
+
+    <!-- Stat Card 4: Blood Group -->
+    <div class="stat-card">
+        <div class="stat-icon-wrapper blood-group">
+            <i class="fas fa-tint"></i>
+        </div>
+        <div class="stat-info">
+            <span class="stat-value">{{ profile.blood_group }}</span>
+            <p class="stat-label">Blood Group</p>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content Area -->
+<div class="dashboard-main-content">
+
+    <!-- Left Column: Active Blood Requests -->
+    <div class="content-card">
+        <div class="card-header-main">
+            <h3><i class="fas fa-bullhorn"></i> Active Blood Requests Nearby</h3>
+            <div class="filter-sort-options">
+                <select name="sort" class="sort-dropdown">
+                    <option value="urgent">Sort by: Urgent</option>
+                    <option value="distance">Sort by: Distance</option>
+                    <option value="newest">Sort by: Newest</option>
+                </select>
+            </div>
+        </div>
+        <div class="card-body">
+            {% for request in active_requests %}
+                <div class="request-card {% if request.urgency == 'Critical' %}critical{% elif request.urgency == 'Urgent' %}urgent{% endif %}">
+                    <div class="request-card-header">
+                        <div class="blood-group-tag">{{ request.blood_group }}</div>
+                        <div class="urgency-level">
+                            <i class="fas fa-exclamation-circle"></i> {{ request.urgency }}
+                        </div>
+                        <!-- UPDATED: Added data-expires attribute -->
+                        <div class="countdown-timer" data-expires="{{ request.expires_on.isoformat }}">
+                            <i class="fas fa-clock"></i> Ends in: <strong>Loading...</strong>
+                        </div>
+                    </div>
+                    <div class="request-card-body">
+                        <p class="patient-info">Patient: <strong>{{ request.patient_info }}</strong></p>
+                        <p class="hospital-info"><i class="fas fa-hospital"></i> <strong>{{ request.hospital.hospitalprofile.hospital_name }}</strong>, {{ request.hospital.hospitalprofile.city }}</p>
+                        <p class="units-needed">Units Required: <strong>{{ request.units_required }}</strong></p>
+                    </div>
+                    <div class="request-card-footer">
+                        <button class="btn-action primary respond-btn" data-request-id="{{ request.id }}">
+                        <i class="fas fa-check"></i> Respond Now
+                        </button>
+                        <button class="btn-action secondary"><i class="fas fa-map-marker-alt"></i> View Route</button>
+                        <button class="btn-action tertiary not-available-btn" data-request-id="{{ request.id }}">
+                        <i class="fas fa-times"></i> Not Available
+                        </button>
+                    </div>
+
+                </div>
+            {% empty %}
+                <div class="empty-state">
+                    <i class="fas fa-check-circle"></i>
+                    <h4>All Clear!</h4>
+                    <p>There are no active blood requests for your group right now. We'll notify you when there's a need.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Right Column: Quick Actions & Profile -->
+    <div class="sidebar-content">
+        <!-- AI Suggestion Card -->
+        <div class="content-card ai-suggestion-card">
+            <div class="card-header-main">
+                <h3><i class="fas fa-brain"></i> AI Suggestion</h3>
+            </div>
+            <div class="card-body">
+                {% if next_eligible_date == "Ready to Donate!" %}
+                    <p class="ai-text">You are eligible to donate now!</p>
+                    <p class="ai-date" style="color: var(--success);"><i class="fas fa-check-circle"></i> Ready to Save a Life</p>
+                {% else %}
+                    <p class="ai-text">You can donate again on:</p>
+                    <p class="ai-date">{{ next_eligible_date|date:"l, d F Y" }}</p>
+                {% endif %}
+                <a href="#" class="action-button secondary small"><i class="fas fa-calendar-alt"></i> Set a Reminder</a>
+            </div>
+        </div>
+        
+        <!-- Achievements Section -->
+        <div class="content-card">
+             <div class="card-header-main">
+                <h3><i class="fas fa-award"></i> My Achievements</h3>
+                <a href="#" class="view-all-link">Leaderboard</a>
+            </div>
+            <div class="card-body">
+                <div class="badges-grid">
+                    {% for user_badge in user_badges %}
+                        <div class="badge-item" title="{{ user_badge.badge.description }}">
+                            <i class="{{ user_badge.badge.icon_class }}"></i>
+                            <span>{{ user_badge.badge.name }}</span>
+                        </div>
+                    {% empty %}
+                        <p class="empty-text">Start donating to earn badges!</p>
+                    {% endfor %}
+                    <!-- Example of a locked badge -->
+                    <div class="badge-item locked" title="10 Donations (Locked)">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Super Hero</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Donation History Snippet -->
+        <div class="content-card">
+            <div class="card-header-main">
+                <h3><i class="fas fa-history"></i> Recent Donations</h3>
+                <a href="#" class="view-all-link">View All</a>
+            </div>
+            <div class="card-body">
+                {% if recent_donations %}
+                <ul class="history-list">
+                    {% for donation in recent_donations %}
+                    <li>
+                        <span>{{ donation.donation_date|date:"d M, Y" }} at {{ donation.hospital_name }}</span>
+                        <a href="#" title="Download E-Certificate"><i class="fas fa-file-pdf"></i></a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                    <div class="empty-state small">
+                        <i class="fas fa-history"></i>
+                        <p>Your donation history will appear here.</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block extra_dashboard_js %}
+    <script src="{% static 'core/js/donor_dashboard.js' %}"></script>
+{% endblock %}
+

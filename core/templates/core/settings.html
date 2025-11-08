@@ -1,0 +1,107 @@
+{% extends 'core/dashboard_base.html' %}
+{% load static %}
+
+{% block dashboard_title %}Settings - HemoVital{% endblock %}
+
+{% block extra_dashboard_css %}
+    <link rel="stylesheet" href="{% static 'core/css/settings.css' %}">
+{% endblock %}
+
+{% block page_title %}
+    Account Settings
+{% endblock %}
+
+{% block dashboard_content %}
+
+<div class="settings-container">
+
+    <!-- Change Password Card -->
+    <div class="content-card">
+        <div class="card-header-main">
+            <h3><i class="fas fa-key"></i> Change Your Password</h3>
+        </div>
+        <form method="post" class="settings-form">
+            {% csrf_token %}
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="{{ password_form.old_password.id_for_label }}">Current Password</label>
+                    {{ password_form.old_password }}
+                    {% if password_form.old_password.errors %}
+                        <small class="error-text">{{ password_form.old_password.errors.as_text }}</small>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="{{ password_form.new_password1.id_for_label }}">New Password</label>
+                    {{ password_form.new_password1 }}
+                    {% if password_form.new_password1.errors %}
+                        <small class="error-text">{{ password_form.new_password1.errors.as_text }}</small>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="{{ password_form.new_password2.id_for_label }}">Confirm New Password</label>
+                    {{ password_form.new_password2 }}
+                     {% if password_form.new_password2.errors %}
+                        <small class="error-text">{{ password_form.new_password2.errors.as_text }}</small>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" name="change_password" class="btn-primary">Update Password</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Notification Settings Card -->
+    <div class="content-card">
+        <div class="card-header-main">
+            <h3><i class="fas fa-bell"></i> Notification Settings</h3>
+        </div>
+        <form method="post" class="settings-form">
+            {% csrf_token %}
+            <div class="card-body">
+                <div class="notification-toggle">
+                    <div class="toggle-info">
+                        <strong>Email Notifications</strong>
+                        <small>Receive alerts for new requests and updates via email.</small>
+                    </div>
+                    <label class="switch">
+                        {{ notification_form.email_notifications_enabled }}
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="notification-toggle">
+                    <div class="toggle-info">
+                        <strong>SMS Notifications</strong>
+                        <small>Get critical alerts directly on your mobile (coming soon).</small>
+                    </div>
+                    <label class="switch disabled">
+                        {{ notification_form.sms_notifications_enabled }}
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" name="update_notifications" class="btn-primary">Save Preferences</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Danger Zone Card -->
+    <div class="content-card danger-zone">
+        <div class="card-header-main">
+            <h3><i class="fas fa-exclamation-triangle"></i> Danger Zone</h3>
+        </div>
+        <div class="card-body">
+            <div class="danger-action">
+                <div class="action-info">
+                    <strong>Delete This Account</strong>
+                    <p>Once you delete your account, there is no going back. Please be certain.</p>
+                </div>
+                <button class="btn-danger">Delete My Account</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

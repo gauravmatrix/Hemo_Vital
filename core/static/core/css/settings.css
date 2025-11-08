@@ -1,0 +1,185 @@
+/* ===================================================================
+   HemoVital - Settings Page CSS (settings.css)
+   =================================================================== */
+
+.settings-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* --- Generic Card Styling --- */
+.content-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+}
+
+.card-header-main {
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+.card-header-main h3 {
+    font-size: 1.2rem; margin: 0; display: flex;
+    align-items: center; gap: 0.8rem; color: var(--text-dark);
+}
+.card-header-main h3 i { color: var(--primary-red); }
+
+.card-body { padding: 1.5rem; }
+.card-footer {
+    padding: 1.2rem 1.5rem;
+    background: var(--off-white);
+    border-top: 1px solid var(--border-color);
+    text-align: right;
+}
+
+/* --- Form Elements --- */
+.settings-form .form-group {
+    margin-bottom: 1.5rem;
+}
+.settings-form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+.form-control {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    background: var(--off-white);
+    transition: all var(--transition-base);
+}
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-red);
+    background: var(--white);
+    box-shadow: 0 0 0 4px rgba(220, 20, 60, 0.1);
+}
+.error-text {
+    color: var(--error);
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+    display: block;
+}
+
+.btn-primary {
+    padding: 0.8rem 2rem;
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-full);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+.btn-primary:hover {
+    box-shadow: 0 8px 25px rgba(220, 20, 60, 0.3);
+    transform: translateY(-2px);
+}
+
+/* --- Notification Toggles --- */
+.notification-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+.notification-toggle:last-child {
+    border-bottom: none;
+}
+.toggle-info strong {
+    display: block;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+.toggle-info small {
+    color: var(--text-light);
+}
+
+/* The switch - a checkbox hack */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+}
+input:checked + .slider {
+  background-color: var(--primary-red);
+}
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+.slider.round { border-radius: 34px; }
+.slider.round:before { border-radius: 50%; }
+
+/* Disabled toggle */
+.switch.disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* --- Danger Zone --- */
+.danger-zone {
+    border-color: #dc3545;
+}
+.danger-zone .card-header-main h3,
+.danger-zone .card-header-main h3 i {
+    color: #dc3545;
+}
+.danger-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.action-info strong {
+    color: var(--text-dark);
+    font-size: 1.1rem;
+}
+.action-info p {
+    color: var(--text-light);
+    margin: 0.3rem 0 0;
+    font-size: 0.9rem;
+}
+.btn-danger {
+    padding: 0.8rem 1.5rem;
+    background: transparent;
+    color: #dc3545;
+    border: 2px solid #dc3545;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+.btn-danger:hover {
+    background: #dc3545;
+    color: white;
+}

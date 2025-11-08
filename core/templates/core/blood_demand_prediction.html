@@ -1,0 +1,2612 @@
+{% extends 'core/dashboard_base.html' %}
+{% load static %}
+
+{% block title %}Blood Demand Prediction - HemoVital{% endblock %}
+
+{% block dashboard_content %}
+<div class="ai-dashboard-container">
+    <!-- Debug Info Container -->
+    <div id="debugInfo" class="debug-info">
+        <h6>🔍 Debug Information</h6>
+        <div id="debugContent">Loading blood demand predictions...</div>
+    </div>
+
+    <!-- Page Header -->
+    <div class="dashboard-header">
+        <div class="header-content">
+            <div class="header-text">
+                <h1 class="dashboard-title">📈 Blood Demand Prediction</h1>
+                <p class="dashboard-subtitle">AI-powered blood demand forecasts and intelligent stock recommendations</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn-secondary" id="refreshPredictions">
+                    <i class="fas fa-sync-alt"></i> Refresh Data
+                </button>
+                <div class="export-dropdown">
+                    <button class="btn-primary" id="exportMainBtn">
+                        <i class="fas fa-download"></i> Export Report
+                    </button>
+                    <div class="export-menu">
+                        <a href="#" id="exportAllCharts" class="export-item">
+                            <i class="fas fa-chart-bar"></i> All Charts
+                        </a>
+                        <a href="#" id="exportPredictionsData" class="export-item">
+                            <i class="fas fa-file-csv"></i> Predictions Data
+                        </a>
+                        <a href="#" id="exportStockReport" class="export-item">
+                            <i class="fas fa-file-pdf"></i> Stock Report
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Insights Banner -->
+    <div class="ai-insights-banner">
+        <div class="ai-icon">
+            <i class="fas fa-brain"></i>
+        </div>
+        <div class="ai-content">
+            <h6>AI Insights</h6>
+            <p id="aiInsightText">Analyzing historical patterns and seasonal trends...</p>
+        </div>
+        <div class="ai-confidence">
+            <span class="confidence-badge" id="aiConfidence">85% Accurate</span>
+        </div>
+    </div>
+
+    <!-- Filters Card -->
+    <div class="filter-section">
+        <div class="filter-card">
+            <div class="filter-header">
+                <h6><i class="fas fa-sliders-h"></i> Prediction Filters</h6>
+            </div>
+            <div class="filter-body">
+                <div class="filter-grid">
+                    <div class="filter-group">
+                        <label class="filter-label">Prediction Period</label>
+                        <select class="filter-select" id="predictionDays">
+                            <option value="7" selected>7 Days Forecast</option>
+                            <option value="14">14 Days Forecast</option>
+                            <option value="30">30 Days Forecast</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label">Blood Group</label>
+                        <select class="filter-select" id="bloodGroupFilter">
+                            <option value="all" selected>All Blood Groups</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label">Confidence Level</label>
+                        <select class="filter-select" id="confidenceFilter">
+                            <option value="all" selected>All Confidence Levels</option>
+                            <option value="high">High (>80%)</option>
+                            <option value="medium">Medium (60-80%)</option>
+                            <option value="low">Low (<60%)</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <button class="btn-primary btn-apply-filters" id="applyFilters">
+                            <i class="fas fa-filter"></i>
+                            Apply Filters
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-spinner">
+        <div class="spinner"></div>
+        <p class="loading-text">Generating AI Predictions...</p>
+    </div>
+
+    <!-- Main Content -->
+    <div id="predictionsContent">
+        <!-- Quick Stats Row -->
+        <div class="stats-grid">
+            <div class="stat-card stat-primary">
+                <div class="stat-content">
+                    <div class="stat-info">
+                        <div class="stat-label">Total Predicted Demand</div>
+                        <div class="stat-value" id="totalPredictedDemand">0</div>
+                        <div class="stat-trend" id="demandTrend">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>Stable trend</span>
+                        </div>
+                    </div>
+                    <div class="stat-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card stat-success">
+                <div class="stat-content">
+                    <div class="stat-info">
+                        <div class="stat-label">Avg Confidence Score</div>
+                        <div class="stat-value" id="avgConfidenceScore">0%</div>
+                        <div class="confidence-bar">
+                            <div class="confidence-progress" id="confidenceProgress"></div>
+                        </div>
+                    </div>
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card stat-info">
+                <div class="stat-content">
+                    <div class="stat-info">
+                        <div class="stat-label">Critical Stock Alerts</div>
+                        <div class="stat-value" id="criticalAlerts">0</div>
+                        <div class="stat-status">
+                            <i class="fas fa-clock"></i>
+                            <span>Needs attention</span>
+                        </div>
+                    </div>
+                    <div class="stat-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card stat-warning">
+                <div class="stat-content">
+                    <div class="stat-info">
+                        <div class="stat-label">Prediction Accuracy</div>
+                        <div class="stat-value" id="predictionAccuracy">0%</div>
+                        <div class="stat-info-text">
+                            <i class="fas fa-history"></i>
+                            <span>Based on historical data</span>
+                        </div>
+                    </div>
+                    <div class="stat-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="charts-container">
+            <!-- Main Prediction Chart -->
+            <div class="chart-main">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">📊 Blood Demand Prediction Timeline</h3>
+                        <div class="chart-actions">
+                            <div class="dropdown">
+                                <button class="dropdown-toggle">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item chart-download" data-chart="demandTimelineChart" data-filename="demand-timeline.png">Download Chart</a>
+                                    <a class="dropdown-item" href="#" id="toggleDataLabels">Toggle Data Labels</a>
+                                    <a class="dropdown-item" href="#" id="exportChartData">Export Data</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-body">
+                        <canvas id="demandTimelineChart" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Confidence Chart -->
+            <div class="chart-sidebar">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">🎯 Prediction Confidence</h3>
+                        <div class="chart-header-actions">
+                            <div class="dropdown">
+                                <button class="dropdown-toggle small-toggle">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item chart-download" data-chart="confidenceChart" data-filename="prediction-confidence.png">Download Chart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-body">
+                        <div class="pie-chart-container">
+                            <canvas id="confidenceChart" height="200"></canvas>
+                        </div>
+                        <div class="chart-legend">
+                            <div class="legend-item">
+                                <i class="fas fa-circle legend-success"></i> High Confidence
+                            </div>
+                            <div class="legend-item">
+                                <i class="fas fa-circle legend-warning"></i> Medium Confidence
+                            </div>
+                            <div class="legend-item">
+                                <i class="fas fa-circle legend-danger"></i> Low Confidence
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blood Group Comparison -->
+        <div class="chart-full-width">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3 class="chart-title">📈 Blood Group Demand Comparison</h3>
+                    <div class="chart-actions">
+                        <div class="dropdown">
+                            <button class="dropdown-toggle">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item chart-download" data-chart="bloodGroupComparisonChart" data-filename="blood-group-comparison.png">Download Chart</a>
+                                <a class="dropdown-item" href="#" id="exportComparisonData">Export Data</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-body">
+                    <canvas id="bloodGroupComparisonChart" height="250"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Risk Assessment -->
+        <div class="performance-grid">
+            <div class="performance-card">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">⚠️ Risk Assessment</h3>
+                        <span class="risk-level" id="overallRiskLevel" data-risk="low">Low Risk</span>
+                    </div>
+                    <div class="chart-body">
+                        <div class="risk-meters">
+                            <div class="risk-meter">
+                                <div class="meter-label">Stock Shortage Risk</div>
+                                <div class="meter-bar">
+                                    <div class="meter-fill" id="shortageRiskMeter" data-risk="low" style="width: 30%"></div>
+                                </div>
+                                <div class="meter-value">30%</div>
+                            </div>
+                            <div class="risk-meter">
+                                <div class="meter-label">Demand Surge Risk</div>
+                                <div class="meter-bar">
+                                    <div class="meter-fill" id="surgeRiskMeter" data-risk="medium" style="width: 45%"></div>
+                                </div>
+                                <div class="meter-value">45%</div>
+                            </div>
+                            <div class="risk-meter">
+                                <div class="meter-label">Supply Chain Risk</div>
+                                <div class="meter-bar">
+                                    <div class="meter-fill" id="supplyRiskMeter" data-risk="low" style="width: 25%"></div>
+                                </div>
+                                <div class="meter-value">25%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="performance-card">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">💡 AI Recommendations</h3>
+                        <div class="chart-actions">
+                            <button class="btn-small" id="exportRecommendations">
+                                <i class="fas fa-download"></i> Export
+                            </button>
+                        </div>
+                    </div>
+                    <div class="chart-body">
+                        <div id="recommendationsContainer" class="insights-container">
+                            <div class="loading-insights">
+                                <div class="spinner-small"></div>
+                                <p>Generating recommendations...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detailed Predictions Table -->
+        <div class="table-section">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3 class="chart-title">📋 Detailed Predictions</h3>
+                    <div class="chart-actions">
+                        <button class="btn-small" id="toggleTableDetails">
+                            <i class="fas fa-expand"></i> Show Details
+                        </button>
+                        <div class="dropdown">
+                            <button class="dropdown-toggle small-toggle">
+                                <i class="fas fa-download"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#" id="exportTableData">Export Table Data</a>
+                                <a class="dropdown-item" href="#" id="exportTablePDF">Export as PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-body">
+                    <div class="table-responsive">
+                        <table class="prediction-table" id="predictionsTable">
+                            <thead>
+                                <tr>
+                                    <th>Blood Group</th>
+                                    <th>Predicted Demand</th>
+                                    <th>Confidence</th>
+                                    <th>Trend</th>
+                                    <th>Current Stock</th>
+                                    <th>Stock Status</th>
+                                    <th>Recommendation</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="predictionsTableBody">
+                                <!-- Data will be populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Success Notification -->
+<div id="successNotification" class="success-notification">
+    <i class="fas fa-check-circle"></i>
+    <span id="successMessage">Operation completed successfully!</span>
+</div>
+{% endblock %}
+
+{% block extra_dashboard_css %}
+
+<style>
+/* Blood Demand Prediction Dashboard Modern Styles */
+.ai-dashboard-container {
+    padding: 2rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Debug Info */
+.debug-info {
+    background: #dbeafe;
+    border: 1px solid #93c5fd;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    display: none;
+}
+
+.debug-info h6 {
+    margin: 0 0 0.5rem 0;
+    color: #1e40af;
+    font-weight: 600;
+}
+
+/* Header Styles */
+.dashboard-header {
+    margin-bottom: 2rem;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.header-text .dashboard-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin: 0 0 0.5rem 0;
+    background: linear-gradient(135deg, #dc2626, #ef4444);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header-text .dashboard-subtitle {
+    color: #64748b;
+    font-size: 1.1rem;
+    margin: 0;
+    font-weight: 500;
+}
+
+.header-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* AI Insights Banner */
+.ai-insights-banner {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.ai-icon {
+    font-size: 2.5rem;
+    opacity: 0.9;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+}
+
+.ai-content h6 {
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #f1f5f9;
+}
+
+.ai-content p {
+    margin: 0;
+    opacity: 0.9;
+    font-size: 0.95rem;
+    color: #cbd5e1;
+}
+
+.confidence-badge {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.9), rgba(21, 128, 61, 0.9));
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Filter Section */
+.filter-section {
+    margin-bottom: 2rem;
+}
+
+.filter-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    border: 1px solid #f1f5f9;
+    transition: all 0.3s ease;
+}
+
+.filter-card:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+.filter-header {
+    background: linear-gradient(135deg, #dc2626, #ef4444);
+    color: white;
+    padding: 1.25rem 1.5rem;
+}
+
+.filter-header h6 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.filter-body {
+    padding: 1.5rem;
+}
+
+.filter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    align-items: end;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-label {
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: #374151;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.filter-select {
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    background: white;
+    font-weight: 500;
+}
+
+.filter-select:focus {
+    border-color: #dc2626;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+    outline: none;
+    transform: translateY(-1px);
+}
+
+.btn-apply-filters {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    background: linear-gradient(135deg, #dc2626, #ef4444);
+    color: white;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+}
+
+.btn-apply-filters:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(220, 38, 38, 0.4);
+}
+
+/* Export Dropdown */
+.export-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.export-dropdown:hover .export-menu {
+    display: block;
+}
+
+.export-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    padding: 0.5rem;
+    min-width: 200px;
+    z-index: 1000;
+    display: none;
+    margin-top: 0.5rem;
+    border: 1px solid #f1f5f9;
+}
+
+.export-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    color: #475569;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.export-item:hover {
+    background: linear-gradient(135deg, #fef2f2, #fecaca);
+    color: #dc2626;
+    transform: translateX(5px);
+}
+
+/* Button Styles */
+.btn-primary, .btn-secondary {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    position: relative;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #dc2626, #ef4444);
+    color: white;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(220, 38, 38, 0.4);
+}
+
+.btn-secondary {
+    background: white;
+    color: #64748b;
+    border: 2px solid #e2e8f0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.btn-secondary:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.btn-small {
+    padding: 0.5rem 1rem;
+    background: #dc2626;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-small:hover {
+    background: #b91c1c;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
+    border-left: 5px solid;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, currentColor, transparent);
+    opacity: 0.6;
+}
+
+.stat-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.stat-primary { border-left-color: #3b82f6; color: #3b82f6; }
+.stat-success { border-left-color: #10b981; color: #10b981; }
+.stat-info { border-left-color: #06b6d4; color: #06b6d4; }
+.stat-warning { border-left-color: #f59e0b; color: #f59e0b; }
+
+.stat-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.stat-info .stat-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #64748b;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.5px;
+}
+
+.stat-info .stat-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1e293b;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.stat-icon {
+    font-size: 3rem;
+    opacity: 0.8;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+}
+
+/* Enhanced Stat Elements */
+.stat-trend, .stat-status, .stat-info-text {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    opacity: 0.9;
+    margin-top: 0.5rem;
+    font-weight: 600;
+}
+
+.confidence-bar {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 0.75rem;
+}
+
+.confidence-progress {
+    height: 100%;
+    background: white;
+    border-radius: 3px;
+    transition: width 0.5s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Charts Container */
+.charts-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    height: 450px;
+}
+
+.chart-main, .chart-sidebar {
+    height: 100%;
+}
+
+.chart-full-width {
+    margin-bottom: 2rem;
+}
+
+.chart-full-width .chart-card {
+    height: 400px;
+}
+
+.chart-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #f1f5f9;
+    transition: all 0.3s ease;
+}
+
+.chart-card:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+.chart-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #f1f5f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+}
+
+.chart-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.chart-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.chart-actions {
+    position: relative;
+}
+
+.dropdown-toggle {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.small-toggle {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+}
+
+.dropdown-toggle:hover {
+    background: #f8fafc;
+    color: #dc2626;
+    transform: scale(1.1);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    padding: 0.5rem;
+    min-width: 200px;
+    z-index: 1000;
+    display: none;
+    margin-top: 0.5rem;
+    border: 1px solid #f1f5f9;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #475569;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.dropdown-item:hover {
+    background: linear-gradient(135deg, #fef2f2, #fecaca);
+    color: #dc2626;
+    transform: translateX(5px);
+}
+
+.chart-body {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Chart Canvas Fix */
+.chart-body canvas {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+}
+
+/* Pie Chart Specific */
+.pie-chart-container {
+    position: relative;
+    height: 200px;
+    margin-bottom: 1rem;
+    flex: 1;
+}
+
+.chart-legend {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: auto;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.legend-success { color: #10b981; }
+.legend-warning { color: #f59e0b; }
+.legend-danger { color: #ef4444; }
+
+/* Risk Assessment */
+.risk-level {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.risk-level[data-risk="low"] { 
+    background: linear-gradient(135deg, #d4edda, #c3e6cb); 
+    color: #155724; 
+    border: 1px solid #c3e6cb;
+}
+
+.risk-level[data-risk="medium"] { 
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7); 
+    color: #856404; 
+    border: 1px solid #ffeaa7;
+}
+
+.risk-level[data-risk="high"] { 
+    background: linear-gradient(135deg, #f8d7da, #f5c6cb); 
+    color: #721c24; 
+    border: 1px solid #f5c6cb;
+}
+
+.risk-meters {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    height: 100%;
+    justify-content: center;
+}
+
+.risk-meter {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.meter-label {
+    font-weight: 700;
+    color: #374151;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.meter-bar {
+    width: 100%;
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.meter-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.meter-fill[data-risk="low"] { background: linear-gradient(90deg, #10b981, #34d399); }
+.meter-fill[data-risk="medium"] { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+.meter-fill[data-risk="high"] { background: linear-gradient(90deg, #ef4444, #f87171); }
+
+.meter-value {
+    font-weight: 700;
+    color: #374151;
+    font-size: 0.9rem;
+    min-width: 40px;
+    text-align: right;
+}
+
+/* Performance Grid */
+.performance-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    height: 350px;
+    margin-bottom: 2rem;
+}
+
+.performance-card {
+    height: 100%;
+}
+
+/* Insights Section */
+.insights-section {
+    margin-bottom: 2rem;
+}
+
+.insights-container {
+    min-height: 200px;
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+.insights-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.insights-container::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 3px;
+}
+
+.insights-container::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+
+.insights-container::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+.loading-insights {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    color: #64748b;
+}
+
+/* Table Section */
+.table-section {
+    margin-bottom: 2rem;
+}
+
+.prediction-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.prediction-table th {
+    background: #f8fafc;
+    padding: 1rem;
+    font-weight: 700;
+    color: #374151;
+    border-bottom: 2px solid #e5e7eb;
+    text-align: left;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.prediction-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+    font-size: 0.9rem;
+    color: #4b5563;
+}
+
+.prediction-table tbody tr {
+    transition: all 0.3s ease;
+}
+
+.prediction-table tbody tr:hover {
+    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+    transform: translateX(4px);
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: inline-block;
+    text-align: center;
+    min-width: 80px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.status-adequate { 
+    background: linear-gradient(135deg, #d4edda, #c3e6cb); 
+    color: #155724; 
+    border: 1px solid #c3e6cb;
+}
+
+.status-low { 
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7); 
+    color: #856404; 
+    border: 1px solid #ffeaa7;
+}
+
+.status-critical { 
+    background: linear-gradient(135deg, #f8d7da, #f5c6cb); 
+    color: #721c24; 
+    border: 1px solid #f5c6cb;
+}
+
+/* Blood Group Badge */
+.blood-group-badge {
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    min-width: 45px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Progress Bar in Table */
+.progress {
+    background: #e5e7eb;
+    border-radius: 4px;
+    height: 8px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.progress-bar {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.bg-success { background: linear-gradient(90deg, #10b981, #34d399); }
+.bg-warning { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+.bg-danger { background: linear-gradient(90deg, #ef4444, #f87171); }
+
+/* Loading Spinner */
+.loading-spinner {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255,255,255,0.95);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.spinner {
+    width: 4rem;
+    height: 4rem;
+    border: 4px solid #f1f5f9;
+    border-top: 4px solid #dc2626;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+.spinner-small {
+    width: 2rem;
+    height: 2rem;
+    border: 2px solid #f1f5f9;
+    border-top: 2px solid #dc2626;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+.loading-text {
+    color: #64748b;
+    margin: 0;
+    font-weight: 600;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Success Notification */
+.success-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #10b981, #34d399);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+    display: none;
+    align-items: center;
+    gap: 0.75rem;
+    z-index: 10000;
+    animation: slideInRight 0.5s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.success-notification.show {
+    display: flex;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Insight Cards */
+.insight-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    border: 1px solid #f1f5f9;
+}
+
+.insight-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.insight-high { 
+    border-left-color: #ef4444; 
+    background: linear-gradient(135deg, #fef2f2, white); 
+}
+
+.insight-medium { 
+    border-left-color: #f59e0b; 
+    background: linear-gradient(135deg, #fffbeb, white); 
+}
+
+.insight-low { 
+    border-left-color: #10b981; 
+    background: linear-gradient(135deg, #f0fdf4, white); 
+}
+
+.insight-card .alert-heading {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #1e293b;
+}
+
+.insight-card p {
+    margin: 0;
+    color: #475569;
+    line-height: 1.5;
+}
+
+.insight-card small {
+    color: #94a3b8;
+    font-size: 0.75rem;
+}
+
+.badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.bg-danger { background: #ef4444; }
+.bg-warning { background: #f59e0b; }
+.bg-success { background: #10b981; }
+.bg-secondary { background: #64748b; }
+
+/* Animation for meter fills */
+@keyframes fillWidth {
+    from { width: 0%; }
+    to { width: var(--target-width); }
+}
+
+.meter-fill {
+    animation: fillWidth 1s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .charts-container {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    
+    .performance-grid {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    
+    .chart-main, .chart-sidebar {
+        height: 400px;
+    }
+    
+    .filter-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .ai-dashboard-container {
+        padding: 1rem;
+    }
+    
+    .header-content {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .header-actions {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .dashboard-title {
+        font-size: 1.5rem !important;
+        text-align: center;
+    }
+    
+    .dashboard-subtitle {
+        text-align: center;
+    }
+    
+    .export-menu {
+        right: auto;
+        left: 0;
+    }
+    
+    .ai-insights-banner {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .filter-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .risk-meters {
+        gap: 1rem;
+    }
+    
+    .prediction-table {
+        font-size: 0.8rem;
+    }
+    
+    .prediction-table th,
+    .prediction-table td {
+        padding: 0.75rem 0.5rem;
+    }
+}
+
+/* Print Styles for PDF Export */
+@media print {
+    .ai-dashboard-container {
+        background: white !important;
+        padding: 0 !important;
+    }
+    
+    .header-actions, .chart-actions, .dropdown {
+        display: none !important;
+    }
+    
+    .chart-card, .filter-card {
+        box-shadow: none !important;
+        border: 1px solid #e2e8f0 !important;
+    }
+    
+    .ai-insights-banner {
+        background: #f8f9fa !important;
+        color: #000 !important;
+    }
+}
+</style>
+
+{% endblock %}
+
+{% block extra_dashboard_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script>
+// Global variables matching first dashboard pattern
+let demandCharts = {};
+let predictionsData = {};
+const DEBUG_MODE = true;
+
+// Modern color palette matching first dashboard
+const bloodGroupColors = {
+    'A+': '#3b82f6',
+    'A-': '#06b6d4', 
+    'B+': '#10b981',
+    'B-': '#84cc16',
+    'O+': '#f59e0b',
+    'O-': '#ef4444',
+    'AB+': '#8b5cf6',
+    'AB-': '#ec4899'
+};
+
+// Current filters
+let currentFilters = {
+    days: 7,
+    bloodGroup: 'all',
+    confidence: 'all'
+};
+
+// Debug functions from first dashboard
+function debugLog(message, data = null) {
+    if (DEBUG_MODE) {
+        console.log(`🔍 ${message}`, data || '');
+    }
+}
+
+function showDebugInfo(message, type = 'info') {
+    if (!DEBUG_MODE) return;
+    
+    const debugDiv = document.getElementById('debugInfo');
+    const debugContent = document.getElementById('debugContent');
+    
+    if (debugDiv && debugContent) {
+        debugDiv.style.display = 'block';
+        debugDiv.style.background = type === 'danger' ? '#fef2f2' : type === 'success' ? '#f0fdf4' : '#dbeafe';
+        debugDiv.style.borderColor = type === 'danger' ? '#fecaca' : type === 'success' ? '#bbf7d0' : '#93c5fd';
+        debugContent.innerHTML = message;
+    }
+}
+
+function showSuccess(message) {
+    const notification = document.getElementById('successNotification');
+    const messageEl = document.getElementById('successMessage');
+    
+    if (notification && messageEl) {
+        messageEl.textContent = message;
+        notification.classList.add('show');
+        
+        setTimeout(() => {
+            notification.classList.remove('show');
+        }, 3000);
+    }
+}
+
+// DOM Ready - matching first dashboard pattern
+document.addEventListener('DOMContentLoaded', function() {
+    debugLog('DOM Content Loaded - Initializing Blood Demand Prediction');
+    initializeDemandPage();
+    setupEventListeners();
+});
+
+// Initialize Page
+function initializeDemandPage() {
+    showLoading();
+    showDebugInfo('🔄 Loading blood demand predictions...', 'info');
+    updateAIInsight('Analyzing historical patterns and seasonal trends...');
+    
+    loadDemandPredictions()
+        .then(data => {
+            debugLog('Blood demand data loaded successfully:', data);
+            predictionsData = data;
+            
+            if (data.error) {
+                showDebugInfo(`❌ Server Error: ${data.error}`, 'danger');
+                throw new Error(data.error);
+            }
+            
+            showDebugInfo('✅ Blood demand predictions loaded successfully!', 'success');
+            updateSummaryCards(data.summary);
+            renderAllDemandCharts(data.predictions);
+            renderPredictionsTable(data.predictions);
+            updateRiskAssessment(data.predictions);
+            updateAIInsight(generateAIInsight(data.predictions));
+            renderRecommendations(data.predictions);
+            hideLoading();
+            showSuccess('Blood demand predictions loaded successfully!');
+        })
+        .catch(error => {
+            console.error('Error loading demand predictions:', error);
+            showDebugInfo(`❌ Failed to load predictions: ${error.message}`, 'danger');
+            showError('Failed to load demand predictions. Please try again.');
+            hideLoading();
+        });
+}
+
+// Event Listeners matching first dashboard pattern
+function setupEventListeners() {
+    // Refresh button
+    document.getElementById('refreshPredictions').addEventListener('click', function() {
+        this.innerHTML = '<i class="fas fa-sync-alt fa-spin"></i> Refreshing...';
+        this.disabled = true;
+        showDebugInfo('🔄 Refreshing blood demand data...', 'info');
+        
+        initializeDemandPage().finally(() => {
+            this.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh Data';
+            this.disabled = false;
+        });
+    });
+
+    // Apply filters
+    document.getElementById('applyFilters').addEventListener('click', applyFilters);
+
+    // Export functionality
+    document.getElementById('exportAllCharts').addEventListener('click', exportAllCharts);
+    document.getElementById('exportPredictionsData').addEventListener('click', exportPredictionsData);
+    document.getElementById('exportStockReport').addEventListener('click', exportStockReport);
+    document.getElementById('exportRecommendations').addEventListener('click', exportRecommendations);
+
+    // Chart download buttons
+    document.querySelectorAll('.chart-download').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const chartId = this.getAttribute('data-chart');
+            const filename = this.getAttribute('data-filename');
+            exportChartAsImage(chartId, filename);
+        });
+    });
+
+    // Table details toggle
+    document.getElementById('toggleTableDetails').addEventListener('click', toggleTableDetails);
+
+    // Data labels toggle
+    document.getElementById('toggleDataLabels').addEventListener('click', toggleDataLabels);
+
+    // Filter changes
+    document.getElementById('predictionDays').addEventListener('change', function() {
+        currentFilters.days = parseInt(this.value);
+    });
+
+    document.getElementById('bloodGroupFilter').addEventListener('change', function() {
+        currentFilters.bloodGroup = this.value;
+    });
+
+    document.getElementById('confidenceFilter').addEventListener('change', function() {
+        currentFilters.confidence = this.value;
+    });
+}
+
+// Load Demand Predictions
+async function loadDemandPredictions(days = 7) {
+    try {
+        debugLog('Starting API call to fetch demand predictions...');
+        
+        // Simulate API call with sample data - replace with actual API
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        
+        // Sample data structure
+        return {
+            summary: {
+                total_demand: 245,
+                avg_confidence: 0.82,
+                critical_alerts: 2,
+                accuracy: 0.85,
+                blood_groups_count: 8
+            },
+            predictions: {
+                'A+': {
+                    predicted_demand: 45,
+                    confidence_score: 0.88,
+                    trend: 'increasing',
+                    current_stock: 38,
+                    recommendation: 'Consider ordering 10-15 units',
+                    risk_level: 'medium',
+                    data_points: 15
+                },
+                'A-': {
+                    predicted_demand: 25,
+                    confidence_score: 0.92,
+                    trend: 'stable',
+                    current_stock: 30,
+                    recommendation: 'Stock adequate',
+                    risk_level: 'low',
+                    data_points: 12
+                },
+                'B+': {
+                    predicted_demand: 38,
+                    confidence_score: 0.76,
+                    trend: 'increasing',
+                    current_stock: 25,
+                    recommendation: 'CRITICAL: Order 15+ units urgently',
+                    risk_level: 'high',
+                    data_points: 18
+                },
+                'B-': {
+                    predicted_demand: 18,
+                    confidence_score: 0.85,
+                    trend: 'stable',
+                    current_stock: 22,
+                    recommendation: 'Monitor closely',
+                    risk_level: 'low',
+                    data_points: 10
+                },
+                'O+': {
+                    predicted_demand: 65,
+                    confidence_score: 0.91,
+                    trend: 'increasing',
+                    current_stock: 45,
+                    recommendation: 'Order 20-25 units',
+                    risk_level: 'medium',
+                    data_points: 22
+                },
+                'O-': {
+                    predicted_demand: 32,
+                    confidence_score: 0.94,
+                    trend: 'stable',
+                    current_stock: 35,
+                    recommendation: 'Stock adequate',
+                    risk_level: 'low',
+                    data_points: 16
+                },
+                'AB+': {
+                    predicted_demand: 12,
+                    confidence_score: 0.68,
+                    trend: 'decreasing',
+                    current_stock: 18,
+                    recommendation: 'Stock adequate',
+                    risk_level: 'low',
+                    data_points: 8
+                },
+                'AB-': {
+                    predicted_demand: 8,
+                    confidence_score: 0.59,
+                    trend: 'stable',
+                    current_stock: 6,
+                    recommendation: 'LOW: Consider ordering 5 units',
+                    risk_level: 'medium',
+                    data_points: 6
+                }
+            }
+        };
+        
+    } catch (error) {
+        debugLog('Error in loadDemandPredictions:', error);
+        
+        if (DEBUG_MODE) {
+            showDebugInfo('⚠️ Using sample data due to API error', 'warning');
+            return getSampleData();
+        }
+        
+        throw error;
+    }
+}
+
+// Apply Filters
+function applyFilters() {
+    showLoading();
+    updateAIInsight('Applying filters and recalculating predictions...');
+    
+    setTimeout(() => {
+        // Filter data based on blood group and confidence
+        const filteredData = filterPredictionsData(predictionsData.predictions);
+        
+        updateSummaryCards(calculateFilteredSummary(filteredData));
+        renderAllDemandCharts(filteredData);
+        renderPredictionsTable(filteredData);
+        updateRiskAssessment(filteredData);
+        updateAIInsight(generateAIInsight(filteredData));
+        renderRecommendations(filteredData);
+        hideLoading();
+        
+        showSuccess('Filters applied successfully!');
+    }, 1000);
+}
+
+// Filter predictions data
+function filterPredictionsData(predictions) {
+    let filtered = { ...predictions };
+    
+    // Filter by blood group
+    if (currentFilters.bloodGroup !== 'all') {
+        Object.keys(filtered).forEach(bg => {
+            if (bg !== currentFilters.bloodGroup) {
+                delete filtered[bg];
+            }
+        });
+    }
+    
+    // Filter by confidence
+    if (currentFilters.confidence !== 'all') {
+        Object.keys(filtered).forEach(bg => {
+            const confidence = filtered[bg]?.confidence_score || 0;
+            let shouldKeep = false;
+            
+            switch (currentFilters.confidence) {
+                case 'high':
+                    shouldKeep = confidence >= 0.8;
+                    break;
+                case 'medium':
+                    shouldKeep = confidence >= 0.6 && confidence < 0.8;
+                    break;
+                case 'low':
+                    shouldKeep = confidence < 0.6;
+                    break;
+            }
+            
+            if (!shouldKeep) {
+                delete filtered[bg];
+            }
+        });
+    }
+    
+    return filtered;
+}
+
+// Calculate filtered summary
+function calculateFilteredSummary(predictions) {
+    const bloodGroups = Object.keys(predictions);
+    const totalDemand = bloodGroups.reduce((sum, bg) => sum + (predictions[bg]?.predicted_demand || 0), 0);
+    const avgConfidence = bloodGroups.length > 0 ? 
+        bloodGroups.reduce((sum, bg) => sum + (predictions[bg]?.confidence_score || 0), 0) / bloodGroups.length : 0;
+    
+    const criticalAlerts = bloodGroups.filter(bg => {
+        const risk = predictions[bg]?.risk_level || 'low';
+        return risk === 'high';
+    }).length;
+
+    return {
+        total_demand: totalDemand,
+        avg_confidence: avgConfidence,
+        critical_alerts: criticalAlerts,
+        accuracy: 0.85,
+        blood_groups_count: bloodGroups.length
+    };
+}
+
+// Update Summary Cards
+function updateSummaryCards(summary) {
+    if (!summary) return;
+    
+    // Total Predicted Demand
+    document.getElementById('totalPredictedDemand').textContent = summary.total_demand?.toLocaleString() || '0';
+    
+    // Average Confidence Score
+    const confidencePercent = Math.round((summary.avg_confidence || 0) * 100);
+    document.getElementById('avgConfidenceScore').textContent = `${confidencePercent}%`;
+    document.getElementById('confidenceProgress').style.width = `${confidencePercent}%`;
+    
+    // Critical Alerts
+    document.getElementById('criticalAlerts').textContent = summary.critical_alerts || '0';
+    
+    // Prediction Accuracy
+    const accuracyPercent = Math.round((summary.accuracy || 0) * 100);
+    document.getElementById('predictionAccuracy').textContent = `${accuracyPercent}%`;
+    
+    // Update trend indicators
+    updateTrendIndicators(summary);
+}
+
+// Update AI Insights
+function updateAIInsight(insight) {
+    document.getElementById('aiInsightText').textContent = insight;
+}
+
+function generateAIInsight(predictions) {
+    const highDemandGroups = Object.entries(predictions)
+        .filter(([_, data]) => data.predicted_demand > 40)
+        .map(([bg, _]) => bg);
+    
+    const criticalGroups = Object.entries(predictions)
+        .filter(([_, data]) => data.risk_level === 'high')
+        .map(([bg, _]) => bg);
+    
+    if (criticalGroups.length > 0) {
+        return `Critical shortage predicted for ${criticalGroups.join(', ')}. Immediate action recommended.`;
+    } else if (highDemandGroups.length > 0) {
+        return `High demand expected for ${highDemandGroups.join(', ')}. Consider proactive stocking.`;
+    } else {
+        return 'Demand patterns appear stable. Continue regular monitoring.';
+    }
+}
+
+// Update Risk Assessment
+function updateRiskAssessment(predictions) {
+    const bloodGroups = Object.keys(predictions);
+    
+    // Calculate risk percentages based on actual data
+    const highRiskCount = bloodGroups.filter(bg => predictions[bg]?.risk_level === 'high').length;
+    const mediumRiskCount = bloodGroups.filter(bg => predictions[bg]?.risk_level === 'medium').length;
+    
+    const shortageRisk = Math.min(100, (highRiskCount / bloodGroups.length) * 100 + 20);
+    const surgeRisk = Math.min(100, (mediumRiskCount / bloodGroups.length) * 100 + 30);
+    const supplyRisk = Math.min(100, (highRiskCount / bloodGroups.length) * 100 + 10);
+    
+    // Update meters with animation
+    animateMeter('shortageRiskMeter', shortageRisk, getRiskLevel(shortageRisk));
+    animateMeter('surgeRiskMeter', surgeRisk, getRiskLevel(surgeRisk));
+    animateMeter('supplyRiskMeter', supplyRisk, getRiskLevel(supplyRisk));
+    
+    // Update overall risk level
+    const overallRiskLevel = document.getElementById('overallRiskLevel');
+    const maxRisk = Math.max(shortageRisk, surgeRisk, supplyRisk);
+    const overallRisk = getRiskLevel(maxRisk);
+    
+    overallRiskLevel.textContent = `${overallRisk.charAt(0).toUpperCase() + overallRisk.slice(1)} Risk`;
+    overallRiskLevel.setAttribute('data-risk', overallRisk);
+}
+
+function animateMeter(meterId, value, riskLevel) {
+    const meter = document.getElementById(meterId);
+    const valueDisplay = meter.nextElementSibling;
+    
+    // Animate the meter fill
+    meter.style.width = '0%';
+    meter.setAttribute('data-risk', riskLevel);
+    
+    setTimeout(() => {
+        meter.style.width = `${value}%`;
+        valueDisplay.textContent = `${Math.round(value)}%`;
+    }, 100);
+}
+
+function getRiskLevel(value) {
+    if (value > 70) return 'high';
+    if (value > 40) return 'medium';
+    return 'low';
+}
+
+function updateTrendIndicators(summary) {
+    const trendElement = document.getElementById('demandTrend');
+    if (trendElement && summary.total_demand > 200) {
+        trendElement.innerHTML = '<i class="fas fa-arrow-up"></i><span>Increasing trend</span>';
+    }
+}
+
+// Render All Demand Charts
+function renderAllDemandCharts(predictions) {
+    destroyExistingCharts();
+    
+    if (predictions) {
+        renderDemandTimelineChart(predictions);
+        renderConfidenceChart(predictions);
+        renderBloodGroupComparisonChart(predictions);
+    }
+}
+
+// Destroy existing charts
+function destroyExistingCharts() {
+    Object.values(demandCharts).forEach(chart => {
+        if (chart && typeof chart.destroy === 'function') {
+            chart.destroy();
+        }
+    });
+    demandCharts = {};
+}
+
+// Demand Timeline Chart
+function renderDemandTimelineChart(predictions) {
+    const ctx = document.getElementById('demandTimelineChart');
+    if (!ctx) return;
+
+    const bloodGroups = Object.keys(predictions);
+    const dates = generateDateLabels(currentFilters.days);
+    
+    // Create datasets for each blood group
+    const datasets = bloodGroups.map((bg) => {
+        const color = bloodGroupColors[bg];
+        const prediction = predictions[bg];
+        
+        return {
+            label: `${bg} Demand`,
+            data: generateTimelineData(prediction, dates.length),
+            borderColor: color,
+            backgroundColor: hexToRgba(color, 0.1),
+            borderWidth: 3,
+            fill: true,
+            tension: 0.4,
+            pointBackgroundColor: color,
+            pointBorderColor: '#fff',
+            pointBorderWidth: 2,
+            pointRadius: 4,
+            pointHoverRadius: 8
+        };
+    });
+
+    try {
+        demandCharts.demandTimeline = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: dates,
+                datasets: datasets
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    intersect: false,
+                    mode: 'index'
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Units Required',
+                            color: '#64748b',
+                            font: {
+                                weight: '600'
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Date',
+                            color: '#64748b',
+                            font: {
+                                weight: '600'
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 20,
+                            font: {
+                                weight: '600'
+                            }
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                        titleColor: '#1f2937',
+                        bodyColor: '#374151',
+                        borderColor: '#e5e7eb',
+                        borderWidth: 1,
+                        cornerRadius: 8,
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.dataset.label}: ${context.parsed.y} units`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    } catch (error) {
+        console.error('Error rendering demand timeline chart:', error);
+    }
+}
+
+// Confidence Chart
+function renderConfidenceChart(predictions) {
+    const ctx = document.getElementById('confidenceChart');
+    if (!ctx) return;
+
+    const confidenceLevels = {
+        high: 0,
+        medium: 0,
+        low: 0
+    };
+
+    Object.values(predictions).forEach(prediction => {
+        const confidence = prediction.confidence_score || 0;
+        if (confidence >= 0.8) confidenceLevels.high++;
+        else if (confidence >= 0.6) confidenceLevels.medium++;
+        else confidenceLevels.low++;
+    });
+
+    try {
+        demandCharts.confidence = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['High Confidence', 'Medium Confidence', 'Low Confidence'],
+                datasets: [{
+                    data: [confidenceLevels.high, confidenceLevels.medium, confidenceLevels.low],
+                    backgroundColor: [
+                        'rgba(16, 185, 129, 0.9)',
+                        'rgba(245, 158, 11, 0.9)',
+                        'rgba(239, 68, 68, 0.9)'
+                    ],
+                    borderColor: [
+                        'rgba(16, 185, 129, 1)',
+                        'rgba(245, 158, 11, 1)',
+                        'rgba(239, 68, 68, 1)'
+                    ],
+                    borderWidth: 3,
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '65%',
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: 'rgba(255,255,255,0.95)',
+                        titleColor: '#1f2937',
+                        bodyColor: '#374151',
+                        borderColor: '#e5e7eb',
+                        borderWidth: 1,
+                        cornerRadius: 8,
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label;
+                                const value = context.parsed;
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const percentage = Math.round((value / total) * 100);
+                                return `${label}: ${value} predictions (${percentage}%)`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    } catch (error) {
+        console.error('Error rendering confidence chart:', error);
+    }
+}
+
+// Blood Group Comparison Chart
+function renderBloodGroupComparisonChart(predictions) {
+    const ctx = document.getElementById('bloodGroupComparisonChart');
+    if (!ctx) return;
+
+    const bloodGroups = Object.keys(predictions);
+    const predictedDemands = bloodGroups.map(bg => predictions[bg]?.predicted_demand || 0);
+    const confidenceScores = bloodGroups.map(bg => (predictions[bg]?.confidence_score || 0) * 100);
+
+    try {
+        demandCharts.bloodGroupComparison = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: bloodGroups,
+                datasets: [
+                    {
+                        label: 'Predicted Demand',
+                        data: predictedDemands,
+                        backgroundColor: bloodGroups.map(bg => bloodGroupColors[bg]),
+                        borderColor: bloodGroups.map(bg => darkenColor(bloodGroupColors[bg], 20)),
+                        borderWidth: 2,
+                        borderRadius: 8,
+                        yAxisID: 'y'
+                    },
+                    {
+                        label: 'Confidence %',
+                        data: confidenceScores,
+                        type: 'line',
+                        borderColor: '#667eea',
+                        backgroundColor: hexToRgba('#667eea', 0.1),
+                        borderWidth: 3,
+                        pointRadius: 6,
+                        pointBackgroundColor: '#667eea',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        yAxisID: 'y1'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Units Required',
+                            color: '#64748b',
+                            font: {
+                                weight: '600'
+                            }
+                        }
+                    },
+                    y1: {
+                        beginAtZero: true,
+                        position: 'right',
+                        max: 100,
+                        grid: {
+                            drawOnChartArea: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Confidence %',
+                            color: '#64748b',
+                            font: {
+                                weight: '600'
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 20,
+                            font: {
+                                weight: '600'
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    } catch (error) {
+        console.error('Error rendering blood group comparison chart:', error);
+    }
+}
+
+// Render Recommendations
+function renderRecommendations(predictions) {
+    const container = document.getElementById('recommendationsContainer');
+    if (!container) return;
+
+    const criticalGroups = Object.entries(predictions)
+        .filter(([_, data]) => data.risk_level === 'high')
+        .map(([bg, data]) => ({ bg, data }));
+
+    const mediumGroups = Object.entries(predictions)
+        .filter(([_, data]) => data.risk_level === 'medium')
+        .map(([bg, data]) => ({ bg, data }));
+
+    let recommendationsHTML = '';
+
+    if (criticalGroups.length > 0) {
+        recommendationsHTML += `
+            <div class="insight-card insight-high">
+                <h6 class="alert-heading">🚨 Critical Actions Required</h6>
+                <p>Immediate attention needed for the following blood groups:</p>
+                <ul>
+                    ${criticalGroups.map(({ bg, data }) => `
+                        <li><strong>${bg}:</strong> ${data.recommendation}</li>
+                    `).join('')}
+                </ul>
+                <small>Generated ${new Date().toLocaleDateString()}</small>
+            </div>
+        `;
+    }
+
+    if (mediumGroups.length > 0) {
+        recommendationsHTML += `
+            <div class="insight-card insight-medium">
+                <h6 class="alert-heading">⚠️ Recommended Actions</h6>
+                <p>Consider the following proactive measures:</p>
+                <ul>
+                    ${mediumGroups.map(({ bg, data }) => `
+                        <li><strong>${bg}:</strong> ${data.recommendation}</li>
+                    `).join('')}
+                </ul>
+            </div>
+        `;
+    }
+
+    if (recommendationsHTML === '') {
+        recommendationsHTML = `
+            <div class="insight-card insight-low">
+                <h6 class="alert-heading">✅ Stock Levels Optimal</h6>
+                <p>All blood groups are currently at adequate stock levels. Continue regular monitoring.</p>
+                <small>Last checked ${new Date().toLocaleDateString()}</small>
+            </div>
+        `;
+    }
+
+    container.innerHTML = recommendationsHTML;
+}
+
+// Render Predictions Table
+function renderPredictionsTable(predictions) {
+    const tbody = document.getElementById('predictionsTableBody');
+    if (!tbody) return;
+
+    if (Object.keys(predictions).length === 0) {
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="8" class="text-center py-4 text-muted">
+                    <i class="fas fa-info-circle me-2"></i>
+                    No predictions match the current filters
+                </td>
+            </tr>
+        `;
+        return;
+    }
+
+    const rows = Object.entries(predictions).map(([bloodGroup, data]) => {
+        const confidence = data.confidence_score || 0;
+        const trend = data.trend || 'stable';
+        const trendIcon = trend === 'increasing' ? 'fa-arrow-up text-danger' :
+                         trend === 'decreasing' ? 'fa-arrow-down text-success' :
+                         'fa-minus text-muted';
+
+        const recommendation = data.recommendation || 'No recommendation';
+        const riskLevel = data.risk_level || 'low';
+        const statusClass = riskLevel === 'high' ? 'status-critical' :
+                           riskLevel === 'medium' ? 'status-low' :
+                           'status-adequate';
+        const statusText = riskLevel === 'high' ? 'Critical' :
+                          riskLevel === 'medium' ? 'Low Stock' :
+                          'Adequate';
+
+        return `
+            <tr>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div class="blood-group-badge" style="background: ${bloodGroupColors[bloodGroup]}">
+                            ${bloodGroup}
+                        </div>
+                    </div>
+                </td>
+                <td><strong>${data.predicted_demand || 0}</strong> units</td>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div class="progress flex-grow-1 me-2" style="height: 8px;">
+                            <div class="progress-bar ${confidence >= 0.8 ? 'bg-success' : confidence >= 0.6 ? 'bg-warning' : 'bg-danger'}" 
+                                 style="width: ${confidence * 100}%"></div>
+                        </div>
+                        <span class="small">${Math.round(confidence * 100)}%</span>
+                    </div>
+                </td>
+                <td><i class="fas ${trendIcon} me-1"></i> ${trend}</td>
+                <td>${data.current_stock || 0} units</td>
+                <td><span class="status-badge ${statusClass}">${statusText}</span></td>
+                <td>${recommendation}</td>
+                <td>
+                    <button class="btn btn-sm btn-outline-primary" onclick="takeAction('${bloodGroup}')" title="Take Action">
+                        <i class="fas fa-bolt"></i>
+                    </button>
+                </td>
+            </tr>
+        `;
+    }).join('');
+
+    tbody.innerHTML = rows;
+}
+
+// Helper Functions
+function generateDateLabels(days) {
+    const dates = [];
+    for (let i = 0; i < days; i++) {
+        const date = new Date();
+        date.setDate(date.getDate() + i);
+        dates.push(date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+    }
+    return dates;
+}
+
+function generateTimelineData(prediction, dataPoints) {
+    const baseDemand = prediction.predicted_demand || 0;
+    const data = [];
+    const trend = prediction.trend || 'stable';
+    
+    for (let i = 0; i < dataPoints; i++) {
+        let value = baseDemand / dataPoints;
+        
+        // Add trend-based variation
+        if (trend === 'increasing') {
+            value *= (1 + (i / dataPoints) * 0.5);
+        } else if (trend === 'decreasing') {
+            value *= (1 - (i / dataPoints) * 0.3);
+        }
+        
+        // Add random variation
+        const variation = (Math.random() - 0.5) * value * 0.2;
+        data.push(Math.max(0, Math.round(value + variation)));
+    }
+    
+    return data;
+}
+
+function hexToRgba(hex, alpha) {
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+function darkenColor(color, percent) {
+    const num = parseInt(color.replace("#", ""), 16);
+    const amt = Math.round(2.55 * percent);
+    const R = (num >> 16) - amt;
+    const G = (num >> 8 & 0x00FF) - amt;
+    const B = (num & 0x0000FF) - amt;
+    return "#" + (0x1000000 + (R < 255 ? R < 1 ? 0 : R : 255) * 0x10000 +
+            (G < 255 ? G < 1 ? 0 : G : 255) * 0x100 +
+            (B < 255 ? B < 1 ? 0 : B : 255)).toString(16).slice(1);
+}
+
+// Action Functions
+function takeAction(bloodGroup) {
+    showSuccess(`Action initiated for ${bloodGroup} blood group`);
+    // Implement specific action logic here
+}
+
+function toggleDataLabels() {
+    const chart = demandCharts.demandTimeline;
+    if (chart) {
+        const current = chart.options.plugins.datalabels?.display;
+        chart.options.plugins.datalabels = {
+            display: !current,
+            color: '#2c3e50',
+            font: {
+                weight: '600'
+            },
+            formatter: (value) => value
+        };
+        chart.update();
+    }
+}
+
+function toggleTableDetails() {
+    const table = document.getElementById('predictionsTable');
+    const button = document.getElementById('toggleTableDetails');
+    
+    table.classList.toggle('table-sm');
+    if (table.classList.contains('table-sm')) {
+        button.innerHTML = '<i class="fas fa-expand"></i> Show Details';
+    } else {
+        button.innerHTML = '<i class="fas fa-compress"></i> Hide Details';
+    }
+}
+
+// Export Functions
+function exportAllCharts(e) {
+    e.preventDefault();
+    
+    const chartIds = ['demandTimelineChart', 'confidenceChart', 'bloodGroupComparisonChart'];
+    let exported = 0;
+    
+    chartIds.forEach(chartId => {
+        if (demandCharts[chartId]) {
+            setTimeout(() => {
+                exportChartAsImage(chartId, `blood-demand-${chartId.toLowerCase()}-${new Date().toISOString().split('T')[0]}.png`);
+                exported++;
+                
+                if (exported === chartIds.length) {
+                    showSuccess('All charts exported successfully!');
+                }
+            }, exported * 500);
+        }
+    });
+}
+
+function exportPredictionsData(e) {
+    e.preventDefault();
+    
+    if (!predictionsData) {
+        showError('No data available to export');
+        return;
+    }
+    
+    const reportData = {
+        timestamp: new Date().toISOString(),
+        generated_by: 'HemoVital Blood Demand Prediction',
+        version: '1.0',
+        filters: currentFilters,
+        ...predictionsData
+    };
+    
+    const blob = new Blob([JSON.stringify(reportData, null, 2)], { type: 'application/json' });
+    downloadBlob(blob, `blood-demand-predictions-${new Date().toISOString().split('T')[0]}.json`);
+    showSuccess('Predictions data exported successfully!');
+}
+
+function exportStockReport(e) {
+    e.preventDefault();
+    showLoading();
+    
+    // Use html2canvas to capture the dashboard
+    html2canvas(document.getElementById('predictionsContent'), {
+        scale: 2,
+        useCORS: true,
+        logging: false,
+        backgroundColor: '#ffffff'
+    }).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        
+        const imgWidth = 210;
+        const pageHeight = 295;
+        const imgHeight = canvas.height * imgWidth / canvas.width;
+        let heightLeft = imgHeight;
+        let position = 0;
+        
+        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+        
+        while (heightLeft >= 0) {
+            position = heightLeft - imgHeight;
+            pdf.addPage();
+            pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+            heightLeft -= pageHeight;
+        }
+        
+        pdf.save(`blood-demand-report-${new Date().toISOString().split('T')[0]}.pdf`);
+        hideLoading();
+        showSuccess('Stock report exported as PDF successfully!');
+    }).catch(error => {
+        console.error('PDF export error:', error);
+        hideLoading();
+        showError('Failed to export as PDF. Please try again.');
+    });
+}
+
+function exportRecommendations() {
+    const recommendations = document.getElementById('recommendationsContainer').innerText;
+    if (!recommendations) {
+        showError('No recommendations available to export');
+        return;
+    }
+    
+    let textContent = `HEMOVITAL BLOOD DEMAND RECOMMENDATIONS\n`;
+    textContent += `Generated on: ${new Date().toLocaleDateString()}\n\n`;
+    textContent += recommendations;
+    
+    const blob = new Blob([textContent], { type: 'text/plain' });
+    downloadBlob(blob, `blood-demand-recommendations-${new Date().toISOString().split('T')[0]}.txt`);
+    showSuccess('Recommendations exported successfully!');
+}
+
+function exportChartAsImage(chartId, filename) {
+    const chart = demandCharts[chartId];
+    if (!chart) {
+        showError('Chart not available for export');
+        return;
+    }
+
+    const image = chart.toBase64Image();
+    const blob = dataURLToBlob(image);
+    downloadBlob(blob, filename);
+}
+
+// Utility Functions
+function dataURLToBlob(dataURL) {
+    const parts = dataURL.split(';base64,');
+    const contentType = parts[0].split(':')[1];
+    const raw = window.atob(parts[1]);
+    const uInt8Array = new Uint8Array(raw.length);
+    
+    for (let i = 0; i < raw.length; ++i) {
+        uInt8Array[i] = raw.charCodeAt(i);
+    }
+    
+    return new Blob([uInt8Array], { type: contentType });
+}
+
+function downloadBlob(blob, filename) {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+
+// UI Helpers matching first dashboard pattern
+function showLoading() {
+    const spinner = document.getElementById('loadingSpinner');
+    const content = document.getElementById('predictionsContent');
+    
+    if (spinner) spinner.style.display = 'flex';
+    if (content) content.style.opacity = '0.3';
+}
+
+function hideLoading() {
+    const spinner = document.getElementById('loadingSpinner');
+    const content = document.getElementById('predictionsContent');
+    
+    if (spinner) spinner.style.display = 'none';
+    if (content) content.style.opacity = '1';
+}
+
+function showError(message) {
+    showDebugInfo(`❌ ${message}`, 'danger');
+}
+
+// Sample data for testing
+function getSampleData() {
+    return {
+        summary: {
+            total_demand: 245,
+            avg_confidence: 0.82,
+            critical_alerts: 2,
+            accuracy: 0.85,
+            blood_groups_count: 8
+        },
+        predictions: {
+            'A+': {
+                predicted_demand: 45,
+                confidence_score: 0.88,
+                trend: 'increasing',
+                current_stock: 38,
+                recommendation: 'Consider ordering 10-15 units',
+                risk_level: 'medium',
+                data_points: 15
+            },
+            'A-': {
+                predicted_demand: 25,
+                confidence_score: 0.92,
+                trend: 'stable',
+                current_stock: 30,
+                recommendation: 'Stock adequate',
+                risk_level: 'low',
+                data_points: 12
+            }
+        }
+    };
+}
+
+// Clean up matching first dashboard pattern
+window.addEventListener('beforeunload', function() {
+    destroyExistingCharts();
+});
+
+// Handle window resize
+window.addEventListener('resize', function() {
+    Object.values(demandCharts).forEach(chart => {
+        if (chart && typeof chart.resize === 'function') {
+            chart.resize();
+        }
+    });
+});
+</script>
+{% endblock %}
+

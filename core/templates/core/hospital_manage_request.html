@@ -1,0 +1,463 @@
+{% extends 'core/dashboard_base.html' %}
+{% load static %}
+
+{% block dashboard_title %}Manage Requests - HemoVital{% endblock %}
+
+{% block extra_dashboard_css %}
+    <link rel="stylesheet" href="{% static 'core/css/hospital_manage_request.css' %}">
+{% endblock %}
+
+{% block page_title %}
+    Manage Blood Requests
+{% endblock %}
+
+{% block dashboard_content %}
+
+<div class="content-card">
+    <div class="card-header-main">
+        <h3><i class="fas fa-tasks"></i> All Submitted Requests</h3>
+        <a href="{% url 'core:create_request' %}" class="btn-primary-header"><i class="fas fa-plus"></i> New Request</a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Patient Name</th>
+                        <th>Blood Group</th>
+                        <th>Urgency</th>
+                        <th>Status</th>
+                        <th>Responses</th>
+                        <th>Date Created</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for request in requests %}
+                    <tr>
+                        <td>
+                            <strong>{{ request.patient_name }}</strong>
+                            <small>{{ request.patient_age }} years old</small>
+                        </td>
+                        <td><span class="blood-group-tag">{{ request.blood_group }}</span></td>
+                        <td><span class="urgency-badge urgency-{{ request.urgency|lower }}">{{ request.urgency }}</span></td>
+                        <td>
+                            {% if request.is_active and request.expires_on > now %}
+                                <span class="status-badge status-active">Active</span>
+                            {% else %}
+                                <span class="status-badge status-inactive">Inactive/Fulfilled</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <span class="response-count {% if request.total_responses > 0 %}has-responses{% endif %}">
+                                {{ request.total_responses }} responses
+                            </span>
+                            {% if request.pending_responses > 0 %}
+                            <span class="pending-badge">{{ request.pending_responses }} pending</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ request.created_at|date:"d M, Y, P" }}</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-action-table view" 
+                                        title="View Details & Responses"
+                                        data-request-id="{{ request.id }}">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <a href="#" class="btn-action-table edit" title="Edit Request"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="btn-action-table cancel" title="Cancel Request"><i class="fas fa-times-circle"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="7">
+                            <div class="empty-state">
+                                <i class="fas fa-file-alt"></i>
+                                <h4>No Requests Found</h4>
+                                <p>You have not created any blood requests yet. Click "New Request" to get started.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination Controls -->
+        {% if is_paginated %}
+        <div class="pagination-container">
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}"><i class="fas fa-chevron-left"></i></a></li>
+                {% else %}
+                    <li class="page-item disabled"><span class="page-link"><i class="fas fa-chevron-left"></i></span></li>
+                {% endif %}
+
+                {% for num in page_obj.paginator.page_range %}
+                    {% if page_obj.number == num %}
+                        <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                        <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}"><i class="fas fa-chevron-right"></i></a></li>
+                {% else %}
+                     <li class="page-item disabled"><span class="page-link"><i class="fas fa-chevron-right"></i></span></li>
+                {% endif %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Responses Modal -->
+<div id="responsesModal" class="modal" style="display:none;">
+    <div class="modal-content large-modal">
+        <span class="close">&times;</span>
+        <h3><i class="fas fa-users"></i> Donor Responses</h3>
+        <div class="modal-body">
+            <div id="modalLoading" class="loading-state">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Loading responses...</p>
+            </div>
+            <div id="responsesList" class="responses-list" style="display:none;">
+                <!-- Responses will be loaded here dynamically -->
+            </div>
+            <div id="noResponses" class="empty-state" style="display:none;">
+                <i class="fas fa-inbox"></i>
+                <h4>No Responses Yet</h4>
+                <p>No donors have responded to this request yet.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.response-count {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    background: #f8f9fa;
+    color: #6c757d;
+}
+
+.response-count.has-responses {
+    background: #e7f3ff;
+    color: #0066cc;
+    font-weight: 600;
+}
+
+.pending-badge {
+    display: block;
+    margin-top: 4px;
+    padding: 2px 6px;
+    background: #fff3cd;
+    color: #856404;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.large-modal {
+    max-width: 800px;
+}
+
+.responses-list {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.response-item {
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 12px;
+    background: white;
+}
+
+.response-item.pending {
+    border-left: 4px solid #007bff;
+    background: #f8f9fa;
+}
+
+.response-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.donor-info h4 {
+    margin: 0;
+    color: #2c3e50;
+}
+
+.donor-meta {
+    font-size: 12px;
+    color: #6c757d;
+}
+
+.response-status {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.status-pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.status-confirmed {
+    background: #d1edff;
+    color: #004085;
+}
+
+.status-rejected {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.response-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.health-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+.health-tag {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.health-positive {
+    background: #d4edda;
+    color: #155724;
+}
+
+.health-negative {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.response-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.loading-state {
+    text-align: center;
+    padding: 40px;
+    color: #6c757d;
+}
+
+.loading-state i {
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('responsesModal');
+    const closeBtn = document.querySelector('.close');
+    const viewButtons = document.querySelectorAll('.btn-action-table.view');
+    
+    // Open modal when view button is clicked
+    viewButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const requestId = this.getAttribute('data-request-id');
+            if (requestId) {
+                openResponsesModal(requestId);
+            }
+        });
+    });
+    
+    // Close modal
+    closeBtn.addEventListener('click', closeModal);
+    window.addEventListener('click', function(e) {
+        if (e.target === modal) closeModal();
+    });
+    
+    function openResponsesModal(requestId) {
+        modal.style.display = 'block';
+        loadResponses(requestId);
+    }
+    
+    function closeModal() {
+        modal.style.display = 'none';
+    }
+    
+    function loadResponses(requestId) {
+        const loadingEl = document.getElementById('modalLoading');
+        const responsesEl = document.getElementById('responsesList');
+        const noResponsesEl = document.getElementById('noResponses');
+        
+        // Show loading, hide others
+        loadingEl.style.display = 'block';
+        responsesEl.style.display = 'none';
+        noResponsesEl.style.display = 'none';
+        
+        // Fetch responses via AJAX - Core app URL use karein
+        fetch(`/hospital/request/${requestId}/responses/`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                loadingEl.style.display = 'none';
+                
+                if (data.responses && data.responses.length > 0) {
+                    displayResponses(data.responses);
+                    responsesEl.style.display = 'block';
+                } else {
+                    noResponsesEl.style.display = 'block';
+                }
+            })
+            .catch(error => {
+                console.error('Error loading responses:', error);
+                loadingEl.style.display = 'none';
+                noResponsesEl.style.display = 'block';
+                noResponsesEl.innerHTML = `
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h4>Error Loading Responses</h4>
+                    <p>Failed to load donor responses. Please try again.</p>
+                `;
+            });
+    }
+    
+    function displayResponses(responses) {
+        const responsesEl = document.getElementById('responsesList');
+        
+        responsesEl.innerHTML = responses.map(response => `
+            <div class="response-item ${response.status === 'pending' ? 'pending' : ''}">
+                <div class="response-header">
+                    <div class="donor-info">
+                        <h4>${response.donor_name}</h4>
+                        <div class="donor-meta">
+                            Blood Group: <strong>${response.blood_group}</strong> | 
+                            Age: ${response.age} years | 
+                            Weight: ${response.weight} kg
+                        </div>
+                    </div>
+                    <div class="response-meta">
+                        <span class="response-status status-${response.status}">
+                            ${response.status.toUpperCase()}
+                        </span>
+                        <div class="timestamp">${response.created_at}</div>
+                    </div>
+                </div>
+                
+                <div class="response-details">
+                    <div class="detail-item">
+                        <span>Units Offered:</span>
+                        <strong>${response.units_donated}</strong>
+                    </div>
+                    <div class="detail-item">
+                        <span>Last Meal:</span>
+                        <span>${response.last_meal_display}</span>
+                    </div>
+                </div>
+                
+                <div class="health-tags">
+                    <span class="health-tag ${response.feeling_well ? 'health-positive' : 'health-negative'}">
+                        <i class="fas fa-${response.feeling_well ? 'smile' : 'frown'}"></i>
+                        Feeling Well: ${response.feeling_well ? 'Yes' : 'No'}
+                    </span>
+                    <span class="health-tag ${!response.has_disease ? 'health-positive' : 'health-negative'}">
+                        <i class="fas fa-${!response.has_disease ? 'check' : 'times'}"></i>
+                        Disease Free: ${response.has_disease ? 'No' : 'Yes'}
+                    </span>
+                </div>
+                
+                ${response.notes ? `
+                <div class="response-notes">
+                    <strong>Notes:</strong> ${response.notes}
+                </div>
+                ` : ''}
+                
+                ${response.status === 'pending' ? `
+                <div class="response-actions">
+                    <button class="btn-confirm" onclick="handleResponseAction(${response.id}, 'confirm')">
+                        <i class="fas fa-check"></i> Confirm
+                    </button>
+                    <button class="btn-reject" onclick="handleResponseAction(${response.id}, 'reject')">
+                        <i class="fas fa-times"></i> Reject
+                    </button>
+                    <button class="btn-contact" onclick="contactDonor(${response.donor_id}, '${response.donor_name}')">
+                        <i class="fas fa-phone"></i> Contact
+                    </button>
+                </div>
+                ` : ''}
+            </div>
+        `).join('');
+    }
+});
+
+// Handle response actions (confirm/reject)
+function handleResponseAction(responseId, action) {
+    if (!confirm(`Are you sure you want to ${action} this donation response?`)) {
+        return;
+    }
+    
+    // Core app URL use karein
+    fetch(`/hospital/donation/${responseId}/update/`, {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': '{{ csrf_token }}',
+            'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: JSON.stringify({
+            'action': action,
+            'status': action === 'confirm' ? 'confirmed' : 'rejected'
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            alert(data.message);
+            // Reload the modal content
+            const currentRequestId = document.querySelector('.btn-action-table.view')?.getAttribute('data-request-id');
+            if (currentRequestId) {
+                loadResponses(currentRequestId);
+            }
+        } else {
+            alert(data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Something went wrong!');
+    });
+}
+
+function contactDonor(donorId, donorName) {
+    alert(`Contact information for ${donorName} would be shown here.\nDonor ID: ${donorId}`);
+    // Implement contact logic here
+}
+</script>
+{% endblock %}

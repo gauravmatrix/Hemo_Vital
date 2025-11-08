@@ -1,0 +1,724 @@
+{% extends 'core/dashboard_base.html' %}
+{% load static %}
+
+{% block dashboard_title %}Nearby Requests - HemoVital{% endblock %}
+
+{% block extra_dashboard_css %}
+<link rel="stylesheet" href="{% static 'core/css/nearby_requests.css' %}">
+{% endblock %}
+
+{% block page_title %}Nearby Blood Requests{% endblock %}
+
+{% block dashboard_content %}
+
+<div class="requests-list">
+    {% for request in requests %}
+    <div class="request-card">
+        <div class="request-card-header">
+            <div class="blood-group-tag">{{ request.blood_group }}</div>
+            <div class="request-info">
+                <h4>Blood Needed - {{ request.blood_group }}</h4>
+                <span class="urgency-level {{ request.urgency|lower }}">{{ request.urgency }}</span>
+            </div>
+            <div class="countdown-timer">
+                <i class="fas fa-clock"></i>
+                Expires: {{ request.expires_on|timeuntil }}
+            </div>
+        </div>
+        <div class="request-card-body">
+            <p><strong>Patient:</strong> {{ request.patient_name }}, Age: {{ request.patient_age }}</p>
+            <p class="hospital-info">
+                <i class="fas fa-hospital"></i>
+                <strong>Hospital:</strong> {{ request.hospital.hospitalprofile.hospital_name }}, {{ request.hospital.hospitalprofile.city }}
+            </p>
+            <p><strong>Units Required:</strong> {{ request.units_required }}</p>
+            <p><strong>Notes:</strong> {{ request.notes|default:"No additional notes" }}</p>
+        </div>
+        <div class="request-card-footer">
+            <button class="btn-action primary respond-btn" data-request-id="{{ request.id }}">
+                <i class="fas fa-check"></i> Respond Now
+            </button>
+            <button class="btn-action secondary">
+                <i class="fas fa-map-marker-alt"></i> View Route
+            </button>
+            <button class="btn-action tertiary not-available-btn" data-request-id="{{ request.id }}">
+                <i class="fas fa-times"></i> Not Available
+            </button>
+        </div>
+    </div>
+    {% empty %}
+    <div class="content-card">
+        <div class="empty-state">
+            <i class="fas fa-check-circle"></i>
+            <h4>All Clear!</h4>
+            <p>No active requests matching your blood group in your area.</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Donation Response Modal -->
+<div id="donorModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Confirm Your Donation</h3>
+        
+        <form method="POST" id="donorForm">
+            {% csrf_token %}
+            <input type="hidden" name="request_id" id="modal_request_id">
+            
+            <!-- Age Field -->
+            <div class="form-group">
+                <label for="id_age" class="form-label">Current Age *</label>
+                <input type="number" 
+                       name="age" 
+                       id="id_age"
+                       class="form-control" 
+                       min="18" 
+                       max="65" 
+                       required
+                       value="{{ user.userprofile.get_age|default:'' }}">
+                <small class="form-text">Must be between 18-65 years</small>
+            </div>
+            
+            <!-- Weight Field -->
+            <div class="form-group">
+                <label for="id_weight" class="form-label">Current Weight (in Kgs) *</label>
+                <input type="number" 
+                       name="weight" 
+                       id="id_weight"
+                       class="form-control" 
+                       min="50" 
+                       max="200"
+                       step="0.1"
+                       required
+                       value="{{ user.userprofile.weight|default:'' }}">
+                <small class="form-text">Minimum 50 kg required</small>
+            </div>
+            
+            <!-- Health Checkboxes -->
+            <div class="form-check mb-3">
+                <input type="checkbox" 
+                       name="has_disease" 
+                       id="id_has_disease"
+                       class="form-check-input" 
+                       required>
+                <label class="form-check-label" for="id_has_disease">
+                    I confirm I am NOT suffering from any chronic diseases, infections, or medical conditions that prevent blood donation.
+                </label>
+            </div>
+            
+            <div class="form-check mb-3">
+                <input type="checkbox" 
+                       name="feeling_well" 
+                       id="id_feeling_well"
+                       class="form-check-input" 
+                       required>
+                <label class="form-check-label" for="id_feeling_well">
+                    I am feeling well and healthy today.
+                </label>
+            </div>
+            
+            <!-- Last Meal -->
+            <div class="form-group mb-3">
+                <label for="id_last_meal" class="form-label">When did you have your last meal? *</label>
+                <select name="last_meal" id="id_last_meal" class="form-control" required>
+                    <option value="">Select...</option>
+                    <option value="within_2_hours">Within 2 hours</option>
+                    <option value="2_4_hours">2-4 hours ago</option>
+                    <option value="more_than_4_hours">More than 4 hours ago</option>
+                </select>
+            </div>
+
+            <!-- Additional Fields -->
+            <div class="form-group">
+                <label for="id_units_donated" class="form-label">Units to Donate *</label>
+                <input type="number" 
+                       name="units_donated" 
+                       id="id_units_donated"
+                       class="form-control" 
+                       min="1" 
+                       max="3" 
+                       value="1"
+                       required>
+                <small class="form-text">1-3 units maximum</small>
+            </div>
+
+            <div class="form-group">
+                <label for="id_notes" class="form-label">Additional Notes (Optional)</label>
+                <textarea name="notes" 
+                          id="id_notes" 
+                          class="form-control" 
+                          rows="3"
+                          placeholder="Any additional information..."></textarea>
+            </div>
+            
+            <button type="submit" class="btn-action primary">
+                <i class="fas fa-paper-plane"></i> Submit Response
+            </button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_dashboard_js %}
+<script>
+// Nearby Requests JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize modal functionality
+    initializeDonorModal();
+    
+    // Initialize not available buttons
+    initializeNotAvailableButtons();
+});
+
+function initializeDonorModal() {
+    const modal = document.getElementById('donorModal');
+    const modalForm = document.getElementById('donorForm');
+    const modalClose = document.querySelector('.close');
+    const respondButtons = document.querySelectorAll('.respond-btn');
+    
+    // Check if required elements exist
+    if (!modal || !modalForm || !modalClose) {
+        console.error('Required modal elements not found');
+        return;
+    }
+
+    // Open modal when respond button is clicked
+    respondButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const requestId = this.getAttribute('data-request-id');
+            if (requestId) {
+                openModal(requestId);
+            }
+        });
+    });
+
+    // Close modal functionality
+    modalClose.addEventListener('click', closeModal);
+    window.addEventListener('click', function(e) {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'block') {
+            closeModal();
+        }
+    });
+
+    // Form submission handler
+    modalForm.addEventListener('submit', handleFormSubmission);
+
+    function openModal(requestId) {
+        document.getElementById('modal_request_id').value = requestId;
+        modal.style.display = 'block';
+        
+        // Reset and pre-fill form
+        modalForm.reset();
+        prefillFormData();
+    }
+
+    function closeModal() {
+        modal.style.display = 'none';
+    }
+
+    function prefillFormData() {
+        const ageInput = document.getElementById('id_age');
+        const weightInput = document.getElementById('id_weight');
+        
+        if (ageInput && !ageInput.value) {
+            ageInput.value = "{{ user.userprofile.get_age|default:'' }}";
+        }
+        if (weightInput && !weightInput.value) {
+            weightInput.value = "{{ user.userprofile.weight|default:'' }}";
+        }
+    }
+
+    function handleFormSubmission(e) {
+        e.preventDefault();
+        
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        const formData = new FormData(this);
+        
+        // Client-side validation
+        if (!validateForm(formData)) {
+            return;
+        }
+        
+        // Show loading state
+        setButtonLoading(submitBtn, true);
+        
+        // Submit form via AJAX
+        submitDonationForm(formData)
+            .then(data => {
+                if (data.status === 'success') {
+                    showSuccess(data.message);
+                    closeModal();
+                    setTimeout(() => window.location.reload(), 1500);
+                } else {
+                    showError(data.message || 'Please check your inputs.');
+                }
+            })
+            .catch(error => {
+                console.error('Submission error:', error);
+                showError('Network error. Please check your connection and try again.');
+            })
+            .finally(() => {
+                setButtonLoading(submitBtn, false, originalText);
+            });
+    }
+
+    function validateForm(formData) {
+        const age = parseInt(formData.get('age'));
+        const weight = parseFloat(formData.get('weight'));
+        const hasDisease = formData.get('has_disease');
+        const feelingWell = formData.get('feeling_well');
+        const lastMeal = formData.get('last_meal');
+        const unitsDonated = parseInt(formData.get('units_donated'));
+        
+        if (!age || age < 18 || age > 65) {
+            alert('Please enter a valid age between 18 and 65 years.');
+            return false;
+        }
+        
+        if (!weight || weight < 50) {
+            alert('Weight must be at least 50 kg.');
+            return false;
+        }
+        
+        if (!hasDisease) {
+            alert('Please confirm you are free from diseases.');
+            return false;
+        }
+        
+        if (!feelingWell) {
+            alert('Please confirm you are feeling well.');
+            return false;
+        }
+        
+        if (!lastMeal) {
+            alert('Please select when you had your last meal.');
+            return false;
+        }
+        
+        if (!unitsDonated || unitsDonated < 1 || unitsDonated > 3) {
+            alert('Please enter valid units (1-3).');
+            return false;
+        }
+        
+        return true;
+    }
+
+    function setButtonLoading(button, isLoading, originalText = '') {
+        if (isLoading) {
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            button.disabled = true;
+        } else {
+            button.innerHTML = originalText;
+            button.disabled = false;
+        }
+    }
+
+    async function submitDonationForm(formData) {
+        const response = await fetch("{% url 'core:respond_to_request' %}", {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRFToken': getCSRFToken() 
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        return await response.json();
+    }
+
+    function getCSRFToken() {
+    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]');
+    return csrfToken ? csrfToken.value : '';
+}
+
+    function showSuccess(message) {
+        alert('✅ ' + message);
+    }
+
+    function showError(message) {
+        alert('❌ ' + message);
+    }
+}
+
+function initializeNotAvailableButtons() {
+    document.querySelectorAll('.not-available-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const requestId = this.getAttribute('data-request-id');
+            if (confirm('Are you sure you are not available for this donation?')) {
+                // Track not available response
+                console.log('User marked as not available for request:', requestId);
+                // You can add AJAX call here to track this response
+            }
+        });
+    });
+}
+
+function openModal(requestId) {
+    document.getElementById('modal_request_id').value = requestId;
+    modal.style.display = 'block';
+    document.body.classList.add('modal-open'); // Body scroll lock
+    
+    // Reset and pre-fill form
+    modalForm.reset();
+    prefillFormData();
+}
+
+function closeModal() {
+    modal.style.display = 'none';
+    document.body.classList.remove('modal-open'); // Body scroll unlock
+}
+</script>
+<style>
+
+/* Donation Modal CSS with Scroll Fix */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease-in-out;
+    overflow-y: auto; /* Enable main modal scroll */
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    margin: 5% auto;
+    padding: 0;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    border: 1px solid #e0e6ed;
+    animation: slideIn 0.3s ease-out;
+    position: relative;
+    max-height: 85vh; /* Limit height and enable scroll */
+    overflow-y: auto; /* Enable content scroll */
+}
+
+.modal-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #dc3545, #e74c3c, #ff6b6b);
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    color: #6c757d;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.close:hover {
+    color: #dc3545;
+    background-color: #f8f9fa;
+    transform: rotate(90deg);
+}
+
+.modal-content h3 {
+    background: linear-gradient(135deg, #dc3545, #e74c3c);
+    color: white;
+    margin: 0;
+    padding: 25px 30px 20px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 1px solid #e9ecef;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}
+
+#donorForm {
+    padding: 30px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2d3748;
+    font-size: 0.95rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #dc3545;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+    transform: translateY(-1px);
+}
+
+.form-control:hover {
+    border-color: #cbd5e0;
+}
+
+.form-text {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.85rem;
+    color: #718096;
+}
+
+/* Checkbox Styles */
+.form-check {
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+}
+
+.form-check-input {
+    width: 20px;
+    height: 20px;
+    margin-left: -2rem;
+    margin-top: 0.2rem;
+    border: 2px solid #cbd5e0;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-check-input:checked {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+.form-check-input:focus {
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+.form-check-label {
+    cursor: pointer;
+    color: #4a5568;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    user-select: none;
+}
+
+.form-check-label:hover {
+    color: #2d3748;
+}
+
+/* Button Styles */
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    width: 100%;
+    gap: 8px;
+    position: sticky;
+    bottom: 0;
+    background: white;
+    border-top: 1px solid #e9ecef;
+    margin-top: 20px;
+}
+
+.btn-action.primary {
+    background: linear-gradient(135deg, #dc3545, #e74c3c);
+    color: white;
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+    border: none;
+}
+
+.btn-action.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(220, 53, 69, 0.4);
+    background: linear-gradient(135deg, #c82333, #dc3545);
+}
+
+.btn-action.primary:active {
+    transform: translateY(0);
+}
+
+/* Select Dropdown Styles */
+select.form-control {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 12px center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    padding-right: 40px;
+}
+
+/* Textarea Styles */
+textarea.form-control {
+    resize: vertical;
+    min-height: 80px;
+    font-family: inherit;
+}
+
+/* Required Field Indicator */
+.form-label:after {
+    content: " *";
+    color: #dc3545;
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { 
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .modal {
+        padding: 10px;
+    }
+    
+    .modal-content {
+        margin: 5% auto;
+        width: 95%;
+        max-height: 90vh;
+        border-radius: 16px;
+    }
+    
+    #donorForm {
+        padding: 20px;
+    }
+    
+    .modal-content h3 {
+        padding: 20px 25px 15px;
+        font-size: 1.3rem;
+    }
+    
+    .form-control {
+        padding: 10px 14px;
+    }
+    
+    .btn-action {
+        padding: 12px 24px;
+        position: relative;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        margin: 2% auto;
+        width: 98%;
+        max-height: 95vh;
+    }
+    
+    #donorForm {
+        padding: 15px;
+    }
+    
+    .form-check {
+        padding-left: 1.8rem;
+    }
+    
+    .form-check-input {
+        margin-left: -1.8rem;
+    }
+}
+
+/* Custom Scrollbar for Modal */
+.modal-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: #dc3545;
+    border-radius: 3px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: #c82333;
+}
+
+/* Body scroll lock when modal is open */
+body.modal-open {
+    overflow: hidden;
+}
+
+/* Loading State */
+.btn-action:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* Focus States for Accessibility */
+.form-control:focus-visible {
+    outline: 2px solid #dc3545;
+    outline-offset: 2px;
+}
+
+.form-check-input:focus-visible {
+    outline: 2px solid #dc3545;
+    outline-offset: 2px;
+}
+
+</style>
+
+{% endblock %}

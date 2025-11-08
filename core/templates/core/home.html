@@ -1,0 +1,475 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+{% block title %}HemoVital - Smart Blood Donation & Management System{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero" id="hero">
+    <div class="hero-bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+    
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-left fade-in-up">
+                <div class="hero-badge">
+                    <i class="fas fa-shield-check"></i>
+                    <span>Trusted by 10,000+ Users Nationwide</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    Save Lives with
+                    <span class="gradient-text">Smart Blood</span>
+                    Donation System
+                </h1>
+                
+                <p class="hero-description">
+                    HemoVital connects blood donors, hospitals, and blood banks in real-time. 
+                    Get instant notifications for nearby blood requests, manage donations efficiently, 
+                    and help save lives with AI-powered matching and smart coordination.
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 class="stat-number" data-target="8000">0</h3>
+                            <p class="stat-label">Lives Saved</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 class="stat-number" data-target="15000">0</h3>
+                            <p class="stat-label">Blood Units</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-hospital"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 class="stat-number" data-target="150">0</h3>
+                            <p class="stat-label">Partner Hospitals</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-buttons">
+                    {% if user.is_authenticated %}
+                        <a href="#" class="btn btn-primary">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Go to Dashboard
+                        </a>
+                    {% else %}
+                        <a href="#" class="btn btn-primary">
+                            <i class="fas fa-user-plus"></i>
+                            Register Now
+                        </a>
+                        <a href="#" class="btn btn-secondary">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Login
+                        </a>
+                    {% endif %}
+                    <a href="#how-it-works" class="btn btn-outline">
+                        <i class="fas fa-play-circle"></i>
+                        How It Works
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-right fade-in-up">
+                <div class="hero-image-wrapper">
+                    <div class="hero-image">
+                        <div class="blood-drop-animation">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating Cards -->
+                    <div class="floating-card card-1">
+                        <div class="card-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="card-content">
+                            <h4>10,000+</h4>
+                            <p>Active Donors</p>
+                        </div>
+                    </div>
+                    
+                    <div class="floating-card card-2">
+                        <div class="card-icon success">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="card-content">
+                            <h4>98%</h4>
+                            <p>Success Rate</p>
+                        </div>
+                    </div>
+                    
+                    <div class="floating-card card-3">
+                        <div class="card-icon warning">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="card-content">
+                            <h4>24/7</h4>
+                            <p>Emergency Support</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features" id="features">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-badge">Our Features</span>
+            <h2 class="section-title">Why Choose HemoVital?</h2>
+            <p class="section-description">
+                Experience the most advanced blood bank management system with AI-powered features
+            </p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card zoom-in">
+                <div class="feature-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3 class="feature-title">AI-Powered Matching</h3>
+                <p class="feature-description">
+                    Smart algorithm matches donors based on blood type, location, and availability for faster response
+                </p>
+                <div class="feature-link">
+                    <a href="#"><span>Learn More</span> <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="feature-card zoom-in">
+                <div class="feature-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3 class="feature-title">Location-Based Search</h3>
+                <p class="feature-description">
+                    Find nearby donors and hospitals instantly with integrated Google Maps and radius-based filtering
+                </p>
+                <div class="feature-link">
+                    <a href="#"><span>Learn More</span> <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="feature-card zoom-in">
+                <div class="feature-icon">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <h3 class="feature-title">Smart Notifications</h3>
+                <p class="feature-description">
+                    Real-time alerts via Email, SMS, and in-app notifications for urgent blood requirements
+                </p>
+                <div class="feature-link">
+                    <a href="#"><span>Learn More</span> <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="feature-card zoom-in">
+                <div class="feature-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <h3 class="feature-title">Rewards & Recognition</h3>
+                <p class="feature-description">
+                    Earn badges, e-certificates, and referral points. Compete on leaderboards for your contributions
+                </p>
+                <div class="feature-link">
+                    <a href="#"><span>Learn More</span> <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="feature-card zoom-in">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="feature-title">Advanced Analytics</h3>
+                <p class="feature-description">
+                    Hospital admins get detailed reports, stock predictions, and donor activity insights
+                </p>
+                <div class="feature-link">
+                    <a href="#"><span>Learn More</span> <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="feature-card zoom-in">
+                <div class="feature-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h3 class="feature-title">AI Chatbot Support</h3>
+                <p class="feature-description">
+                    24/7 chatbot assistance for queries, appointment booking, and real-time coordination
+                </p>
+                <div class="feature-link">
+                    <a href="#"><span>Learn More</span> <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works -->
+<section class="how-it-works" id="how-it-works">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-badge">Simple Process</span>
+            <h2 class="section-title">How HemoVital Works</h2>
+            <p class="section-description">
+                Get started in three simple steps and start saving lives today
+            </p>
+        </div>
+        
+        <div class="steps-container">
+            <div class="step-card slide-in-left">
+                <div class="step-number">
+                    <span>01</span>
+                </div>
+                <div class="step-content">
+                    <div class="step-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h3 class="step-title">Register Your Account</h3>
+                    <p class="step-description">
+                        Sign up as a donor, recipient, or hospital admin. Complete your profile with basic details and blood group information.
+                    </p>
+                    <ul class="step-features">
+                        <li><i class="fas fa-check"></i> Quick registration process</li>
+                        <li><i class="fas fa-check"></i> Secure authentication</li>
+                        <li><i class="fas fa-check"></i> Multi-language support</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="step-card slide-in-right">
+                <div class="step-number">
+                    <span>02</span>
+                </div>
+                <div class="step-content">
+                    <div class="step-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h3 class="step-title">Connect & Get Notified</h3>
+                    <p class="step-description">
+                        Hospitals post blood requests which are automatically matched with nearby eligible donors using AI algorithms.
+                    </p>
+                    <ul class="step-features">
+                        <li><i class="fas fa-check"></i> Real-time matching</li>
+                        <li><i class="fas fa-check"></i> Location-based filtering</li>
+                        <li><i class="fas fa-check"></i> Instant notifications</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="step-card slide-in-left">
+                <div class="step-number">
+                    <span>03</span>
+                </div>
+                <div class="step-content">
+                    <div class="step-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="step-title">Donate & Save Lives</h3>
+                    <p class="step-description">
+                        Accept donation requests, visit the hospital, and track your contribution. Earn rewards and recognition for your efforts.
+                    </p>
+                    <ul class="step-features">
+                        <li><i class="fas fa-check"></i> Easy donation tracking</li>
+                        <li><i class="fas fa-check"></i> E-certificates & badges</li>
+                        <li><i class="fas fa-check"></i> Donation history</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- User Roles -->
+<section class="user-roles" id="user-roles">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-badge">For Everyone</span>
+            <h2 class="section-title">Who Can Use HemoVital?</h2>
+            <p class="section-description">
+                Designed for donors, hospitals, and system administrators
+            </p>
+        </div>
+        
+        <div class="roles-grid">
+            <div class="role-card fade-in-up">
+                <div class="role-image">
+                    <div class="role-icon donor">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                </div>
+                <div class="role-content">
+                    <h3 class="role-title">Hemo Donor</h3>
+                    <p class="role-description">
+                        Register as a donor, receive nearby blood request notifications, track donation history, and earn rewards
+                    </p>
+                    <ul class="role-features">
+                        <li><i class="fas fa-check-circle"></i> View nearby requests</li>
+                        <li><i class="fas fa-check-circle"></i> Donation history tracking</li>
+                        <li><i class="fas fa-check-circle"></i> E-certificates & badges</li>
+                        <li><i class="fas fa-check-circle"></i> Eligibility reminders</li>
+                        <li><i class="fas fa-check-circle"></i> Leaderboard rankings</li>
+                    </ul>
+                    {% if not user.is_authenticated %}
+                    <a href="#" class="role-btn">
+                        Register as Donor <i class="fas fa-arrow-right"></i>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="role-card fade-in-up">
+                <div class="role-image">
+                    <div class="role-icon hospital">
+                        <i class="fas fa-hospital"></i>
+                    </div>
+                </div>
+                <div class="role-content">
+                    <h3 class="role-title">Hospital Admin</h3>
+                    <p class="role-description">
+                        Post blood requests, manage inventory, notify donors automatically, and access advanced analytics
+                    </p>
+                    <ul class="role-features">
+                        <li><i class="fas fa-check-circle"></i> Create blood requests</li>
+                        <li><i class="fas fa-check-circle"></i> Stock management</li>
+                        <li><i class="fas fa-check-circle"></i> Auto-notify donors</li>
+                        <li><i class="fas fa-check-circle"></i> Analytics & reports</li>
+                        <li><i class="fas fa-check-circle"></i> Donor database access</li>
+                    </ul>
+                    {% if not user.is_authenticated %}
+                    <a href="#" class="role-btn">
+                        Register Hospital <i class="fas fa-arrow-right"></i>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="role-card fade-in-up">
+                <div class="role-image">
+                    <div class="role-icon admin">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                </div>
+                <div class="role-content">
+                    <h3 class="role-title">System Admin</h3>
+                    <p class="role-description">
+                        Monitor entire system, verify hospitals, manage users, view comprehensive analytics and reports
+                    </p>
+                    <ul class="role-features">
+                        <li><i class="fas fa-check-circle"></i> Full system access</li>
+                        <li><i class="fas fa-check-circle"></i> Hospital verification</li>
+                        <li><i class="fas fa-check-circle"></i> User management</li>
+                        <li><i class="fas fa-check-circle"></i> System-wide analytics</li>
+                        <li><i class="fas fa-check-circle"></i> AI predictions monitoring</li>
+                    </ul>
+                    {% if not user.is_authenticated %}
+                    <a href="#" class="role-btn">
+                        Admin Login <i class="fas fa-arrow-right"></i>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Statistics Section -->
+<section class="statistics">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-icon-wrapper">
+                    <i class="fas fa-tint"></i>
+                </div>
+                <h3 class="stat-value" data-target="15000">0</h3>
+                <p class="stat-text">Blood Units Donated</p>
+            </div>
+            
+            <div class="stat-box">
+                <div class="stat-icon-wrapper">
+                    <i class="fas fa-user-plus"></i>
+                </div>
+                <h3 class="stat-value" data-target="10000">0</h3>
+                <p class="stat-text">Registered Donors</p>
+            </div>
+            
+            <div class="stat-box">
+                <div class="stat-icon-wrapper">
+                    <i class="fas fa-hospital"></i>
+                </div>
+                <h3 class="stat-value" data-target="150">0</h3>
+                <p class="stat-text">Partner Hospitals</p>
+            </div>
+            
+            <div class="stat-box">
+                <div class="stat-icon-wrapper">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3 class="stat-value" data-target="8000">0</h3>
+                <p class="stat-text">Lives Saved</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="cta-bg-pattern"></div>
+    <div class="container">
+        <div class="cta-content">
+            <div class="cta-icon">
+                <i class="fas fa-heartbeat"></i>
+            </div>
+            <h2 class="cta-title">Ready to Make a Difference?</h2>
+            <p class="cta-description">
+                Join thousands of donors and hospitals using HemoVital to save lives every day. 
+                Your contribution can make all the difference.
+            </p>
+            <div class="cta-buttons">
+                {% if user.is_authenticated %}
+                    <a href="#" class="btn btn-white">
+                        <i class="fas fa-tachometer-alt"></i>
+                        Go to Dashboard
+                    </a>
+                {% else %}
+                    <a href="#" class="btn btn-white">
+                        <i class="fas fa-user-plus"></i>
+                        Register Now
+                    </a>
+                    <a href="#" class="btn btn-outline-white">
+                        <i class="fas fa-envelope"></i>
+                        Contact Us
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'core/js/home.js' %}"></script>
+{% endblock %}

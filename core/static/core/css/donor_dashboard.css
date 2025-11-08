@@ -1,0 +1,403 @@
+/* ===================================================================
+   HemoVital - Feature-Rich Donor Dashboard CSS
+   =================================================================== */
+
+/* --- Base Variables from dashboard.css --- */
+:root {
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --error: #dc3545;
+}
+
+/* --- Dashboard Header --- */
+.dashboard-header {
+    margin-bottom: 2rem;
+}
+
+.welcome-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.welcome-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-light);
+}
+
+/* --- Stats Grid --- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.stat-card {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: all var(--transition-base);
+    border: 1px solid var(--border-color);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.stat-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 1.8rem;
+}
+
+/* Icon Colors */
+.stat-icon-wrapper.blood-donations {
+    background: var(--gradient-light);
+    color: var(--primary-red);
+}
+.stat-icon-wrapper.last-donation {
+    background: rgba(40, 167, 69, 0.1);
+    color: var(--success);
+}
+.stat-icon-wrapper.next-donation {
+    background: rgba(23, 162, 184, 0.1);
+    color: var(--info);
+}
+.stat-icon-wrapper.blood-group {
+    background: rgba(255, 193, 7, 0.1);
+    color: var(--warning);
+}
+
+
+.stat-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    color: var(--text-dark);
+    display: block;
+    line-height: 1.2;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin: 0;
+}
+
+/* --- Main Content Layout --- */
+.dashboard-main-content,
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.main-column,
+.sidebar-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* --- Generic Card Styling --- */
+.content-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+}
+
+.card-header-main {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.card-header-main h3 {
+    font-size: 1.1rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--text-dark);
+}
+.card-header-main h3 i {
+    color: var(--primary-red);
+}
+.view-all-link {
+    font-size: 0.9rem;
+    color: var(--primary-red);
+    font-weight: 600;
+    text-decoration: none;
+}
+.card-body {
+    padding: 1.5rem;
+}
+
+
+/* --- Active Blood Requests Section --- */
+.filter-sort-options .sort-dropdown {
+    padding: 0.5rem 0.8rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    font-size: 0.9rem;
+}
+
+.request-card {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    margin-bottom: 1.5rem;
+    transition: all var(--transition-base);
+}
+.request-card:last-child {
+    margin-bottom: 0;
+}
+.request-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-red);
+}
+
+.request-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 1.2rem;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--off-white);
+}
+.blood-group-tag {
+    background: var(--primary-red);
+    color: white;
+    font-weight: 700;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.urgency-level {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+.countdown-timer {
+    margin-left: auto;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.request-card.critical .request-card-header {
+    background: rgba(220, 53, 69, 0.05);
+}
+.request-card.critical .urgency-level {
+    color: var(--error);
+}
+.request-card.urgent .request-card-header {
+    background: rgba(255, 193, 7, 0.05);
+}
+.request-card.urgent .urgency-level {
+    color: var(--warning);
+}
+
+.request-card-body {
+    padding: 1.2rem;
+}
+.request-card-body p {
+    margin: 0 0 0.8rem;
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+.request-card-body p:last-child {
+    margin-bottom: 0;
+}
+.request-card-body p strong {
+    color: var(--text-dark);
+}
+.request-card-body .hospital-info i {
+    margin-right: 0.5rem;
+}
+
+.request-card-footer {
+    padding: 0.8rem 1.2rem;
+    background: var(--off-white);
+    display: flex;
+    gap: 0.8rem;
+}
+.btn-action {
+    flex: 1;
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+.btn-action.primary {
+    background: var(--primary-red);
+    color: white;
+}
+.btn-action.primary:hover {
+    background: var(--dark-red);
+}
+.btn-action.secondary {
+    background: white;
+    border: 1px solid var(--border-color);
+    color: var(--text-dark);
+}
+.btn-action.secondary:hover {
+    background: #e9ecef;
+}
+.btn-action.tertiary {
+    background: transparent;
+    border: none;
+    color: var(--text-light);
+}
+.btn-action.tertiary:hover {
+    color: var(--text-dark);
+}
+
+/* --- Empty State --- */
+.empty-state {
+    text-align: center;
+    padding: 2rem;
+}
+.empty-state i {
+    font-size: 3rem;
+    color: var(--success);
+    opacity: 0.5;
+    margin-bottom: 1rem;
+}
+.empty-state h4 {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+.empty-state p {
+    color: var(--text-light);
+    max-width: 350px;
+    margin: 0 auto;
+}
+.empty-state.small {
+    padding: 1rem;
+}
+.empty-state.small i {
+    font-size: 2rem;
+}
+.empty-text {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-align: center;
+    padding: 1rem 0;
+}
+
+
+/* --- Sidebar Column Cards --- */
+.ai-suggestion-card {
+    text-align: center;
+}
+.ai-text {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+.ai-date {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-red);
+    margin: 0.5rem 0 1rem;
+}
+.action-button.small {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+}
+.action-button.secondary {
+    background: var(--off-white);
+    border: 1px solid var(--border-color);
+    color: var(--text-dark);
+    text-decoration: none;
+}
+
+.history-list {
+    list-style: none;
+    padding: 0;
+}
+.history-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+.history-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+.history-list li a {
+    color: var(--primary-red);
+    font-weight: 600;
+    text-decoration: none;
+}
+.history-list li a i {
+    font-size: 1.2rem;
+}
+
+.badges-grid {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-around;
+}
+.badge-item {
+    text-align: center;
+    color: var(--text-dark);
+}
+.badge-item i {
+    font-size: 2.5rem;
+    color: var(--warning);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+.badge-item span {
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+.badge-item.locked i,
+.badge-item.locked span {
+    color: var(--text-muted);
+    opacity: 0.6;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1200px) {
+    .stats-grid,
+    .dashboard-main-content,
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 768px) {
+    .welcome-title {
+        font-size: 1.5rem;
+    }
+    .request-card-footer {
+        flex-direction: column;
+    }
+}
+

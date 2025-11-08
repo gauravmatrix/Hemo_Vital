@@ -1,0 +1,107 @@
+/* ===================================================================
+   HemoVital - Manage Requests CSS (manage_requests.css)
+   =================================================================== */
+
+/* --- Main Card & Header --- */
+.content-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+}
+.card-header-main {
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+.card-header-main h3 {
+    font-size: 1.2rem; margin: 0; display: flex; align-items: center;
+    gap: 0.8rem; color: var(--text-dark);
+}
+.card-header-main h3 i { color: var(--primary-red); }
+
+.btn-primary-header {
+    background: var(--gradient-primary); color: white; padding: 0.6rem 1.2rem;
+    border-radius: var(--radius-full); font-size: 0.9rem; font-weight: 600;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 0.6rem;
+    transition: all var(--transition-base);
+}
+.btn-primary-header:hover {
+    box-shadow: 0 5px 15px rgba(220, 20, 60, 0.3);
+    transform: translateY(-2px);
+}
+
+.card-body { padding: 0; }
+
+/* --- Data Table --- */
+.table-responsive { overflow-x: auto; }
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th, .data-table td {
+    padding: 1.2rem 1.5rem; text-align: left;
+    border-bottom: 1px solid var(--border-color); white-space: nowrap;
+}
+.data-table th {
+    font-size: 0.8rem; font-weight: 600; color: var(--text-light);
+    text-transform: uppercase; background-color: var(--off-white);
+}
+.data-table td { font-size: 0.95rem; color: var(--text-dark); vertical-align: middle; }
+.data-table td strong { display: block; font-size: 1rem; }
+.data-table td small { color: var(--text-light); }
+.data-table tbody tr:last-child td { border-bottom: none; }
+.data-table tbody tr:hover { background-color: var(--off-white); }
+
+/* Badges */
+.blood-group-tag {
+    background: var(--primary-red); color: white; padding: 0.3rem 0.6rem;
+    font-size: 0.8rem; font-weight: 700; border-radius: 6px;
+    display: inline-block;
+}
+.urgency-badge, .status-badge {
+    padding: 0.3rem 0.8rem; border-radius: var(--radius-full);
+    font-size: 0.8rem; font-weight: 600;
+}
+.urgency-badge.urgency-critical { background: rgba(220, 53, 69, 0.1); color: #dc3545; }
+.urgency-badge.urgency-urgent { background: rgba(255, 193, 7, 0.1); color: #ffc107; }
+.urgency-badge.urgency-normal { background: rgba(40, 167, 69, 0.1); color: #28a745; }
+
+.status-badge.status-active { background: rgba(40, 167, 69, 0.1); color: #28a745; }
+.status-badge.status-inactive { background: rgba(108, 117, 125, 0.1); color: #6c757d; }
+
+/* Action Buttons */
+.action-buttons { display: flex; gap: 0.5rem; }
+.btn-action-table {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 35px; height: 35px; text-decoration: none;
+    font-size: 1rem; border-radius: 8px; transition: all var(--transition-base);
+}
+.btn-action-table.view { color: #17a2b8; }
+.btn-action-table.view:hover { background: rgba(23, 162, 184, 0.1); }
+.btn-action-table.edit { color: #ffc107; }
+.btn-action-table.edit:hover { background: rgba(255, 193, 7, 0.1); }
+.btn-action-table.cancel { color: #dc3545; }
+.btn-action-table.cancel:hover { background: rgba(220, 53, 69, 0.1); }
+
+/* Empty State */
+.empty-state { text-align: center; padding: 3rem; }
+.empty-state i { font-size: 3.5rem; color: var(--border-color); margin-bottom: 1rem; }
+.empty-state h4 { font-size: 1.3rem; color: var(--text-dark); }
+.empty-state p { color: var(--text-light); }
+
+/* --- Pagination --- */
+.pagination-container {
+    padding: 1.5rem; display: flex; justify-content: center;
+    border-top: 1px solid var(--border-color);
+}
+.pagination { list-style: none; display: inline-flex; align-items: center; gap: 0.5rem; }
+.page-item .page-link {
+    display: flex; align-items: center; justify-content: center; width: 40px; height: 40px;
+    border: 1px solid var(--border-color); border-radius: var(--radius-md);
+    color: var(--text-dark); text-decoration: none; font-weight: 600;
+    transition: all var(--transition-base);
+}
+.page-item.disabled .page-link { color: var(--text-muted); background: var(--off-white); cursor: not-allowed; }
+.page-item:not(.disabled) .page-link:hover { background: var(--primary-red); color: white; border-color: var(--primary-red); }
+.page-item.active .page-link { background: var(--primary-red); color: white; border-color: var(--primary-red); }

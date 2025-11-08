@@ -1,0 +1,49 @@
+{% extends 'core/dashboard_base.html' %}
+{% load static %}
+
+{% block dashboard_title %}Blood Stock - HemoVital{% endblock %}
+
+{% block extra_dashboard_css %}
+    <link rel="stylesheet" href="{% static 'core/css/blood_stock.css' %}">
+{% endblock %}
+
+{% block page_title %}
+    Manage Blood Stock
+{% endblock %}
+
+{% block dashboard_content %}
+
+<div class="content-card">
+    <form method="post" novalidate>
+        {% csrf_token %}
+        <div class="card-header-main">
+            <h3><i class="fas fa-tint"></i> Current Inventory Levels</h3>
+        </div>
+
+        <div class="card-body">
+            <p class="form-description">
+                Update the number of available units for each blood group. The changes will be reflected across the system.
+            </p>
+
+            <div class="stock-grid">
+                {% for blood_group, units in stock_data.items %}
+                <div class="stock-card">
+                    <div class="stock-blood-group">{{ blood_group }}</div>
+                    <div class="stock-input-group">
+                        <label for="id_{{ blood_group }}">Units Available</label>
+                        <input type="number" name="{{ blood_group }}" id="id_{{ blood_group }}" value="{{ units }}" min="0" class="stock-input">
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <button type="submit" class="btn-primary">
+                <i class="fas fa-save"></i> Save Stock Levels
+            </button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends 'core/dashboard_base.html' %}
+{% load static %}
+
+{% block dashboard_title %}Leaderboard - HemoVital{% endblock %}
+
+{% block extra_dashboard_css %}
+    <link rel="stylesheet" href="{% static 'core/css/leaderboard.css' %}">
+{% endblock %}
+
+{% block page_title %}
+    Community Leaderboard
+{% endblock %}
+
+{% block dashboard_content %}
+
+<!-- User's Personal Rank Card -->
+<div class="user-rank-card">
+    <div class="rank-info">
+        <span class="rank-label">Your Current Rank</span>
+        <span class="rank-position">#{{ user_rank }}</span>
+    </div>
+    <div class="rank-details">
+        <p>You have made <strong>{{ user.donations.count }}</strong> donations so far. Keep up the great work and inspire others!</p>
+    </div>
+</div>
+
+<!-- Main Leaderboard Card -->
+<div class="content-card">
+    <div class="card-header-main">
+        <h3><i class="fas fa-trophy"></i> Top Donors</h3>
+    </div>
+    <div class="card-body">
+        <div class="leaderboard-list">
+            {% for donor in top_donors %}
+                <div class="donor-row 
+                    {% if forloop.counter == 1 and page_obj.number == 1 %}rank-1{% endif %}
+                    {% if forloop.counter == 2 and page_obj.number == 1 %}rank-2{% endif %}
+                    {% if forloop.counter == 3 and page_obj.number == 1 %}rank-3{% endif %}
+                    {% if donor.id == user.id %}current-user{% endif %}">
+                    
+                    <div class="donor-rank">
+                        <span>{{ page_obj.start_index|add:forloop.counter0 }}</span>
+                    </div>
+                    <div class="donor-info">
+                        <img src="https://img.freepik.com/free-vector/smiling-redhaired-boy-illustration_1308-176664.jpg?semt=ais_hybrid&w=740&q=80" alt="{{ donor.username }}'s photo" class="donor-avatar">
+                        <div class="donor-name">
+                            <strong>{{ donor.first_name }} {{ donor.last_name }}</strong>
+                            <small>@{{ donor.username }}</small>
+                        </div>
+                    </div>
+                    <div class="donor-donations">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <span>{{ donor.donation_count }} Donations</span>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="empty-state">
+                    <i class="fas fa-users"></i>
+                    <h4>Leaderboard is Empty</h4>
+                    <p>Be the first one to make a donation and appear on the leaderboard!</p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Pagination Controls -->
+        {% if is_paginated %}
+        <div class="pagination-container">
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}"><i class="fas fa-chevron-left"></i></a></li>
+                {% else %}
+                    <li class="page-item disabled"><span class="page-link"><i class="fas fa-chevron-left"></i></span></li>
+                {% endif %}
+
+                {% for num in page_obj.paginator.page_range %}
+                    {% if page_obj.number == num %}
+                        <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                        <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}"><i class="fas fa-chevron-right"></i></a></li>
+                {% else %}
+                     <li class="page-item disabled"><span class="page-link"><i class="fas fa-chevron-right"></i></span></li>
+                {% endif %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

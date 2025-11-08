@@ -1,0 +1,122 @@
+/* ===================================================================
+   HemoVital - Hospital Dashboard CSS (hospital_dashboard.css)
+   =================================================================== */
+
+/* --- Dashboard Header --- */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+.welcome-title { font-size: 2rem; font-weight: 700; color: var(--text-dark); }
+.welcome-subtitle { font-size: 1.1rem; color: var(--text-light); }
+
+.btn-primary-action {
+    background: rgb(223, 3, 3);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: var(--radius-full);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    box-shadow: 0 8px 25px rgba(220, 20, 60, 0.3);
+    transition: all var(--transition-base);
+}
+.btn-primary-action:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(220, 20, 60, 0.4);
+}
+
+/* --- Stats Grid (Reusing from donor dashboard) --- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+.stat-card {
+    background: var(--white); padding: 1.5rem; border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm); display: flex; align-items: center; gap: 1.5rem;
+    transition: all var(--transition-base); border: 1px solid var(--border-color);
+}
+.stat-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+.stat-icon-wrapper {
+    width: 60px; height: 60px; flex-shrink: 0; display: flex; align-items: center;
+    justify-content: center; border-radius: 50%; font-size: 1.8rem;
+}
+.stat-icon-wrapper.total-requests { background: rgba(23, 162, 184, 0.1); color: #17a2b8; }
+.stat-icon-wrapper.active-requests { background: rgba(255, 193, 7, 0.1); color: #ffc107; }
+.stat-icon-wrapper.completed-requests { background: rgba(40, 167, 69, 0.1); color: #28a745; }
+.stat-value { font-size: 2.2rem; font-weight: 700; font-family: var(--font-heading); color: var(--text-dark); }
+.stat-label { font-size: 0.9rem; color: var(--text-light); }
+
+/* --- Main Content Layout & Cards --- */
+.dashboard-main-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+.content-card { background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--border-color); overflow: hidden; }
+.card-header-main {
+    padding: 1.2rem 1.5rem; border-bottom: 1px solid var(--border-color);
+    display: flex; justify-content: space-between; align-items: center;
+}
+.card-header-main h3 { font-size: 1.2rem; margin: 0; display: flex; align-items: center; gap: 0.8rem; color: var(--text-dark); }
+.card-header-main h3 i { color: var(--primary-red); }
+.view-all-link { font-size: 0.9rem; color: var(--primary-red); font-weight: 600; text-decoration: none; }
+.card-body { padding: 1.5rem; }
+.card-body .table-responsive { padding: 0; } /* Remove padding if table is inside */
+
+/* --- Data Table --- */
+.table-responsive { overflow-x: auto; }
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th, .data-table td { padding: 1rem 1.2rem; text-align: left; border-bottom: 1px solid var(--border-color); white-space: nowrap; }
+.data-table th { font-size: 0.8rem; font-weight: 600; color: var(--text-light); text-transform: uppercase; background: var(--off-white); }
+.data-table td { font-size: 0.95rem; color: var(--text-dark); vertical-align: middle; }
+.data-table tbody tr:last-child td { border-bottom: none; }
+.data-table tbody tr:hover { background-color: var(--off-white); }
+
+.blood-group-tag {
+    background: var(--primary-red); color: white; padding: 0.3rem 0.6rem;
+    font-size: 0.8rem; font-weight: 700; border-radius: 6px;
+    display: inline-block;
+}
+.status-badge { padding: 0.3rem 0.8rem; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 600; }
+.status-badge.status-critical { background: rgba(220, 53, 69, 0.1); color: #dc3545; }
+.status-badge.status-urgent { background: rgba(255, 193, 7, 0.1); color: #ffc107; }
+.status-badge.status-normal { background: rgba(40, 167, 69, 0.1); color: #28a745; }
+.countdown-timer { font-size: 0.9rem; color: var(--text-light); }
+
+.btn-action-table {
+    display: inline-block; text-decoration: none; padding: 0.5rem;
+    font-size: 1.1rem; border-radius: 8px; transition: all var(--transition-base);
+}
+.btn-action-table.view { color: #17a2b8; }
+.btn-action-table.view:hover { background: rgba(23, 162, 184, 0.1); }
+.btn-action-table.edit { color: #ffc107; }
+.btn-action-table.edit:hover { background: rgba(255, 193, 7, 0.1); }
+.btn-action-table.cancel { color: #dc3545; }
+.btn-action-table.cancel:hover { background: rgba(220, 53, 69, 0.1); }
+.empty-state.small { padding: 2rem 1rem; text-align: center; }
+
+/* --- Sidebar Content --- */
+.sidebar-content { display: flex; flex-direction: column; gap: 1.5rem; }
+.chart-placeholder { height: 200px; background: var(--off-white); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: var(--text-muted); }
+.action-button.secondary { text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 0.8rem; width: 100%; padding: 1rem; font-size: 1rem; font-weight: 600; border-radius: var(--radius-md); background: var(--off-white); color: var(--text-dark); border: 1px solid var(--border-color); transition: all var(--transition-base); }
+.action-button.secondary:hover { background: #e9ecef; }
+
+/* --- Responsive --- */
+@media (max-width: 1200px) {
+    .dashboard-main-content { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+    .welcome-title { font-size: 1.5rem; }
+    .btn-primary-action { width: 100%; justify-content: center; }
+}

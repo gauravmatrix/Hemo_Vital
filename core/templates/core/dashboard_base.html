@@ -1,0 +1,387 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block dashboard_title %}Dashboard - HemoVital{% endblock %}</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'core/images/favicon.ico' %}">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Dashboard Base CSS -->
+    <link rel="stylesheet" href="{% static 'core/css/dashboard_base.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/chatbot.css' %}">
+
+    
+    <!-- Extra CSS for specific dashboard pages -->
+    {% block extra_dashboard_css %}{% endblock %}
+</head>
+<body>
+
+    <div class="dashboard-layout">
+        <!-- ========================================== -->
+        <!-- Sidebar Navigation -->
+        <!-- ========================================== -->
+        <aside class="sidebar" id="sidebar">
+            <!-- Sidebar Header -->
+            <div class="sidebar-header">
+                <a href="{% url 'core:home' %}" class="logo">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>HemoVital</span>
+                </a>
+                <button class="sidebar-close-btn" id="sidebar-close-btn" aria-label="Close sidebar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Sidebar Menu -->
+            <nav class="sidebar-nav">
+                {% if user.role == 'DONOR' %}
+                    <ul class="sidebar-menu">
+                        <li class="menu-header">Navigation</li>
+                        <li class="menu-item">
+                            <a href="{% url 'core:donor_dashboard' %}" class="menu-link active">
+                                <i class="fas fa-tachometer-alt"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="{% url 'core:nearby_requests' %}" class="menu-link">
+                                <i class="fas fa-bell"></i>
+                                <span>Nearby Requests</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="{% url 'core:donation_history' %}" class="menu-link">
+                                <i class="fas fa-history"></i>
+                                <span>Donation History</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="{% url 'core:leaderboard' %}" class="menu-link">
+                                <i class="fas fa-trophy"></i>
+                                <span>Leaderboard</span>
+                            </a>
+                        </li>
+                        <li class="menu-header">Account</li>
+                        <li class="menu-item">
+                            <a href="{% url 'core:donor_profile' %}" class="menu-link">
+                                <i class="fas fa-user-circle"></i>
+                                <span>My Profile</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="{% url 'core:donor_settings' %}" class="menu-link">
+                                <i class="fas fa-cog"></i>
+                                <span>Settings</span>
+                            </a>
+                        </li>
+                    </ul>
+                {% elif user.role == 'HOSPITAL' %}
+                    <ul class="sidebar-menu">
+                        <li class="menu-header">Navigation</li>
+                        <li class="menu-item">
+                            <a href="{% url 'core:hospital_dashboard' %}" class="menu-link active">
+                                <i class="fas fa-tachometer-alt"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="/hospital/request/create/" class="menu-link">
+                                <i class="fas fa-notes-medical"></i>
+                                <span>Post Blood Request</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="/hospital/requests/manage/" class="menu-link">
+                                <i class="fas fa-tasks"></i>
+                                <span>Manage Requests</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="/hospital/stock/" class="menu-link">
+                                <i class="fas fa-tint"></i>
+                                <span>Blood Stock</span>
+                            </a>
+                        </li>
+                        <li class="menu-header">Account</li>
+                         <li class="menu-item">
+                            <a href="/hospital/profile/" class="menu-link">
+                                <i class="fas fa-user-shield"></i>
+                                <span>Hospital Profile</span>
+                            </a>
+                        </li>
+                
+                
+
+    <li class="menu-item">
+        <a href="{% url 'core:ai_analytics_dashboard' %}" class="menu-link">
+            <i class="fas fa-brain"></i>
+            <span>AI Dashboard</span>
+        </a>
+    </li>
+
+    <li class="menu-item">
+        <a href="{% url 'core:blood_demand_prediction' %}" class="menu-link">
+            <i class="fas fa-chart-line"></i>
+            <span>Demand Prediction</span>
+        </a>
+    </li>
+
+    <li class="menu-item">
+        <a href="{% url 'core:donor_retention_analytics' %}" class="menu-link">
+            <i class="fas fa-users"></i>
+            <span>Donor Retention</span>
+        </a>
+    </li>
+
+    <li class="menu-item">
+        <a href="{% url 'core:ai_donor_matching' %}" id="quickMatchingBtn" class="menu-link">
+            <i class="fas fa-heartbeat"></i>
+            <span>Donor Matching</span>
+        </a>
+    </li>
+        </ul>
+
+<script>
+// --- Donor Matching Logic ---
+document.getElementById('quickMatchingBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+
+    // Fetch active blood requests
+    fetch('/hospital/analytics/data/?type=active_requests')
+        .then(response => response.json())
+        .then(data => {
+            if (data.requests && data.requests.length > 0) {
+                showRequestSelectionModal(data.requests);
+            } else {
+                alert('No active blood requests found. Please create a blood request first.');
+                window.location.href = '{% url "core:create_request" %}';
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error loading blood requests.');
+        });
+});
+
+function showRequestSelectionModal(requests) {
+    // Build simple popup HTML
+    const modalHtml = `
+        <div id="simpleModal" style="
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex; justify-content: center; align-items: center;
+        ">
+            <div style="
+                background: white;
+                padding: 20px;
+                border-radius: 6px;
+                width: 90%;
+                max-width: 400px;
+            ">
+                <h3>Select Blood Request for Matching</h3>
+                <ul style="list-style: none; padding: 0; max-height: 300px; overflow-y: auto;">
+                    ${requests.map(req => `
+                        <li style="margin: 10px 0; border-bottom: 1px solid #ddd; padding-bottom: 6px;">
+                            <a href="/hospital/ai/matching/${req.id}/" style="text-decoration: none; color: #000;">
+                                <strong>${req.patient_name}</strong> — ${req.blood_group}
+                                <br>
+                                <small>Units: ${req.units_required} | Urgency: ${req.urgency}</small>
+                            </a>
+                        </li>
+                    `).join('')}
+                </ul>
+                <button id="closeModalBtn">Close</button>
+            </div>
+        </div>
+    `;
+
+    // Add modal to body
+    document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+    // Close modal on button click
+    document.getElementById('closeModalBtn').addEventListener('click', function() {
+        document.getElementById('simpleModal').remove();
+    });
+
+    // Also close if clicked outside content box
+    document.getElementById('simpleModal').addEventListener('click', function(e) {
+        if (e.target.id === 'simpleModal') {
+            this.remove();
+        }
+    });
+}
+</script>
+
+
+                {% endif %}
+            </nav>
+
+            <!-- Sidebar Footer -->
+            <div class="sidebar-footer">
+                <a href="{% url 'core:logout' %}" class="menu-link logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- ========================================== -->
+        <!-- Main Content Wrapper -->
+        <!-- ========================================== -->
+        <div class="main-wrapper">
+            <!-- Main Header (TOP NAVBAR) -->
+            <header class="main-header">
+                <div class="header-left">
+                    <button class="sidebar-toggle-btn" id="sidebar-toggle-btn" aria-label="Toggle sidebar">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 class="page-title">
+                        {% block page_title %}Dashboard{% endblock %}
+                    </h1>
+                </div>
+                <div class="header-right">
+                    <!-- Notifications Panel -->
+                    <div class="notification-wrapper">
+                        <button class="notification-btn" aria-label="Notifications">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge">3</span>
+                        </button>
+                    </div>
+
+                    <!-- Profile Menu -->
+                    <div class="user-profile-menu">
+                        <img src="{{ user.userprofile.profile_photo.url }}" alt="User Avatar" class="user-avatar" onerror="this.src='https://ui-avatars.com/api/?name={{ user.username|title }}&background=DC143C&color=fff'">
+                        <span class="user-name">{{ user.first_name|default:user.username }}</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <main class="content-area">
+                {% if messages %}
+                <div class="messages-container-dashboard">
+                    {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}" role="alert">
+                        <span>{{ message }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                
+                {% block dashboard_content %}
+                <!-- Specific dashboard content (like from donor_dashboard.html) will be injected here -->
+                {% endblock %}
+            </main>
+        </div>
+    </div>
+    
+    <!-- =============================================================== -->
+    <!-- === CHATBOT WINDOW (Initially Hidden) === -->
+    <!-- =============================================================== -->
+    <!-- Floating Chatbot Button -->
+<div class="floating-chatbot">
+    <a href="{% url 'core:chatbot' %}" class="chatbot-btn" title="Chat with HemoBot">
+        <i class="fas fa-robot"></i>
+        <span class="chatbot-wave"></span>
+        <span class="chatbot-wave"></span>
+        <span class="chatbot-wave"></span>
+    </a>
+</div>
+
+
+<style>
+.floating-chatbot {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+}
+
+/* Main button */
+.chatbot-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff4b2b, #ff416c);
+    color: white;
+    font-size: 28px;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(255, 65, 108, 0.5);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chatbot-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(255, 65, 108, 0.7);
+}
+
+/* Pulsating wave circles */
+.chatbot-wave {
+    position: absolute;
+    border: 2px solid rgba(255, 65, 108, 0.6);
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    animation: chatbotWave 2s infinite ease-out;
+    opacity: 0;
+}
+
+.chatbot-wave:nth-child(2) {
+    animation-delay: 0.6s;
+}
+
+.chatbot-wave:nth-child(3) {
+    animation-delay: 1.2s;
+}
+
+/* Keyframes for the expanding waves */
+@keyframes chatbotWave {
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    70% {
+        transform: scale(1.8);
+        opacity: 0.2;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+</style>
+
+
+    <!-- Dashboard Base JS -->
+    <script src="{% static 'core/js/dashboard_base.js' %}"></script>
+
+    <!-- Extra JS for specific dashboard pages -->
+    {% block extra_dashboard_js %}{% endblock %}
+
+    <script src="{% static 'core/js/chatbot.js' %}"></script>
+
+</body>
+</html>
+

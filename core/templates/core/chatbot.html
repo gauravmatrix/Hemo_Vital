@@ -1,0 +1,404 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}HemoBot - AI Assistant{% endblock %}
+
+{% block extra_css %}
+<style>
+.chatbot-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.chatbot-header {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+    padding: 20px;
+    border-radius: 15px 15px 0 0;
+    text-align: center;
+}
+
+.chatbot-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: #f8f9fa;
+}
+
+.message {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.user-message {
+    justify-content: flex-end;
+}
+
+.bot-message {
+    justify-content: flex-start;
+}
+
+.message-bubble {
+    max-width: 70%;
+    padding: 12px 16px;
+    border-radius: 18px;
+    word-wrap: break-word;
+}
+
+.user-bubble {
+    background: #e74c3c;
+    color: white;
+    border-bottom-right-radius: 5px;
+}
+
+.bot-bubble {
+    background: white;
+    color: #333;
+    border: 1px solid #e0e0e0;
+    border-bottom-left-radius: 5px;
+}
+
+.chatbot-input {
+    padding: 20px;
+    border-top: 1px solid #e0e0e0;
+    background: white;
+    border-radius: 0 0 15px 15px;
+}
+
+.suggested-questions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.suggestion-chip {
+    background: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.suggestion-chip:hover {
+    background: #e74c3c;
+    color: white;
+    border-color: #e74c3c;
+}
+
+.typing-indicator {
+    display: none;
+    padding: 10px 16px;
+    background: white;
+    border-radius: 18px;
+    border: 1px solid #e0e0e0;
+}
+
+.typing-dots {
+    display: flex;
+    gap: 4px;
+}
+
+.typing-dot {
+    width: 8px;
+    height: 8px;
+    background: #999;
+    border-radius: 50%;
+    animation: typing 1.4s infinite;
+}
+
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+.chatbot-input {
+    position: sticky;
+    bottom: 0;
+    background: linear-gradient(135deg, #ffffff, #f9f9f9);
+    padding: 15px 20px;
+    border-top: 1px solid #ddd;
+    box-shadow: 0 -4px 12px rgba(255, 0, 0, 0.08);
+    backdrop-filter: blur(10px);
+    z-index: 999;
+}
+
+.chatbot-input form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.chatbot-input .input-group {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background: #fff;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(255, 0, 0, 0.1);
+    border: 1px solid rgba(255, 0, 0, 0.15);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.chatbot-input .input-group:hover {
+    box-shadow: 0 6px 14px rgba(255, 0, 0, 0.18);
+    transform: translateY(-2px);
+}
+
+.chatbot-input input.form-control {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 14px 20px;
+    font-size: 16px;
+    color: #333;
+    background: transparent;
+    border-radius: 50px 0 0 50px;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+.chatbot-input input.form-control::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+.chatbot-input input.form-control:focus {
+    background: #fff;
+    box-shadow: inset 0 0 8px rgba(255, 0, 0, 0.1);
+}
+
+.chatbot-input .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ff1a1a, #d60000);
+    border: none;
+    color: #fff;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+}
+
+.chatbot-input .btn:hover {
+    background: linear-gradient(135deg, #ff4d4d, #ff1a1a);
+    transform: scale(1.08);
+    box-shadow: 0 6px 18px rgba(255, 0, 0, 0.4);
+}
+
+.chatbot-input .btn:active {
+    transform: scale(0.96);
+    box-shadow: 0 3px 6px rgba(255, 0, 0, 0.2);
+}
+
+/* Optional glowing animation */
+@keyframes pulse-glow {
+    0% { box-shadow: 0 0 0 rgba(255, 0, 0, 0.4); }
+    50% { box-shadow: 0 0 20px rgba(255, 0, 0, 0.7); }
+    100% { box-shadow: 0 0 0 rgba(255, 0, 0, 0.4); }
+}
+
+.chatbot-input .btn:hover i {
+    animation: pulse-glow 1.5s infinite;
+}
+
+.chatbot-input {
+    border-radius: 20px 20px 0 0;
+}
+
+
+@keyframes typing {
+    0%, 60%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-5px); }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="chatbot-container">
+        <!-- Header -->
+        <div class="chatbot-header">
+            <h3 class="mb-0">
+                <i class="fas fa-robot me-2"></i>
+                HemoBot - Your Blood Donation Assistant
+            </h3>
+            <p class="mb-0 mt-1">Ask me anything about blood donation!</p>
+        </div>
+
+        <!-- Messages Area -->
+        <div class="chatbot-messages" id="chatMessages">
+            <!-- Welcome Message -->
+            <div class="message bot-message">
+                <div class="message-bubble bot-bubble">
+                    <strong>HemoBot:</strong> Hello! I'm your blood donation assistant. 
+                    I can help you with eligibility criteria, donation process, 
+                    blood group information, and anything else related to blood donation. 
+                    How can I assist you today?
+                </div>
+            </div>
+
+            <!-- Suggested Questions -->
+            <div class="suggested-questions" id="suggestedQuestions">
+                <div class="suggestion-chip" onclick="sendSuggestion(this)">
+                    What are the eligibility criteria?
+                </div>
+                <div class="suggestion-chip" onclick="sendSuggestion(this)">
+                    How often can I donate blood?
+                </div>
+                <div class="suggestion-chip" onclick="sendSuggestion(this)">
+                    Is blood donation safe?
+                </div>
+            </div>
+
+            <!-- Typing Indicator -->
+            <div class="message bot-message">
+                <div class="typing-indicator" id="typingIndicator">
+                    <div class="typing-dots">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="chatbot-input">
+            <form id="chatForm">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input type="text" 
+                           class="form-control" 
+                           id="messageInput"
+                           placeholder="Type your question about blood donation..."
+                           autocomplete="off">
+                    <button class="btn btn-danger" type="submit">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+let chatHistory = [];
+
+function sendSuggestion(element) {
+    const message = element.textContent;
+    document.getElementById('messageInput').value = message;
+    document.getElementById('chatForm').dispatchEvent(new Event('submit'));
+}
+
+function addMessage(content, isUser = false) {
+    const messagesContainer = document.getElementById('chatMessages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
+    
+    const bubbleDiv = document.createElement('div');
+    bubbleDiv.className = `message-bubble ${isUser ? 'user-bubble' : 'bot-bubble'}`;
+    bubbleDiv.innerHTML = isUser ? content : `<strong>HemoBot:</strong> ${content}`;
+    
+    messageDiv.appendChild(bubbleDiv);
+    messagesContainer.appendChild(messageDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+function showTypingIndicator() {
+    document.getElementById('typingIndicator').style.display = 'block';
+    document.getElementById('chatMessages').scrollTop = document.getElementById('chatMessages').scrollHeight;
+}
+
+function hideTypingIndicator() {
+    document.getElementById('typingIndicator').style.display = 'none';
+}
+
+function showSuggestedQuestions(questions) {
+    const container = document.getElementById('suggestedQuestions');
+    container.innerHTML = '';
+    
+    questions.forEach(question => {
+        const chip = document.createElement('div');
+        chip.className = 'suggestion-chip';
+        chip.textContent = question;
+        chip.onclick = () => sendSuggestion(chip);
+        container.appendChild(chip);
+    });
+}
+
+document.getElementById('chatForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const messageInput = document.getElementById('messageInput');
+    const message = messageInput.value.trim();
+    
+    if (!message) return;
+    
+    // Add user message
+    addMessage(message, true);
+    chatHistory.push({ role: 'user', content: message });
+    
+    // Clear input
+    messageInput.value = '';
+    
+    // Show typing indicator
+    showTypingIndicator();
+    
+    try {
+        const response = await fetch('{% url "core:chatbot_message" %}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify({
+                message: message,
+                history: chatHistory
+            })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+            // Add bot response
+            addMessage(data.answer);
+            chatHistory.push({ role: 'assistant', content: data.answer });
+            
+            // Show suggested questions
+            if (data.suggested_questions) {
+                showSuggestedQuestions(data.suggested_questions);
+            }
+        } else {
+            addMessage('Sorry, I encountered an error. Please try again.');
+        }
+        
+    } catch (error) {
+        addMessage('Network error. Please check your connection and try again.');
+    } finally {
+        hideTypingIndicator();
+    }
+});
+
+// Enter key to send message
+document.getElementById('messageInput').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        document.getElementById('chatForm').dispatchEvent(new Event('submit'));
+    }
+});
+</script>
+{% endblock %}

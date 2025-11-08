@@ -1,0 +1,145 @@
+{% extends 'core/dashboard_base.html' %}
+{% load static %}
+
+{% block dashboard_title %}Hospital Dashboard - HemoVital{% endblock %}
+
+{% block extra_dashboard_css %}
+    <link rel="stylesheet" href="{% static 'core/css/hospital_dashboard.css' %}">
+{% endblock %}
+
+{% block page_title %}
+    Hospital Dashboard
+{% endblock %}
+
+{% block dashboard_content %}
+
+<!-- Header with Welcome and Main Action Button -->
+<div class="dashboard-header">
+    <div>
+        <h2 class="welcome-title">Welcome, {{ user.first_name|default:user.username }}!</h2>
+        <p class="welcome-subtitle">Manage your blood requests and donor interactions from here.</p>
+    </div>
+    <a href="#" class="btn-primary-action">
+        <i class="fas fa-plus-circle"></i> Create Blood Request
+    </a>
+</div>
+
+<!-- Stats Grid -->
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-icon-wrapper total-requests">
+            <i class="fas fa-file-medical-alt"></i>
+        </div>
+        <div class="stat-info">
+            <span class="stat-value">{{ total_requests }}</span>
+            <p class="stat-label">Total Requests Made</p>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon-wrapper active-requests">
+            <i class="fas fa-bullhorn"></i>
+        </div>
+        <div class="stat-info">
+            <span class="stat-value">{{ active_requests_count }}</span>
+            <p class="stat-label">Active Requests</p>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon-wrapper completed-requests">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="stat-info">
+            <span class="stat-value">{{ completed_requests_count }}</span>
+            <p class="stat-label">Requests Fulfilled</p>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content Grid -->
+<div class="dashboard-main-content">
+    <!-- Active Requests Table -->
+    <div class="content-card">
+        <div class="card-header-main">
+            <h3><i class="fas fa-tasks"></i> Recent Active Requests</h3>
+            <a href="#" class="view-all-link">Manage All</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Patient Name</th>
+                            <th>Blood Group</th>
+                            <th>Urgency</th>
+                            <th>Expires In</th>
+                            <th>Actions</th>
+                            <td>
+                            {% if donation.status == 'Pending' %}
+                            <a href="{% url 'core:confirm_donation' donation.id %}" class="btn btn-success">Confirm</a>
+                            <a href="{% url 'core:reject_donation' donation.id %}" class="btn btn-danger">Reject</a>
+                            {% else %}
+                            {{ donation.status }}
+                            {% endif %}
+                            </td>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for request in recent_active_requests %}
+                        <tr>
+                            <td><strong>{{ request.patient_name }}</strong></td>
+                            <td><span class="blood-group-tag">{{ request.blood_group }}</span></td>
+                            <td><span class="status-badge status-{{ request.urgency|lower }}">{{ request.urgency }}</span></td>
+                            <td class="countdown-timer" data-expires="{{ request.expires_on.isoformat }}">Loading...</td>
+                            <td>
+                                <a href="#" class="btn-action-table view"><i class="fas fa-eye"></i></a>
+                                <a href="#" class="btn-action-table edit"><i class="fas fa-edit"></i></a>
+                                <a href="#" class="btn-action-table cancel"><i class="fas fa-times-circle"></i></a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="5">
+                                <div class="empty-state small">
+                                    <p>No active blood requests at the moment.</p>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Analytics & Reports Section -->
+    <div class="sidebar-content">
+        <div class="content-card">
+            <div class="card-header-main">
+                <h3><i class="fas fa-chart-line"></i> Analytics</h3>
+            </div>
+            <div class="card-body">
+                <div class="chart-placeholder">
+                    <p>Blood group demand trends will appear here.</p>
+                </div>
+            </div>
+        </div>
+        <div class="content-card">
+            <div class="card-header-main">
+                <h3><i class="fas fa-campground"></i> Blood Camps</h3>
+            </div>
+            <div class="card-body">
+                 <a href="#" class="action-button secondary">
+                    <i class="fas fa-calendar-plus"></i> Schedule a New Camp
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_dashboard_js %}
+    {# Countdown timer functionality can be reused #}
+    <script src="{% static 'core/js/hospital_dashboard.js' %}"></script>
+{% endblock %}

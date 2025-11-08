@@ -1,0 +1,132 @@
+/* ===================================================================
+   HemoVital - Blood Stock Page CSS (blood_stock.css)
+   =================================================================== */
+
+.content-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+}
+
+.card-header-main {
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+.card-header-main h3 {
+    font-size: 1.2rem; margin: 0; display: flex; align-items: center;
+    gap: 0.8rem; color: var(--text-dark);
+}
+.card-header-main h3 i { color: var(--primary-red); }
+
+.card-body { padding: 2rem; }
+
+.form-description {
+    font-size: 1rem;
+    color: var(--text-light);
+    margin-bottom: 2.5rem;
+    padding: 1rem;
+    background: var(--off-white);
+    border-left: 4px solid var(--primary-red);
+    border-radius: 8px;
+}
+
+/* --- Stock Grid --- */
+.stock-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+}
+
+.stock-card {
+    background: var(--white);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    padding: 1.5rem;
+    transition: all var(--transition-base);
+}
+
+.stock-card:hover {
+    border-color: var(--primary-red);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-5px);
+}
+
+.stock-blood-group {
+    font-size: 2.5rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    color: var(--primary-red);
+    margin-bottom: 1rem;
+    background: var(--gradient-light);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.stock-input-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-light);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.stock-input {
+    width: 100%;
+    max-width: 100px;
+    padding: 0.8rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    background: var(--off-white);
+    transition: all var(--transition-base);
+}
+
+.stock-input:focus {
+    outline: none;
+    border-color: var(--primary-red);
+    background: var(--white);
+    box-shadow: 0 0 0 4px rgba(220, 20, 60, 0.1);
+}
+
+/* --- Card Footer --- */
+.card-footer {
+    padding: 1.2rem 1.5rem;
+    background: var(--off-white);
+    border-top: 1px solid var(--border-color);
+    text-align: right;
+}
+
+.btn-primary {
+    padding: 0.8rem 2rem;
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-full);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+.btn-primary:hover {
+    box-shadow: 0 8px 25px rgba(220, 20, 60, 0.3);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .stock-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Analytics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>🧪 Analytics Test Page</h1>
+    
+    <div>
+        <button onclick="testAPI()">Test API</button>
+        <button onclick="loadCharts()">Load Charts</button>
+    </div>
+    
+    <div id="result" style="border: 1px solid #ccc; padding: 10px; margin: 10px;"></div>
+    
+    <canvas id="testChart" width="400" height="200"></canvas>
+
+    <script>
+    async function testAPI() {
+        const result = document.getElementById('result');
+        result.innerHTML = 'Testing API...';
+        
+        try {
+            const response = await fetch('/hospital/analytics/data/?type=overview');
+            const data = await response.json();
+            
+            result.innerHTML = `
+                <h3>✅ API Response:</h3>
+                <pre>${JSON.stringify(data, null, 2)}</pre>
+            `;
+        } catch (error) {
+            result.innerHTML = `
+                <h3>❌ API Error:</h3>
+                <pre>${error}</pre>
+            `;
+        }
+    }
+    
+    function loadCharts() {
+        const ctx = document.getElementById('testChart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['A+', 'B+', 'O+'],
+                datasets: [{
+                    label: 'Test Data',
+                    data: [15, 12, 20],
+                    backgroundColor: ['red', 'blue', 'green']
+                }]
+            }
+        });
+        
+        document.getElementById('result').innerHTML = '✅ Chart loaded successfully!';
+    }
+    
+    // Auto-test on page load
+    setTimeout(testAPI, 1000);
+    </script>
+</body>
+</html>

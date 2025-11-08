@@ -1,0 +1,84 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Contact HemoVital{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/css/contact.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="contact-hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+        <h1>Get in Touch with <span class="highlight">HemoVital</span></h1>
+        <p>We’d love to hear from you — whether it’s feedback, partnerships, or a query.</p>
+    </div>
+</section>
+
+<section class="contact-section container mx-auto py-16 px-4 max-w-6xl">
+    <div class="contact-grid">
+        <div class="contact-info fade-in-left">
+            <h2>Reach Out</h2>
+            <p>
+                Have questions about our platform, AI system, or blood donation process?  
+                Our team is available to assist you 24×7.
+            </p>
+            <div class="info-card">
+                <i class="fas fa-envelope"></i>
+                <div>
+                    <h4>Email</h4>
+                    <p>support@hemovital.org</p>
+                </div>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-phone-alt"></i>
+                <div>
+                    <h4>Phone</h4>
+                    <p>+91 98765 43210</p>
+                </div>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                    <h4>Address</h4>
+                    <p>HemoVital HQ, Bengaluru, India</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-form fade-in-right">
+            <h2>Send Us a Message</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+                </div>
+                <button type="submit" class="btn-send">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="map-section">
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.977019205581!2d77.5946!3d12.9716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1674f9f0f3e3%3A0xa3d3f1a3f1!2sBangalore!5e0!3m2!1sen!2sin!4v1612526260436"
+        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy">
+    </iframe>
+</section>
+
+<section class="cta text-center">
+    <h2>Become a Life Saver ❤️</h2>
+    <p>Join our network of donors and hospitals making an impact every day.</p>
+    <a href="{% url 'core:register' %}" class="btn-join">Join HemoVital</a>
+</section>
+{% endblock %}

@@ -1,0 +1,187 @@
+/* ===================================================================
+   HemoVital - Nearby Requests CSS (nearby_requests.css)
+   =================================================================== */
+
+/* --- Filter Card --- */
+.filter-card {
+    margin-bottom: 2rem;
+}
+
+.filter-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+.filter-group {
+    flex: 1 1 200px; /* Flex grow, shrink, and base width */
+}
+
+.filter-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+.filter-group label i {
+    margin-right: 0.5rem;
+    color: var(--primary-red);
+}
+
+.control-input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    background: var(--off-white);
+}
+
+.btn-apply-filters {
+    padding: 0.8rem 2rem;
+    background: var(--primary-red);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background var(--transition-base);
+    align-self: flex-end; /* Align with the bottom of the inputs */
+}
+
+.btn-apply-filters:hover {
+    background: var(--dark-red);
+}
+
+/* --- Requests List --- */
+.requests-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* --- Request Card (Reused from donor_dashboard.css, with minor tweaks) --- */
+.request-card {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    background: var(--white);
+    transition: all var(--transition-base);
+}
+.request-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-red);
+    transform: translateY(-5px);
+}
+
+.request-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 1.2rem;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--off-white);
+}
+.blood-group-tag {
+    background: var(--primary-red); color: white;
+    font-weight: 700; border-radius: 50%; width: 40px; height: 40px;
+    display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.urgency-level { font-weight: 600; font-size: 0.9rem; }
+.countdown-timer { margin-left: auto; font-size: 0.9rem; color: var(--text-light); white-space: nowrap; }
+
+.request-card.critical .request-card-header { background: rgba(220, 53, 69, 0.05); }
+.request-card.critical .urgency-level { color: #dc3545; }
+.request-card.urgent .request-card-header { background: rgba(255, 193, 7, 0.05); }
+.request-card.urgent .urgency-level { color: #ffc107; }
+
+.request-card-body { padding: 1.2rem; }
+.request-card-body p { margin: 0 0 0.8rem; color: var(--text-light); font-size: 0.95rem; }
+.request-card-body p:last-child { margin-bottom: 0; }
+.request-card-body p strong { color: var(--text-dark); }
+.request-card-body .hospital-info i { margin-right: 0.5rem; }
+
+.request-card-footer {
+    padding: 0.8rem 1.2rem;
+    background: var(--off-white);
+    display: flex; gap: 0.8rem;
+    flex-wrap: wrap;
+}
+.btn-action {
+    flex: 1; padding: 0.6rem 1rem; border: none; border-radius: var(--radius-md);
+    font-weight: 600; cursor: pointer; transition: all var(--transition-base);
+    display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    min-width: 120px;
+}
+.btn-action.primary { background: var(--primary-red); color: white; }
+.btn-action.primary:hover { background: var(--dark-red); }
+.btn-action.secondary { background: white; border: 1px solid var(--border-color); color: var(--text-dark); }
+.btn-action.secondary:hover { background: #e9ecef; }
+.btn-action.tertiary { background: transparent; border: none; color: var(--text-light); }
+.btn-action.tertiary:hover { color: var(--text-dark); }
+
+
+/* --- Empty State --- */
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+}
+.empty-state i {
+    font-size: 3.5rem;
+    color: #28a745;
+    opacity: 0.7;
+    margin-bottom: 1rem;
+}
+.empty-state h4 {
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+.empty-state p {
+    color: var(--text-light);
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+/* --- Pagination (Reused from donation_history.css) --- */
+.pagination-container {
+    padding: 2rem 1.5rem 0;
+    display: flex;
+    justify-content: center;
+}
+.pagination {
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.page-item .page-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all var(--transition-base);
+}
+.page-item.disabled .page-link {
+    color: var(--text-muted);
+    background: var(--off-white);
+    cursor: not-allowed;
+}
+.page-item:not(.disabled) .page-link:hover {
+    background: var(--primary-red);
+    color: white;
+    border-color: var(--primary-red);
+}
+.page-item.active .page-link {
+    background: var(--primary-red);
+    color: white;
+    border-color: var(--primary-red);
+}

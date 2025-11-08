@@ -1,0 +1,130 @@
+{% extends 'core/dashboard_base.html' %}
+{% load static %}
+
+{% block dashboard_title %}Donation History - HemoVital{% endblock %}
+
+{% block extra_dashboard_css %}
+    <link rel="stylesheet" href="{% static 'core/css/donation_history.css' %}">
+{% endblock %}
+
+{% block page_title %}
+    My Donation History
+{% endblock %}
+
+{% block dashboard_content %}
+
+<!-- Summary Cards -->
+<div class="summary-grid">
+    <div class="summary-card">
+        <div class="summary-icon total-donations">
+            <i class="fas fa-hand-holding-heart"></i>
+        </div>
+        <div class="summary-info">
+            <span class="summary-value">{{ total_donations }}</span>
+            <p class="summary-label">Total Donations Made</p>
+        </div>
+    </div>
+    <div class="summary-card">
+        <div class="summary-icon lives-saved">
+            <i class="fas fa-heart"></i>
+        </div>
+        <div class="summary-info">
+            <span class="summary-value">{{ total_donations }}</span>
+            <p class="summary-label">Lives Saved</p>
+        </div>
+    </div>
+</div>
+
+<!-- History Table Card -->
+<div class="content-card">
+    <div class="card-header-main">
+        <h3><i class="fas fa-history"></i> All Donations</h3>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="history-table">
+                <thead>
+                    <tr>
+                        <th>Donation ID</th>
+                        <th>Hospital Name</th>
+                        <th>Location</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for donation in donations %}
+                    <tr>
+                        <td><strong>#HEMO-{{ donation.id }}</strong></td>
+                        <td>{{ donation.hospital_name }}</td>
+                        <td>{{ donation.location }}</td>
+                        <td>{{ donation.donation_date|date:"d M, Y" }}</td>
+                        <td>
+                            <span class="status-badge status-{{ donation.status|lower }}">
+                                {{ donation.status }}
+                            </span>
+                        </td>
+                        <td>
+                            <a href="#" class="btn-action-table">
+                                <i class="fas fa-file-pdf"></i> Certificate
+                            </a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6">
+                            <div class="empty-state">
+                                <i class="fas fa-box-open"></i>
+                                <h4>No Donations Yet</h4>
+                                <p>Your donation history is empty. Every donation you make will be recorded here.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination Controls -->
+        {% if is_paginated %}
+        <div class="pagination-container">
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                            <i class="fas fa-chevron-left"></i>
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <span class="page-link"><i class="fas fa-chevron-left"></i></span>
+                    </li>
+                {% endif %}
+
+                {% for num in page_obj.paginator.page_range %}
+                    {% if page_obj.number == num %}
+                        <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                        <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </li>
+                {% else %}
+                     <li class="page-item disabled">
+                        <span class="page-link"><i class="fas fa-chevron-right"></i></span>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

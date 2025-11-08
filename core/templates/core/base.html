@@ -1,0 +1,332 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="HemoVital - Smart Blood Donation & Management System connecting donors, hospitals, and blood banks in real-time">
+    <meta name="keywords" content="blood donation, blood bank, hospital, donors, emergency blood">
+    <meta name="author" content="HemoVital">
+    
+    <title>{% block title %}HemoVital - Smart Blood Donation System{% endblock %}</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom CSS -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <!-- Logo -->
+            <a href="{% url 'core:home' %}" class="logo">
+                <i class="fas fa-heartbeat"></i>
+                <span>HemoVital</span>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="{% url 'core:home' %}" class="nav-link {% if request.path == '/' %}active{% endif %}">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'core:about' %}" class="nav-link {% if 'about' in request.path %}active{% endif %}">
+                        <i class="fas fa-info-circle"></i>
+                        <span>About</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'core:contact' %}" class="nav-link {% if 'contact' in request.path %}active{% endif %}">
+                        <i class="fas fa-envelope"></i>
+                        <span>Contact</span>
+                    </a>
+                </li>
+                
+                {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">
+                            <i class="fas fa-user-circle"></i>
+                            <span>{{ user.username }}</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/dashboard/" class="dropdown-link">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                    Dashboard
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/donor/profile/" class="dropdown-link">
+                                    <i class="fas fa-user-edit"></i>
+                                    Profile
+                                </a>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <a href="/logout/" class="dropdown-link logout-link">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a href="/login/" class="nav-link">
+                            <i class="fas fa-sign-in-alt"></i>
+                            <span>Login</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/register/" class="btn-register">
+                            <i class="fas fa-user-plus"></i>
+                            <span>Register</span>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Flash Messages -->
+        {% if messages %}
+        <div class="messages-container">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+                <i class="fas fa-{% if message.tags == 'success' %}check-circle{% elif message.tags == 'error' %}exclamation-circle{% elif message.tags == 'warning' %}exclamation-triangle{% else %}info-circle{% endif %}"></i>
+                <span>{{ message }}</span>
+                <button type="button" class="close-alert" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        <!-- Page Content -->
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Footer Top -->
+            <div class="footer-top">
+                <!-- About Section -->
+                <div class="footer-section">
+                    <h3 class="footer-logo">
+                        <i class="fas fa-heartbeat"></i>
+                        HemoVital
+                    </h3>
+                    <p class="footer-description">
+                        Smart Blood Donation & Management System connecting donors, hospitals, and blood banks in real-time. Saving lives through technology.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="/home/"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="/about/"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="/contact/"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Blood Camps</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div class="footer-section">
+                    <h4 class="footer-title">Our Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Donor Registration</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Blood Requests</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Stock Management</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Emergency Alerts</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Hospital Portal</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <h4 class="footer-title">Contact Us</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Healthcare Street, Medical District, India</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+91 9876543210</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>support@hemovital.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>24/7 Emergency Support</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="copyright">
+                        &copy; 2024 <strong>HemoVital</strong>. All rights reserved. Made with <i class="fas fa-heart"></i> for saving lives.
+                    </p>
+                    <div class="footer-bottom-links">
+                        <a href="#">Privacy Policy</a>
+                        <span class="separator">|</span>
+                        <a href="#">Terms of Service</a>
+                        <span class="separator">|</span>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+      <!-- =============================================================== -->
+    <!-- === CHATBOT WINDOW (Initially Hidden) === -->
+    <!-- =============================================================== -->
+    <!-- Floating Chatbot Button -->
+<div class="floating-chatbot">
+    <a href="{% url 'core:chatbot' %}" class="chatbot-btn" title="Chat with HemoBot">
+        <i class="fas fa-robot"></i>
+        <span class="chatbot-wave"></span>
+        <span class="chatbot-wave"></span>
+        <span class="chatbot-wave"></span>
+    </a>
+</div>
+
+
+<style>
+.floating-chatbot {
+    position: fixed;
+    bottom: 90px;
+    right: 30px;
+    z-index: 1000;
+}
+
+/* Main button */
+.chatbot-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff4b2b, #ff416c);
+    color: white;
+    font-size: 28px;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(255, 65, 108, 0.5);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chatbot-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(255, 65, 108, 0.7);
+}
+
+/* Pulsating wave circles */
+.chatbot-wave {
+    position: absolute;
+    border: 2px solid rgba(255, 65, 108, 0.6);
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    animation: chatbotWave 2s infinite ease-out;
+    opacity: 0;
+}
+
+.chatbot-wave:nth-child(2) {
+    animation-delay: 0.6s;
+}
+
+.chatbot-wave:nth-child(3) {
+    animation-delay: 1.2s;
+}
+
+/* Keyframes for the expanding waves */
+@keyframes chatbotWave {
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    70% {
+        transform: scale(1.8);
+        opacity: 0.2;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+</style>
+    
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Custom JavaScript -->
+    <script src="{% static 'core/js/base.js' %}"></script>
+    
+    <!-- Additional Page Scripts -->
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

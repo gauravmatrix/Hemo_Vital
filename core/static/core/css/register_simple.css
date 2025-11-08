@@ -1,0 +1,293 @@
+/* ===================================================================
+   HemoVital - Simple & Modern Registration CSS (FINAL with Layout Fix)
+   =================================================================== */
+
+/* --- Base Variables (for consistency) --- */
+:root {
+    --primary-red: #DC143C;
+    --dark-red: #B01030;
+    --white: #FFFFFF;
+    --off-white: #F8F9FA;
+    --text-dark: #2C3E50;
+    --text-light: #6C757D;
+    --text-muted: #95A5A6;
+    --border-color: #E0E0E0;
+    --success: #28A745;
+    --error: #DC3545;
+    --gradient-primary: linear-gradient(135deg, #DC143C 0%, #B01030 100%);
+    --gradient-light: linear-gradient(135deg, rgba(220, 20, 60, 0.1) 0%, rgba(255, 107, 138, 0.1) 100%);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 15px 50px rgba(0, 0, 0, 0.1);
+    --font-primary: 'Inter', sans-serif;
+    --font-heading: 'Poppins', sans-serif;
+    --transition-base: 0.3s ease;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-full: 9999px;
+}
+
+/* ==========================================
+   MAIN PAGE LAYOUT
+   ========================================== */
+.simple-auth-page {
+    background-color: var(--off-white);
+    padding: 3rem 1rem;
+    min-height: calc(100vh - 80px); /* Adjust for navbar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.registration-container {
+    width: 100%;
+    max-width: 900px; /* Wider card for more fields */
+}
+
+.registration-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    animation: fadeInUp 0.6s ease;
+}
+
+/* ==========================================
+   CARD HEADER
+   ========================================== */
+.card-header {
+    text-align: center;
+    padding: 2.5rem 2rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.card-logo {
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    color: var(--primary-red);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+    text-decoration: none;
+}
+
+.card-logo i {
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.card-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.card-subtitle {
+    font-size: 1rem;
+    color: var(--text-light);
+}
+
+/* ==========================================
+   ROLE TAB SELECTOR
+   ========================================== */
+.role-tab-selector {
+    display: flex;
+    background: var(--off-white);
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.role-tab {
+    flex: 1;
+    padding: 1rem;
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-light);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    transition: all var(--transition-base);
+}
+
+.role-tab.active {
+    background: var(--white);
+    color: var(--primary-red);
+    box-shadow: var(--shadow-md);
+}
+
+.role-tab:not(.active):hover {
+    background: #e9ecef;
+}
+
+/* ==========================================
+   FORM STYLES
+   ========================================== */
+.auth-form {
+    padding: 2.5rem;
+    animation: fadeIn 0.5s ease;
+}
+
+.form-section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* --- Form Grid for 2-column layout --- */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 0; /* Gap is handled by grid */
+}
+
+/* CORRECTED: Makes ONLY specific fields (like 'address') span 2 columns */
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+/* --- Input Field Styling --- */
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all var(--transition-base);
+    background: var(--off-white);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-red);
+    background: var(--white);
+    box-shadow: 0 0 0 4px rgba(220, 20, 60, 0.1);
+}
+
+.form-group select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236C757D' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+}
+
+.input-error-message {
+    color: var(--error);
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+}
+
+.field-help-text {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    display: block;
+    margin-top: 4px;
+}
+
+/* --- Submit Button --- */
+.submit-button {
+    width: 100%;
+    padding: 1.1rem;
+    margin-top: 1rem;
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-full);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    box-shadow: 0 8px 25px rgba(220, 20, 60, 0.3);
+}
+
+.submit-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(220, 20, 60, 0.4);
+}
+
+/* ==========================================
+   CARD FOOTER
+   ========================================== */
+.card-footer {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--off-white);
+    border-top: 1px solid var(--border-color);
+}
+
+.card-footer p {
+    margin: 0;
+    color: var(--text-light);
+}
+
+.card-footer a {
+    color: var(--primary-red);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+   ========================================== */
+@media (max-width: 768px) {
+    .simple-auth-page {
+        padding: 1rem;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr; /* Stack fields into a single column */
+    }
+
+    .registration-card {
+        box-shadow: var(--shadow-md);
+    }
+    
+    .card-title {
+        font-size: 1.8rem;
+    }
+}
+
+/* ==========================================
+   ANIMATIONS
+   ========================================== */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+

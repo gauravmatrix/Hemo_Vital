@@ -1,0 +1,275 @@
+/* ===================================================
+   HemoVital - About Page Styling
+   Author: Gaurav Kumar
+   Version: 1.0
+   =================================================== */
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fonts and Colors */
+:root {
+    --red: #e63946;
+    --dark-red: #b71c1c;
+    --white: #ffffff;
+    --light-gray: #f8f9fa;
+    --dark: #212529;
+    --accent: #d90429;
+    --shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    --transition: all 0.4s ease-in-out;
+    --font-main: "Poppins", sans-serif;
+}
+
+/* General Layout */
+body {
+    font-family: var(--font-main);
+    background-color: var(--light-gray);
+    color: var(--dark);
+    line-height: 1.7;
+}
+
+/* ------------------ Hero Section ------------------ */
+.about-hero {
+    position: relative;
+    background: url('https://northcentralsurgical.com/wp-content/uploads/2025/06/Transforming-Lives-The-Powerful-Impact-of-Donating-Blood--2000x1000.jpeg') center/cover no-repeat;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.about-hero .overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(228, 124, 124, 0.863);
+    z-index: 1;
+    opacity: 0.4;
+}
+
+.about-hero .hero-content {
+    position: relative;
+    z-index: 2;
+    color: var(--white);
+    animation: fadeSlideDown 1.5s ease;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    margin-top: 10px;
+    opacity: 0.9;
+    color: var(--accent);
+}
+
+/* ------------------ About Section ------------------ */
+.about-section {
+    background: var(--white);
+    box-shadow: var(--shadow);
+    border-radius: 20px;
+    margin-top: -80px;
+    padding: 50px 30px;
+    z-index: 10;
+    position: relative;
+    animation: fadeIn 1.2s ease;
+}
+
+.about-intro {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.about-intro h2 {
+    font-size: 2.5rem;
+    color: var(--red);
+}
+
+.about-intro .highlight {
+    color: var(--dark-red);
+}
+
+.about-intro p {
+    max-width: 800px;
+    margin: 0 auto;
+    color: #555;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: var(--light-gray);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.card img {
+    display: block;          /* needed for margin auto */
+    margin: 0 auto 20px;     /* centers horizontally + adds bottom margin */
+    transition: transform 0.3s;
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+}
+
+.card h3 {
+    color: var(--accent);
+    margin-bottom: 10px;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(230, 57, 70, 0.2);
+}
+
+.card:hover img {
+    transform: scale(1.1);
+}
+
+/* ------------------ Mission Section ------------------ */
+.mission-section {
+    background: linear-gradient(135deg, #fff5f5, #ffe5e5);
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.mission-section h2 {
+    font-size: 2.8rem;
+    color: var(--dark-red);
+    margin-bottom: 20px;
+}
+
+.mission-section p {
+    max-width: 800px;
+    margin: 0 auto;
+    color: #444;
+    font-size: 1.1rem;
+}
+
+.mission-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.stat {
+    background: var(--white);
+    padding: 25px 40px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.stat:hover {
+    transform: scale(1.05);
+}
+
+.stat h3 {
+    color: var(--accent);
+    font-size: 2rem;
+}
+
+.stat p {
+    color: #555;
+}
+
+/* ------------------ CTA Section ------------------ */
+.cta-section {
+    padding: 80px 20px;
+    background: linear-gradient(120deg, var(--red), var(--dark-red));
+    color: var(--white);
+}
+
+.cta-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.cta-buttons {
+    margin-top: 25px;
+}
+
+.btn-primary, .btn-secondary {
+    text-decoration: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    transition: var(--transition);
+    font-weight: 600;
+}
+
+.btn-primary {
+    background: var(--white);
+    color: var(--red);
+}
+
+.btn-secondary {
+    border: 2px solid var(--white);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background: var(--dark-red);
+    color: var(--white);
+}
+
+.btn-secondary:hover {
+    background: var(--white);
+    color: var(--dark-red);
+}
+
+/* ------------------ Animations ------------------ */
+@keyframes fadeSlideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.fade-in-up {
+    animation: fadeInUp 1s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+
+/* ------------------ Responsive ------------------ */
+@media (max-width: 768px) {
+    .hero-title { font-size: 2.3rem; }
+    .mission-stats { flex-direction: column; align-items: center; }
+    .about-section { margin-top: -40px; }
+    .cta-section h2 { font-size: 2rem; }
+}

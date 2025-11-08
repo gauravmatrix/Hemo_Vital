@@ -1,0 +1,148 @@
+/* ===================================================================
+   HemoVital - Dashboard Form Styles (form_pages.css)
+   =================================================================== */
+
+.form-page-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.content-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    animation: fadeInUp 0.5s ease;
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card-header-main {
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+.card-header-main h3 {
+    font-size: 1.2rem; margin: 0; display: flex; align-items: center;
+    gap: 0.8rem; color: var(--text-dark);
+}
+.card-header-main h3 i { color: var(--primary-red); }
+
+.card-body { padding: 2rem; }
+
+.form-description {
+    font-size: 1rem;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: var(--off-white);
+    border-left: 4px solid var(--primary-red);
+    border-radius: 8px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 0;
+}
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all var(--transition-base);
+    background: var(--off-white);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-red);
+    background: var(--white);
+    box-shadow: 0 0 0 4px rgba(220, 20, 60, 0.1);
+}
+
+.field-help-text {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    display: block;
+    margin-top: 4px;
+}
+.input-error-message {
+    color: var(--error);
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+}
+
+.card-footer {
+    padding: 1.2rem 1.5rem;
+    background: var(--off-white);
+    border-top: 1px solid var(--border-color);
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.btn-secondary {
+    padding: 0.8rem 2rem;
+    background: rgb(218, 5, 5);
+    color: white;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-full);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all var(--transition-base);
+}
+.btn-secondary:hover {
+    box-shadow: 0 8px 25px rgba(220, 20, 60, 0.3);
+    transform: translateY(-2px);
+}
+.btn-primary {
+    padding: 0.8rem 2rem;
+    background: rgb(216, 3, 3);
+    color: white;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-full);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+.btn-primary:hover {
+    box-shadow: 0 8px 25px rgba(220, 20, 60, 0.3);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    .card-body {
+        padding: 1.5rem;
+    }
+}
+    

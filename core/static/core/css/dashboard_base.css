@@ -1,0 +1,152 @@
+/* ==========================================
+   HemoVital - Dashboard Layout Styles
+   ========================================== */
+
+/* --- Base Variables --- */
+:root {
+    --primary-red: #DC143C;
+    --dark-red: #B01030;
+    --text-dark: #2C3E50;
+    --text-light: #6C757D;
+    --text-muted: #95A5A6;
+    --border-color: #E0E0E0;
+    --sidebar-width: 260px;
+    --header-height: 70px;
+    --sidebar-bg: #FFFFFF;
+    --content-bg: #F8F9FA;
+    --sidebar-link-color: #6C757D;
+    --sidebar-link-hover-bg: #FFF5F7;
+    --sidebar-link-active-color: var(--primary-red);
+    --font-primary: 'Inter', sans-serif;
+    --font-heading: 'Poppins', sans-serif;
+    --transition-base: 0.3s ease;
+    --radius-md: 12px;
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* --- Basic Setup --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-primary); background-color: var(--content-bg); }
+.dashboard-layout { display: flex; min-height: 100vh; }
+
+/* ==========================================
+   SIDEBAR (This acts as a vertical navbar)
+   ========================================== */
+.sidebar {
+    width: var(--sidebar-width); background: var(--sidebar-bg); border-right: 1px solid var(--border-color);
+    display: flex; flex-direction: column; position: fixed; top: 0; left: 0; height: 100%;
+    z-index: 1030; transition: transform var(--transition-base);
+}
+.sidebar-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 1.5rem; height: var(--header-height); border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+.logo { display: flex; align-items: center; gap: 0.6rem; font-size: 1.5rem; font-weight: 700; color: var(--primary-red); text-decoration: none; font-family: var(--font-heading); }
+.logo i { animation: heartbeat 1.5s ease-in-out infinite; }
+@keyframes heartbeat { 0%, 100% {transform: scale(1);} 50% {transform: scale(1.1);} }
+.sidebar-close-btn { display: none; background: none; border: none; font-size: 1.2rem; color: var(--text-light); cursor: pointer; }
+
+.sidebar-nav { flex-grow: 1; padding: 1rem 0; overflow-y: auto; }
+.sidebar-menu { list-style: none; padding: 0 1rem; }
+.menu-header {
+    font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase;
+    padding: 1.5rem 1.2rem 0.8rem;
+}
+.menu-item { margin-bottom: 0.25rem; }
+.menu-link {
+    display: flex; align-items: center; padding: 0.9rem 1.2rem;
+    border-radius: var(--radius-md); color: var(--sidebar-link-color);
+    font-weight: 500; text-decoration: none; transition: all 0.2s ease;
+}
+.menu-link i { font-size: 1.1rem; width: 30px; text-align: center; margin-right: 0.8rem; }
+.menu-link:hover { background: var(--sidebar-link-hover-bg); color: var(--sidebar-link-active-color); }
+.menu-link.active { background: var(--sidebar-link-hover-bg); color: var(--sidebar-link-active-color); font-weight: 600; }
+.sidebar-footer { padding: 1.5rem; border-top: 1px solid var(--border-color); flex-shrink: 0; }
+.logout-btn:hover { background: rgba(220, 53, 69, 0.1); color: #DC3545; }
+
+/* ==========================================
+   MAIN WRAPPER & HEADER (This acts as a top navbar)
+   ========================================== */
+.main-wrapper { flex-grow: 1; margin-left: var(--sidebar-width); display: flex; flex-direction: column; }
+.main-header {
+    height: var(--header-height); background: var(--sidebar-bg); border-bottom: 1px solid var(--border-color);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem; position: sticky; top: 0; z-index: 1020;
+}
+.header-left { display: flex; align-items: center; gap: 1.5rem; }
+.sidebar-toggle-btn { display: none; background: none; border: none; font-size: 1.3rem; color: var(--text-dark); cursor: pointer; }
+.page-title { font-size: 1.8rem; margin: 0; font-family: var(--font-heading); color: var(--text-dark); }
+
+.header-right { display: flex; align-items: center; gap: 1.5rem; }
+.notification-wrapper { position: relative; }
+.notification-btn {
+    background: none; border: none; font-size: 1.3rem; color: var(--text-light);
+    cursor: pointer; position: relative;
+}
+.notification-badge {
+    position: absolute; top: -5px; right: -8px; background: var(--primary-red); color: white;
+    font-size: 0.7rem; font-weight: 700; border-radius: 50%; width: 18px; height: 18px;
+    display: flex; align-items: center; justify-content: center;
+}
+.user-profile-menu { display: flex; align-items: center; gap: 0.8rem; cursor: pointer; }
+.user-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+.user-name { font-weight: 600; font-family: var(--font-heading); color: var(--text-dark); }
+.user-profile-menu i.fa-chevron-down { font-size: 0.8rem; color: var(--text-light); }
+
+/* ==========================================
+   CONTENT AREA & MESSAGES
+   ========================================== */
+.content-area { padding: 2rem; flex-grow: 1; }
+.messages-container-dashboard { margin-bottom: 1.5rem; }
+.messages-container-dashboard .alert {
+    padding: 1rem 1.5rem; border-radius: var(--radius-md); color: white;
+    font-weight: 500;
+}
+.alert.alert-success { background: #28a745; }
+.alert.alert-error { background: #dc3545; }
+.alert.alert-warning { background: #ffc107; color: #212529; }
+.alert.alert-info { background: #17a2b8; }
+
+/* ==========================================
+   CHATBOT FAB
+   ========================================== */
+.chatbot-fab {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: var(--gradient-primary, linear-gradient(135deg, #DC143C 0%, #B01030 100%));
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    box-shadow: var(--shadow-md, 0 4px 12px rgba(0, 0, 0, 0.08));
+    cursor: pointer;
+    transition: all var(--transition-base, 0.3s ease);
+    z-index: 1010;
+}
+.chatbot-fab:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 25px rgba(220, 20, 60, 0.4);
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+   ========================================== */
+@media (max-width: 992px) {
+    .sidebar { transform: translateX(-100%); }
+    .sidebar.active { transform: translateX(0); box-shadow: 5px 0 25px rgba(0, 0, 0, 0.1); }
+    .main-wrapper { margin-left: 0; }
+    .sidebar-toggle-btn, .sidebar-close-btn { display: block; }
+}
+@media (max-width: 768px) {
+    .main-header, .content-area { padding: 1.5rem; }
+    .page-title { font-size: 1.5rem; }
+    .user-name { display: none; } /* Hide name on small screens */
+}
+

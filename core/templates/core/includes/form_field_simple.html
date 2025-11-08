@@ -1,0 +1,12 @@
+{# Check if the field name is 'address' to make it full-width #}
+<div class="form-group {% if field.name == 'address' %}full-width{% endif %}">
+    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+    {{ field }}
+    {% if field.help_text %}
+        <small class="field-help-text">{{ field.help_text }}</small>
+    {% endif %}
+    {% if field.errors %}
+        <p class="input-error-message">{{ field.errors.as_ul.0 }}</p>
+    {% endif %}
+</div>
+

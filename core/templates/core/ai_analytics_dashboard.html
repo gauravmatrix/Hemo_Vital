@@ -1,0 +1,1699 @@
+{% extends 'core/dashboard_base.html' %}
+{% load static %}
+
+{% block title %}AI Analytics Dashboard - HemoVital{% endblock %}
+
+{% block dashboard_content %}
+<div class="ai-dashboard-container">
+    <!-- Debug Info Container -->
+    <div id="debugInfo" class="debug-info">
+        <h6>🔍 Debug Information</h6>
+        <div id="debugContent">Loading debug info...</div>
+    </div>
+
+    <!-- Page Header -->
+    <div class="dashboard-header">
+        <div class="header-content">
+            <div class="header-text">
+                <h1 class="dashboard-title">🤖 AI Analytics Dashboard</h1>
+                <p class="dashboard-subtitle">Real-time insights and predictions powered by AI</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn-secondary" id="refreshBtn">
+                    <i class="fas fa-sync-alt"></i> Refresh Data
+                </button>
+                <div class="export-dropdown">
+                    <button class="btn-primary" id="exportMainBtn">
+                        <i class="fas fa-download"></i> Export Report
+                    </button>
+                    <div class="export-menu">
+                        <a href="#" id="exportPDF" class="export-item">
+                            <i class="fas fa-file-pdf"></i> Export as PDF
+                        </a>
+                        <a href="#" id="exportJSON" class="export-item">
+                            <i class="fas fa-file-code"></i> Export as JSON
+                        </a>
+                        <a href="#" id="exportImage" class="export-item">
+                            <i class="fas fa-image"></i> Export Charts as Images
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-spinner">
+        <div class="spinner"></div>
+        <p class="loading-text">Loading AI insights...</p>
+    </div>
+
+    <!-- Main Dashboard Content -->
+    <div id="dashboardContent">
+        <!-- Quick Stats Row -->
+        <div class="stats-grid">
+            <div class="stat-card stat-primary">
+                <div class="stat-content">
+                    <div class="stat-info">
+                        <div class="stat-label">Total Predictions</div>
+                        <div class="stat-value" id="totalPredictions">0</div>
+                    </div>
+                    <div class="stat-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card stat-success">
+                <div class="stat-content">
+                    <div class="stat-info">
+                        <div class="stat-label">AI Confidence Score</div>
+                        <div class="stat-value" id="avgConfidence">0%</div>
+                    </div>
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card stat-info">
+                <div class="stat-content">
+                    <div class="stat-info">
+                        <div class="stat-label">High Risk Donors</div>
+                        <div class="stat-value" id="highRiskDonors">0</div>
+                    </div>
+                    <div class="stat-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card stat-warning">
+                <div class="stat-content">
+                    <div class="stat-info">
+                        <div class="stat-label">Demand Accuracy</div>
+                        <div class="stat-value" id="demandAccuracy">0%</div>
+                    </div>
+                    <div class="stat-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="charts-container">
+            <!-- Blood Demand Prediction Chart -->
+            <div class="chart-main">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">📈 Blood Demand Prediction (Next 7 Days)</h3>
+                        <div class="chart-actions">
+                            <div class="dropdown">
+                                <button class="dropdown-toggle">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{% url 'core:blood_demand_prediction' %}">View Detailed Report</a>
+                                    <a class="dropdown-item chart-download" data-chart="demandPredictionChart" data-filename="blood-demand-prediction.png">Download Chart</a>
+                                    <a class="dropdown-item" href="#" id="exportDemandData">Export Data</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-body">
+                        <canvas id="demandPredictionChart" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Donor Retention Risk -->
+            <div class="chart-sidebar">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">👥 Donor Retention Risk</h3>
+                        <div class="chart-header-actions">
+                            <a href="{% url 'core:donor_retention_analytics' %}" class="btn-small">View All</a>
+                            <div class="dropdown">
+                                <button class="dropdown-toggle small-toggle">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item chart-download" data-chart="retentionRiskChart" data-filename="donor-retention-risk.png">Download Chart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-body">
+                        <div class="pie-chart-container">
+                            <canvas id="retentionRiskChart" height="200"></canvas>
+                        </div>
+                        <div class="chart-legend">
+                            <div class="legend-item">
+                                <i class="fas fa-circle legend-success"></i> Low Risk
+                            </div>
+                            <div class="legend-item">
+                                <i class="fas fa-circle legend-warning"></i> Medium Risk
+                            </div>
+                            <div class="legend-item">
+                                <i class="fas fa-circle legend-danger"></i> High Risk
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Insights & Recommendations -->
+        <div class="insights-section">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3 class="chart-title">💡 AI Insights & Recommendations</h3>
+                    <div class="chart-actions">
+                        <button class="btn-small" id="exportInsights">
+                            <i class="fas fa-download"></i> Export Insights
+                        </button>
+                    </div>
+                </div>
+                <div class="chart-body">
+                    <div id="aiInsightsContainer" class="insights-container">
+                        <div class="loading-insights">
+                            <div class="spinner-small"></div>
+                            <p>Loading AI recommendations...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Performance Metrics -->
+        <div class="performance-grid">
+            <div class="performance-card">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">⚡ Matching Performance</h3>
+                        <div class="dropdown">
+                            <button class="dropdown-toggle small-toggle">
+                                <i class="fas fa-download"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item chart-download" data-chart="matchingPerformanceChart" data-filename="matching-performance.png">Download Chart</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-body">
+                        <canvas id="matchingPerformanceChart" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="performance-card">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">📊 Prediction Accuracy</h3>
+                        <div class="dropdown">
+                            <button class="dropdown-toggle small-toggle">
+                                <i class="fas fa-download"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item chart-download" data-chart="predictionAccuracyChart" data-filename="prediction-accuracy.png">Download Chart</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-body">
+                        <canvas id="predictionAccuracyChart" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Success Notification -->
+<div id="successNotification" class="success-notification">
+    <i class="fas fa-check-circle"></i>
+    <span id="successMessage">Operation completed successfully!</span>
+</div>
+{% endblock %}
+
+{% block extra_dashboard_css %}
+<style>
+/* AI Dashboard Modern Styles */
+.ai-dashboard-container {
+    padding: 2rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Debug Info */
+.debug-info {
+    background: #dbeafe;
+    border: 1px solid #93c5fd;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    display: none;
+}
+
+.debug-info h6 {
+    margin: 0 0 0.5rem 0;
+    color: #1e40af;
+    font-weight: 600;
+}
+
+/* Header Styles */
+.dashboard-header {
+    margin-bottom: 2rem;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.header-text .dashboard-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin: 0 0 0.5rem 0;
+    background: linear-gradient(135deg, #dc2626, #ef4444);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header-text .dashboard-subtitle {
+    color: #64748b;
+    font-size: 1.1rem;
+    margin: 0;
+    font-weight: 500;
+}
+
+.header-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* Export Dropdown */
+.export-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.export-dropdown:hover .export-menu {
+    display: block;
+}
+
+.export-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    padding: 0.5rem;
+    min-width: 200px;
+    z-index: 1000;
+    display: none;
+    margin-top: 0.5rem;
+}
+
+.export-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    color: #475569;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.export-item:hover {
+    background: linear-gradient(135deg, #fef2f2, #fecaca);
+    color: #dc2626;
+    transform: translateX(5px);
+}
+
+/* Button Styles */
+.btn-primary, .btn-secondary {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    position: relative;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #dc2626, #ef4444);
+    color: white;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(220, 38, 38, 0.4);
+}
+
+.btn-secondary {
+    background: white;
+    color: #64748b;
+    border: 2px solid #e2e8f0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.btn-secondary:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.btn-small {
+    padding: 0.5rem 1rem;
+    background: #dc2626;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-small:hover {
+    background: #b91c1c;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
+    border-left: 5px solid;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, currentColor, transparent);
+    opacity: 0.6;
+}
+
+.stat-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.stat-primary { border-left-color: #3b82f6; color: #3b82f6; }
+.stat-success { border-left-color: #10b981; color: #10b981; }
+.stat-info { border-left-color: #06b6d4; color: #06b6d4; }
+.stat-warning { border-left-color: #f59e0b; color: #f59e0b; }
+
+.stat-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.stat-info .stat-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #64748b;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.5px;
+}
+
+.stat-info .stat-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1e293b;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.stat-icon {
+    font-size: 3rem;
+    opacity: 0.8;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+}
+
+/* Charts Container */
+.charts-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    height: 450px;
+}
+
+.chart-main, .chart-sidebar {
+    height: 100%;
+}
+
+.chart-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.chart-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #f1f5f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+}
+
+.chart-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.chart-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+}
+
+.chart-actions {
+    position: relative;
+}
+
+.dropdown-toggle {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.small-toggle {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+}
+
+.dropdown-toggle:hover {
+    background: #f8fafc;
+    color: #dc2626;
+    transform: scale(1.1);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    padding: 0.5rem;
+    min-width: 200px;
+    z-index: 1000;
+    display: none;
+    margin-top: 0.5rem;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #475569;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.dropdown-item:hover {
+    background: linear-gradient(135deg, #fef2f2, #fecaca);
+    color: #dc2626;
+    transform: translateX(5px);
+}
+
+.chart-body {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Chart Canvas Fix */
+.chart-body canvas {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+}
+
+/* Pie Chart Specific */
+.pie-chart-container {
+    position: relative;
+    height: 200px;
+    margin-bottom: 1rem;
+    flex: 1;
+}
+
+.chart-legend {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: auto;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.legend-success { color: #10b981; }
+.legend-warning { color: #f59e0b; }
+.legend-danger { color: #ef4444; }
+
+/* Insights Section */
+.insights-section {
+    margin-bottom: 2rem;
+}
+
+.insights-container {
+    min-height: 200px;
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+.insights-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.insights-container::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 3px;
+}
+
+.insights-container::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+
+.insights-container::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+.loading-insights {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    color: #64748b;
+}
+
+/* Performance Grid */
+.performance-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    height: 350px;
+}
+
+.performance-card {
+    height: 100%;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255,255,255,0.95);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.spinner {
+    width: 4rem;
+    height: 4rem;
+    border: 4px solid #f1f5f9;
+    border-top: 4px solid #dc2626;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+.spinner-small {
+    width: 2rem;
+    height: 2rem;
+    border: 2px solid #f1f5f9;
+    border-top: 2px solid #dc2626;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+.loading-text {
+    color: #64748b;
+    margin: 0;
+    font-weight: 600;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Success Notification */
+.success-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #10b981, #34d399);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+    display: none;
+    align-items: center;
+    gap: 0.75rem;
+    z-index: 10000;
+    animation: slideInRight 0.5s ease;
+}
+
+.success-notification.show {
+    display: flex;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Insight Cards */
+.insight-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.insight-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.insight-high { border-left-color: #ef4444; background: linear-gradient(135deg, #fef2f2, white); }
+.insight-medium { border-left-color: #f59e0b; background: linear-gradient(135deg, #fffbeb, white); }
+.insight-low { border-left-color: #10b981; background: linear-gradient(135deg, #f0fdf4, white); }
+
+.insight-card .alert-heading {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #1e293b;
+}
+
+.insight-card p {
+    margin: 0;
+    color: #475569;
+    line-height: 1.5;
+}
+
+.insight-card small {
+    color: #94a3b8;
+    font-size: 0.75rem;
+}
+
+.badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.bg-danger { background: #ef4444; }
+.bg-warning { background: #f59e0b; }
+.bg-success { background: #10b981; }
+.bg-secondary { background: #64748b; }
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .charts-container {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    
+    .performance-grid {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    
+    .chart-main, .chart-sidebar {
+        height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .ai-dashboard-container {
+        padding: 1rem;
+    }
+    
+    .header-content {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .header-actions {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .dashboard-title {
+        font-size: 1.5rem !important;
+        text-align: center;
+    }
+    
+    .dashboard-subtitle {
+        text-align: center;
+    }
+    
+    .export-menu {
+        right: auto;
+        left: 0;
+    }
+}
+
+/* Print Styles for PDF Export */
+@media print {
+    .ai-dashboard-container {
+        background: white !important;
+        padding: 0 !important;
+    }
+    
+    .header-actions, .chart-actions, .dropdown {
+        display: none !important;
+    }
+    
+    .chart-card {
+        box-shadow: none !important;
+        border: 1px solid #e2e8f0 !important;
+    }
+}
+</style>
+{% endblock %}
+
+{% block extra_dashboard_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script>
+// Global variables
+let charts = {};
+let analyticsData = {};
+const DEBUG_MODE = true;
+
+// Debug functions
+function debugLog(message, data = null) {
+    if (DEBUG_MODE) {
+        console.log(`🔍 ${message}`, data || '');
+    }
+}
+
+function showDebugInfo(message, type = 'info') {
+    if (!DEBUG_MODE) return;
+    
+    const debugDiv = document.getElementById('debugInfo');
+    const debugContent = document.getElementById('debugContent');
+    
+    if (debugDiv && debugContent) {
+        debugDiv.style.display = 'block';
+        debugDiv.style.background = type === 'danger' ? '#fef2f2' : type === 'success' ? '#f0fdf4' : '#dbeafe';
+        debugDiv.style.borderColor = type === 'danger' ? '#fecaca' : type === 'success' ? '#bbf7d0' : '#93c5fd';
+        debugContent.innerHTML = message;
+    }
+}
+
+function showSuccess(message) {
+    const notification = document.getElementById('successNotification');
+    const messageEl = document.getElementById('successMessage');
+    
+    if (notification && messageEl) {
+        messageEl.textContent = message;
+        notification.classList.add('show');
+        
+        setTimeout(() => {
+            notification.classList.remove('show');
+        }, 3000);
+    }
+}
+
+// DOM Ready
+document.addEventListener('DOMContentLoaded', function() {
+    debugLog('DOM Content Loaded - Initializing Dashboard');
+    initializeDashboard();
+    setupEventListeners();
+});
+
+// Initialize Dashboard
+function initializeDashboard() {
+    showLoading();
+    showDebugInfo('🔄 Loading analytics data from server...', 'info');
+    
+    loadAnalyticsData()
+        .then(data => {
+            debugLog('Data loaded successfully:', data);
+            analyticsData = data;
+            
+            if (data.error) {
+                showDebugInfo(`❌ Server Error: ${data.error}`, 'danger');
+                throw new Error(data.error);
+            }
+            
+            showDebugInfo('✅ Data loaded successfully! Rendering charts...', 'success');
+            updateQuickStats(data.stats || {});
+            renderAllCharts(data);
+            renderAIInsights(data.insights || []);
+            hideLoading();
+        })
+        .catch(error => {
+            console.error('Error loading analytics:', error);
+            showDebugInfo(`❌ Failed to load data: ${error.message}`, 'danger');
+            showError('Failed to load analytics data. Please try again.');
+            hideLoading();
+        });
+}
+
+// Event Listeners
+function setupEventListeners() {
+    // Refresh button
+    document.getElementById('refreshBtn').addEventListener('click', function() {
+        this.innerHTML = '<i class="fas fa-sync-alt fa-spin"></i> Refreshing...';
+        this.disabled = true;
+        showDebugInfo('🔄 Refreshing data...', 'info');
+        
+        initializeDashboard().finally(() => {
+            this.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh Data';
+            this.disabled = false;
+        });
+    });
+
+    // Chart download buttons
+    document.querySelectorAll('.chart-download').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const chartId = this.getAttribute('data-chart');
+            const filename = this.getAttribute('data-filename');
+            exportChartAsImage(chartId, filename);
+        });
+    });
+
+    // Export buttons
+    document.getElementById('exportPDF').addEventListener('click', function(e) {
+        e.preventDefault();
+        exportAsPDF();
+    });
+
+    document.getElementById('exportJSON').addEventListener('click', function(e) {
+        e.preventDefault();
+        exportAsJSON();
+    });
+
+    document.getElementById('exportImage').addEventListener('click', function(e) {
+        e.preventDefault();
+        exportAllChartsAsImages();
+    });
+
+    document.getElementById('exportInsights').addEventListener('click', function() {
+        exportInsightsAsText();
+    });
+}
+
+// Load Analytics Data
+async function loadAnalyticsData() {
+    try {
+        debugLog('Starting API call to /hospital/analytics/data/');
+        
+        const response = await fetch('/hospital/analytics/data/?type=overview', {
+            headers: {
+                'Accept': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest',
+                'Cache-Control': 'no-cache'
+            },
+            credentials: 'include'
+        });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+        
+        const data = await response.json();
+        debugLog('API Response data:', data);
+        
+        if (!data || typeof data !== 'object') {
+            throw new Error('Invalid data format received from server');
+        }
+        
+        return data;
+        
+    } catch (error) {
+        debugLog('Error in loadAnalyticsData:', error);
+        
+        if (DEBUG_MODE) {
+            showDebugInfo('⚠️ Using sample data due to API error', 'warning');
+            return getSampleData();
+        }
+        
+        throw error;
+    }
+}
+
+// Sample data for testing
+function getSampleData() {
+    return {
+        stats: {
+            total_predictions: 8,
+            avg_confidence: 0.78,
+            high_risk_donors: 5,
+            demand_accuracy: 0.82,
+            total_donors: 150,
+            retention_rate: 0.825
+        },
+        demand_predictions: {
+            'A+': { predicted_demand: 12, confidence_score: 0.85, trend: 'increasing', current_stock: 5, recommendation: 'Moderate stock required', data_points: 15 },
+            'B+': { predicted_demand: 8, confidence_score: 0.72, trend: 'stable', current_stock: 10, recommendation: 'Stock adequate', data_points: 12 },
+            'O+': { predicted_demand: 15, confidence_score: 0.91, trend: 'increasing', current_stock: 3, recommendation: 'Urgent stock required', data_points: 20 },
+            'A-': { predicted_demand: 5, confidence_score: 0.65, trend: 'stable', current_stock: 4, recommendation: 'Monitor stock', data_points: 8 },
+            'B-': { predicted_demand: 4, confidence_score: 0.58, trend: 'decreasing', current_stock: 6, recommendation: 'Stock adequate', data_points: 6 },
+            'O-': { predicted_demand: 10, confidence_score: 0.88, trend: 'increasing', current_stock: 2, recommendation: 'Stock required', data_points: 18 },
+            'AB+': { predicted_demand: 3, confidence_score: 0.45, trend: 'stable', current_stock: 5, recommendation: 'Stock adequate', data_points: 4 },
+            'AB-': { predicted_demand: 2, confidence_score: 0.35, trend: 'decreasing', current_stock: 3, recommendation: 'Stock adequate', data_points: 3 }
+        },
+        retention_data: {
+            high_risk: [
+                {
+                    name: 'Raj Sharma',
+                    blood_group: 'A+',
+                    city: 'Mumbai',
+                    profile_photo: '/static/images/default-avatar.png',
+                    last_donation: '2023-06-15',
+                    analysis: {
+                        risk_level: 'high',
+                        risk_score: 75,
+                        engagement_score: 25,
+                        risk_factors: ['Inactive for 240 days', 'Never responded to requests'],
+                        recommendations: ['Send reactivation campaign', 'Personal follow-up']
+                    }
+                }
+            ],
+            summary_stats: {
+                total_donors: 150,
+                high_risk_count: 12,
+                medium_risk_count: 35,
+                low_risk_count: 103,
+                retention_rate: 82.5,
+                avg_engagement_score: 75.8
+            }
+        },
+        performance_metrics: {
+            fulfillment_rate: 78.5,
+            avg_response_time: 4.2,
+            matching_success_rate: 82.0,
+            total_blood_units: 45
+        },
+        insights: [
+            {
+                type: 'demand',
+                title: 'High demand predicted for O+',
+                message: 'Expected 15 units in next 7 days - consider stock replenishment',
+                priority: 'high'
+            },
+            {
+                type: 'retention',
+                title: 'Donor retention risk detected',
+                message: '12 donors at high risk of churning - recommend engagement campaign',
+                priority: 'medium'
+            },
+            {
+                type: 'performance',
+                title: 'Good matching success rate',
+                message: 'Current matching success rate is 82% - maintain current practices',
+                priority: 'low'
+            }
+        ]
+    };
+}
+
+// Update Quick Stats
+function updateQuickStats(stats) {
+    if (!stats) {
+        showDebugInfo('⚠️ No stats data available', 'warning');
+        return;
+    }
+    
+    debugLog('Updating quick stats with:', stats);
+    
+    const elements = {
+        totalPredictions: document.getElementById('totalPredictions'),
+        avgConfidence: document.getElementById('avgConfidence'),
+        highRiskDonors: document.getElementById('highRiskDonors'),
+        demandAccuracy: document.getElementById('demandAccuracy')
+    };
+
+    if (elements.totalPredictions) {
+        elements.totalPredictions.textContent = (stats.total_predictions || 0).toLocaleString();
+    }
+    if (elements.avgConfidence) {
+        const confidence = (stats.avg_confidence || 0) * 100;
+        elements.avgConfidence.textContent = `${Math.round(confidence)}%`;
+    }
+    if (elements.highRiskDonors) {
+        elements.highRiskDonors.textContent = (stats.high_risk_donors || 0).toLocaleString();
+    }
+    if (elements.demandAccuracy) {
+        const accuracy = (stats.demand_accuracy || 0) * 100;
+        elements.demandAccuracy.textContent = `${Math.round(accuracy)}%`;
+    }
+    
+    showDebugInfo(`✅ Stats updated: ${stats.total_predictions || 0} predictions`, 'success');
+}
+
+// Render All Charts
+function renderAllCharts(data) {
+    destroyExistingCharts();
+    
+    if (data.demand_predictions) {
+        renderDemandPredictionChart(data.demand_predictions);
+    }
+    
+    if (data.retention_data) {
+        renderRetentionRiskChart(data.retention_data);
+    }
+    
+    if (data.performance_metrics) {
+        renderPerformanceCharts(data.performance_metrics);
+    }
+}
+
+// Destroy existing charts
+function destroyExistingCharts() {
+    Object.values(charts).forEach(chart => {
+        if (chart && typeof chart.destroy === 'function') {
+            chart.destroy();
+        }
+    });
+    charts = {};
+}
+
+// Demand Prediction Chart
+function renderDemandPredictionChart(predictions) {
+    const ctx = document.getElementById('demandPredictionChart');
+    if (!ctx) return;
+
+    const bloodGroups = Object.keys(predictions);
+    const predictedValues = bloodGroups.map(bg => predictions[bg]?.predicted_demand || 0);
+    const confidenceScores = bloodGroups.map(bg => (predictions[bg]?.confidence_score || 0) * 100);
+
+    try {
+        if (charts.demandPrediction) {
+            charts.demandPrediction.destroy();
+        }
+
+        charts.demandPrediction = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: bloodGroups,
+                datasets: [
+                    {
+                        label: 'Predicted Demand',
+                        data: predictedValues,
+                        backgroundColor: 'rgba(220, 38, 38, 0.8)',
+                        borderColor: 'rgba(220, 38, 38, 1)',
+                        borderWidth: 2,
+                        borderRadius: 8,
+                        yAxisID: 'y'
+                    },
+                    {
+                        label: 'Confidence Score %',
+                        data: confidenceScores,
+                        type: 'line',
+                        borderColor: 'rgba(59, 130, 246, 1)',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        borderWidth: 3,
+                        pointRadius: 6,
+                        pointBackgroundColor: 'rgba(59, 130, 246, 1)',
+                        yAxisID: 'y1'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: { mode: 'index', intersect: false },
+                scales: {
+                    x: { 
+                        title: { display: true, text: 'Blood Groups', color: '#64748b', font: { weight: 'bold' } },
+                        grid: { color: 'rgba(0,0,0,0.05)' }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Units Required', color: '#64748b', font: { weight: 'bold' } },
+                        grid: { color: 'rgba(0,0,0,0.05)' }
+                    },
+                    y1: {
+                        beginAtZero: true,
+                        position: 'right',
+                        max: 100,
+                        title: { display: true, text: 'Confidence %', color: '#64748b', font: { weight: 'bold' } },
+                        grid: { drawOnChartArea: false }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: { font: { size: 12, weight: 'bold' }, color: '#374151' }
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(255,255,255,0.95)',
+                        titleColor: '#1f2937',
+                        bodyColor: '#374151',
+                        borderColor: '#e5e7eb',
+                        borderWidth: 1,
+                        cornerRadius: 8,
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.dataset.label || '';
+                                const value = context.parsed.y;
+                                if (label.includes('Confidence')) {
+                                    return `${label}: ${value.toFixed(1)}%`;
+                                }
+                                return `${label}: ${value} units`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    } catch (error) {
+        console.error('Error rendering demand chart:', error);
+    }
+}
+
+// Retention Risk Chart
+function renderRetentionRiskChart(retentionData) {
+    const ctx = document.getElementById('retentionRiskChart');
+    if (!ctx) return;
+
+    const summary = retentionData.summary_stats || {};
+    const data = [
+        summary.low_risk_count || 0,
+        summary.medium_risk_count || 0,
+        summary.high_risk_count || 0
+    ];
+
+    try {
+        if (charts.retentionRisk) {
+            charts.retentionRisk.destroy();
+        }
+
+        charts.retentionRisk = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Low Risk', 'Medium Risk', 'High Risk'],
+                datasets: [{
+                    data: data,
+                    backgroundColor: [
+                        'rgba(16, 185, 129, 0.9)',
+                        'rgba(245, 158, 11, 0.9)',
+                        'rgba(239, 68, 68, 0.9)'
+                    ],
+                    borderColor: [
+                        'rgba(16, 185, 129, 1)',
+                        'rgba(245, 158, 11, 1)',
+                        'rgba(239, 68, 68, 1)'
+                    ],
+                    borderWidth: 3,
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '65%',
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: 'rgba(255,255,255,0.95)',
+                        titleColor: '#1f2937',
+                        bodyColor: '#374151',
+                        borderColor: '#e5e7eb',
+                        borderWidth: 1,
+                        cornerRadius: 8,
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label;
+                                const value = context.parsed;
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const percentage = Math.round((value / total) * 100);
+                                return `${label}: ${value} donors (${percentage}%)`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    } catch (error) {
+        console.error('Error rendering retention chart:', error);
+    }
+}
+
+// Performance Charts
+function renderPerformanceCharts(metrics) {
+    // Matching Performance Chart
+    const matchingCtx = document.getElementById('matchingPerformanceChart');
+    if (matchingCtx) {
+        try {
+            if (charts.matchingPerformance) {
+                charts.matchingPerformance.destroy();
+            }
+
+            charts.matchingPerformance = new Chart(matchingCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Fulfillment Rate', 'Matching Success', 'Response Time'],
+                    datasets: [{
+                        label: 'Performance Metrics',
+                        data: [
+                            metrics.fulfillment_rate || 0,
+                            metrics.matching_success_rate || 0,
+                            metrics.avg_response_time || 0
+                        ],
+                        backgroundColor: [
+                            'rgba(16, 185, 129, 0.9)',
+                            'rgba(59, 130, 246, 0.9)',
+                            'rgba(245, 158, 11, 0.9)'
+                        ],
+                        borderColor: [
+                            'rgba(16, 185, 129, 1)',
+                            'rgba(59, 130, 246, 1)',
+                            'rgba(245, 158, 11, 1)'
+                        ],
+                        borderWidth: 2,
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: 'Percentage / Hours',
+                                color: '#64748b',
+                                font: { weight: 'bold' }
+                            },
+                            grid: { color: 'rgba(0,0,0,0.05)' }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.dataset.label || '';
+                                    const value = context.parsed.y;
+                                    if (context.label === 'Response Time') {
+                                        return `${label}: ${value} hours`;
+                                    }
+                                    return `${label}: ${value}%`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        } catch (error) {
+            console.error('Error rendering matching chart:', error);
+        }
+    }
+
+    // Prediction Accuracy Chart
+    const accuracyCtx = document.getElementById('predictionAccuracyChart');
+    if (accuracyCtx) {
+        try {
+            if (charts.predictionAccuracy) {
+                charts.predictionAccuracy.destroy();
+            }
+
+            charts.predictionAccuracy = new Chart(accuracyCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'Prediction Accuracy Trend',
+                        data: [75, 78, 82, 85, 88, metrics.demand_accuracy ? (metrics.demand_accuracy * 100) : 90],
+                        borderColor: 'rgba(139, 92, 246, 1)',
+                        backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4,
+                        pointBackgroundColor: 'rgba(139, 92, 246, 1)',
+                        pointRadius: 5,
+                        pointHoverRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: 'Accuracy %',
+                                color: '#64748b',
+                                font: { weight: 'bold' }
+                            },
+                            grid: { color: 'rgba(0,0,0,0.05)' }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                            labels: { font: { size: 12, weight: 'bold' }, color: '#374151' }
+                        }
+                    }
+                }
+            });
+        } catch (error) {
+            console.error('Error rendering accuracy chart:', error);
+        }
+    }
+}
+
+// Render AI Insights
+function renderAIInsights(insights) {
+    const container = document.getElementById('aiInsightsContainer');
+    if (!container) return;
+
+    if (!insights || insights.length === 0) {
+        container.innerHTML = `
+            <div class="text-center py-4 text-muted">
+                <i class="fas fa-info-circle fa-2x mb-3"></i>
+                <p>No AI insights available at the moment.</p>
+                <small>Check back later for updated recommendations.</small>
+            </div>
+        `;
+        return;
+    }
+
+    const insightsHTML = insights.map(insight => `
+        <div class="insight-card insight-${insight.priority}">
+            <div style="display: flex; align-items: flex-start; justify-content: space-between;">
+                <div style="flex: 1;">
+                    <h6 class="alert-heading" style="margin: 0 0 8px 0; font-size: 16px; font-weight: 700;">
+                        ${insight.title || 'AI Insight'}
+                    </h6>
+                    <p style="margin: 0 0 8px 0; color: #475569; line-height: 1.5;">
+                        ${insight.message || 'No detailed message available.'}
+                    </p>
+                    <small style="color: #94a3b8; font-size: 12px;">
+                        ${insight.type || 'general'} • ${new Date().toLocaleDateString()}
+                    </small>
+                </div>
+                <div style="margin-left: 12px;">
+                    <span class="badge bg-${getInsightBadgeClass(insight.priority)}" style="color: white;">
+                        ${(insight.priority || 'medium').toUpperCase()}
+                    </span>
+                </div>
+            </div>
+        </div>
+    `).join('');
+
+    container.innerHTML = insightsHTML;
+}
+
+// Helper functions
+function getInsightAlertClass(priority) {
+    const classes = { 'high': 'danger', 'medium': 'warning', 'low': 'success' };
+    return classes[priority] || 'info';
+}
+
+function getInsightBadgeClass(priority) {
+    const classes = { 'high': 'danger', 'medium': 'warning', 'low': 'success' };
+    return classes[priority] || 'secondary';
+}
+
+// Export Functions
+function exportChartAsImage(chartId, filename) {
+    const chart = charts[chartId];
+    if (!chart) {
+        showError('Chart not available for export');
+        return;
+    }
+
+    const image = chart.toBase64Image();
+    const a = document.createElement('a');
+    a.href = image;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    showSuccess(`Chart exported as ${filename}`);
+}
+
+function exportAllChartsAsImages() {
+    const chartIds = ['demandPredictionChart', 'retentionRiskChart', 'matchingPerformanceChart', 'predictionAccuracyChart'];
+    let exported = 0;
+    
+    chartIds.forEach(chartId => {
+        if (charts[chartId]) {
+            setTimeout(() => {
+                exportChartAsImage(chartId, `hemovital-${chartId.toLowerCase()}-${new Date().toISOString().split('T')[0]}.png`);
+                exported++;
+                
+                if (exported === chartIds.length) {
+                    showSuccess('All charts exported successfully!');
+                }
+            }, exported * 500);
+        }
+    });
+}
+
+function exportAsJSON() {
+    if (!analyticsData) {
+        showError('No data available to export');
+        return;
+    }
+    
+    const reportData = {
+        timestamp: new Date().toISOString(),
+        generated_by: 'HemoVital AI Dashboard',
+        version: '1.0',
+        ...analyticsData
+    };
+    
+    const blob = new Blob([JSON.stringify(reportData, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `hemovital-analytics-${new Date().toISOString().split('T')[0]}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showSuccess('Data exported as JSON successfully!');
+}
+
+function exportInsightsAsText() {
+    const insights = analyticsData?.insights || [];
+    if (insights.length === 0) {
+        showError('No insights available to export');
+        return;
+    }
+    
+    let textContent = `HEMOVITAL AI INSIGHTS REPORT\n`;
+    textContent += `Generated on: ${new Date().toLocaleDateString()}\n\n`;
+    
+    insights.forEach((insight, index) => {
+        textContent += `${index + 1}. [${insight.priority?.toUpperCase()}] ${insight.title}\n`;
+        textContent += `   ${insight.message}\n`;
+        textContent += `   Type: ${insight.type} | Date: ${new Date().toLocaleDateString()}\n\n`;
+    });
+    
+    const blob = new Blob([textContent], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `hemovital-insights-${new Date().toISOString().split('T')[0]}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showSuccess('Insights exported as text file!');
+}
+
+function exportAsPDF() {
+    showLoading();
+    
+    // Use html2canvas to capture the dashboard
+    html2canvas(document.getElementById('dashboardContent'), {
+        scale: 2,
+        useCORS: true,
+        logging: false,
+        backgroundColor: '#ffffff'
+    }).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        
+        const imgWidth = 210; // A4 width in mm
+        const pageHeight = 295; // A4 height in mm
+        const imgHeight = canvas.height * imgWidth / canvas.width;
+        let heightLeft = imgHeight;
+        let position = 0;
+        
+        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+        
+        while (heightLeft >= 0) {
+            position = heightLeft - imgHeight;
+            pdf.addPage();
+            pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+            heightLeft -= pageHeight;
+        }
+        
+        pdf.save(`hemovital-dashboard-${new Date().toISOString().split('T')[0]}.pdf`);
+        hideLoading();
+        showSuccess('Dashboard exported as PDF successfully!');
+    }).catch(error => {
+        console.error('PDF export error:', error);
+        hideLoading();
+        showError('Failed to export as PDF. Please try again.');
+    });
+}
+
+// UI Helpers
+function showLoading() {
+    const spinner = document.getElementById('loadingSpinner');
+    const content = document.getElementById('dashboardContent');
+    
+    if (spinner) spinner.style.display = 'flex';
+    if (content) content.style.opacity = '0.3';
+}
+
+function hideLoading() {
+    const spinner = document.getElementById('loadingSpinner');
+    const content = document.getElementById('dashboardContent');
+    
+    if (spinner) spinner.style.display = 'none';
+    if (content) content.style.opacity = '1';
+}
+
+function showError(message) {
+    alert(`Error: ${message}`);
+}
+
+// Clean up
+window.addEventListener('beforeunload', function() {
+    destroyExistingCharts();
+});
+
+// Handle window resize
+window.addEventListener('resize', function() {
+    Object.values(charts).forEach(chart => {
+        if (chart && typeof chart.resize === 'function') {
+            chart.resize();
+        }
+    });
+});
+</script>
+{% endblock %}

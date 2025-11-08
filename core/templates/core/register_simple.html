@@ -1,0 +1,79 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Register - HemoVital{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'core/css/register_simple.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="simple-auth-page">
+    <div class="registration-container">
+        <!-- Main Registration Card -->
+        <div class="registration-card">
+            
+            <!-- Header -->
+            <header class="card-header">
+                <a href="{% url 'core:home' %}" class="card-logo">
+                    <i class="fas fa-heartbeat"></i> HemoVital
+                </a>
+                <h1 class="card-title">Create a New Account</h1>
+                <p class="card-subtitle">Join our network and start saving lives today.</p>
+            </header>
+
+            <!-- Role Selector (Styled as Tabs) -->
+            <div class="role-tab-selector">
+                <button type="button" class="role-tab active" data-form="user-form">
+                    <i class="fas fa-user"></i> Hemo User
+                </button>
+                <button type="button" class="role-tab" data-form="hospital-form">
+                    <i class="fas fa-hospital"></i> Hemo Hospital
+                </button>
+            </div>
+
+            <!-- Hemo User Registration Form (Initially Visible) -->
+            <form method="post" action="{% url 'core:user_register' %}" class="auth-form active" id="user-form" novalidate enctype="multipart/form-data">
+                {% csrf_token %}
+                <h2 class="form-section-title">Hemo User Details</h2>
+                
+                <div class="form-grid">
+                    {% for field in user_form %}
+                        {% include 'core/includes/form_field_simple.html' with field=field %}
+                    {% endfor %}
+                </div>
+
+                <div class="form-group full-width">
+                    <button type="submit" class="submit-button">Create User Account</button>
+                </div>
+            </form>
+
+            <!-- Hemo Hospital Registration Form (Initially Hidden) -->
+            <form method="post" action="{% url 'core:hospital_register' %}" class="auth-form" id="hospital-form" novalidate enctype="multipart/form-data" style="display: none;">
+                {% csrf_token %}
+                <h2 class="form-section-title">Hospital & Admin Details</h2>
+
+                <div class="form-grid">
+                    {% for field in hospital_form %}
+                        {% include 'core/includes/form_field_simple.html' with field=field %}
+                    {% endfor %}
+                </div>
+
+                <div class="form-group full-width">
+                    <button type="submit" class="submit-button">Register Hospital</button>
+                </div>
+            </form>
+
+            <!-- Footer -->
+            <footer class="card-footer">
+                <p>Already have an account? <a href="{% url 'core:login' %}">Log In</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'core/js/register_simple.js' %}"></script>
+{% endblock %}
+
