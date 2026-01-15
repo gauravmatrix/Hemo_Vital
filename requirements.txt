@@ -13,3 +13,5 @@ django-allauth==0.57.0
 
 google-generativeai==0.8.5
 google-api-python-client==2.186.0
+
+Pillow==10.4.0
