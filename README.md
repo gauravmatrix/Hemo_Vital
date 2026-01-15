@@ -58,16 +58,6 @@ Secure session and CSRF protection enabled
 
 Logs, local databases, and secrets excluded using .gitignore
 
-📂 Project Structure (Simplified)
-HemoVital_Project/
-├── core/                # Business logic & AI services
-├── hemovital/           # Project configuration
-├── static/              # Static assets
-├── templates/           # HTML templates
-├── manage.py
-├── requirements.txt
-├── Procfile
-└── README.md
 
 ⚙️ Setup Instructions (Local)
 # Clone repository
@@ -105,4 +95,8 @@ Analytics for blood demand trends
 
 Gaurav Kumar
 Full Stack Developer
+<<<<<<< HEAD
 GitHub: https://github.comgauravmatrix
+=======
+GitHub: https://github.com/gauravmatrix
+>>>>>>> 0c473c5b3c401d3e4d03e215c5b98b671ea001dc
