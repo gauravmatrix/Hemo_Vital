@@ -8,6 +8,7 @@ db.sqlite3
 .DS_Store
 /media/
 *.log
+hemovital.log
 
 # Django
 staticfiles/
