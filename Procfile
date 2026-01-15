@@ -1,1 +1,1 @@
-web: gunicorn hemovital.wsgi
+web: gunicorn hemovital.wsgi --bind 0.0.0.0:$PORT
