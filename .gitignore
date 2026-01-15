@@ -7,3 +7,15 @@ db.sqlite3
 .env.*
 .DS_Store
 /media/
+*.log
+
+# Django
+staticfiles/
+*.sqlite3
+
+# Python
+.pytest_cache/
+.coverage
+
+# VS Code
+.vscode/

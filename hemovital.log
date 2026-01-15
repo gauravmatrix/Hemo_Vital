@@ -5683,3 +5683,2263 @@ INFO 2025-11-08 00:01:19,520 basehttp 10996 18196 "GET /static/core/css/about.cs
 INFO 2025-11-08 00:01:27,079 basehttp 10996 18196 "GET /contact/ HTTP/1.1" 200 13749
 INFO 2025-11-08 00:01:30,831 basehttp 10996 18196 "GET /register/ HTTP/1.1" 200 23405
 INFO 2025-11-08 00:01:40,923 basehttp 10996 18196 "GET /contact/ HTTP/1.1" 200 13749
+INFO 2025-11-08 14:14:07,648 autoreload 17076 15692 Watching for file changes with StatReloader
+INFO 2025-11-08 14:14:47,738 basehttp 17076 10180 "GET / HTTP/1.1" 200 30120
+WARNING 2025-11-08 14:14:49,439 basehttp 17076 10180 "GET /static/images/favicon.ico HTTP/1.1" 404 1981
+INFO 2025-11-08 14:14:50,928 basehttp 17076 4004 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-11-08 14:14:51,375 basehttp 17076 4004 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4182
+INFO 2025-11-08 14:14:51,430 basehttp 17076 4004 "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-11-08 14:14:51,443 basehttp 17076 4004 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2025-11-08 14:14:51,443 basehttp 17076 12708 "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-11-08 14:14:51,451 basehttp 17076 18624 "GET /static/admin/css/login.css HTTP/1.1" 304 0
+INFO 2025-11-08 14:14:51,451 basehttp 17076 18352 "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-11-08 14:14:51,458 basehttp 17076 16136 "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-11-08 14:14:51,459 basehttp 17076 18352 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+WARNING 2025-11-08 14:14:52,604 log 17076 21228 Not Found: /favicon.ico
+WARNING 2025-11-08 14:14:52,608 basehttp 17076 21228 "GET /favicon.ico HTTP/1.1" 404 13097
+INFO 2025-11-08 14:15:00,273 basehttp 17076 21228 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-11-08 14:15:00,554 basehttp 17076 21228 "GET /admin/ HTTP/1.1" 200 20814
+INFO 2025-11-08 14:15:00,595 basehttp 17076 21228 "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+INFO 2025-11-08 14:15:00,603 basehttp 17076 21228 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+INFO 2025-11-08 14:15:00,603 basehttp 17076 20560 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+INFO 2025-11-08 14:15:05,958 basehttp 17076 6944 "GET /admin/core/chatbotconversation/ HTTP/1.1" 200 34069
+INFO 2025-11-08 14:15:05,996 basehttp 17076 6944 "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+INFO 2025-11-08 14:15:05,998 basehttp 17076 20004 "GET /static/admin/js/core.js HTTP/1.1" 304 0
+INFO 2025-11-08 14:15:06,002 basehttp 17076 6944 "GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+INFO 2025-11-08 14:15:06,014 basehttp 17076 6944 "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+INFO 2025-11-08 14:15:06,024 basehttp 17076 4348 "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+INFO 2025-11-08 14:15:06,037 basehttp 17076 14320 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+INFO 2025-11-08 14:15:06,037 basehttp 17076 18652 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+INFO 2025-11-08 14:15:06,037 basehttp 17076 6944 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+INFO 2025-11-08 14:15:06,047 basehttp 17076 4348 "GET /static/admin/img/search.svg HTTP/1.1" 304 0
+INFO 2025-11-08 14:15:06,050 basehttp 17076 16588 "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+INFO 2025-11-08 14:15:06,063 basehttp 17076 16588 "GET /static/admin/js/filters.js HTTP/1.1" 304 0
+INFO 2025-11-08 14:15:06,236 basehttp 17076 20004 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 14:15:06,268 basehttp 17076 20004 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+INFO 2025-11-08 14:15:06,276 basehttp 17076 16588 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 304 0
+INFO 2025-11-08 14:15:06,276 basehttp 17076 20004 "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 304 0
+INFO 2025-11-08 14:15:19,074 basehttp 17076 14616 "GET /admin/core/customuser/ HTTP/1.1" 200 26189
+INFO 2025-11-08 14:15:19,122 basehttp 17076 13240 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 304 0
+INFO 2025-11-08 14:15:19,125 basehttp 17076 21216 "GET /static/admin/img/icon-no.svg HTTP/1.1" 304 0
+INFO 2025-11-08 14:15:19,163 basehttp 17076 14616 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 14:15:25,522 basehttp 17076 3748 "POST /admin/logout/ HTTP/1.1" 302 0
+INFO 2025-11-08 14:15:25,540 basehttp 17076 3748 "GET / HTTP/1.1" 200 30120
+INFO 2025-11-08 14:33:38,970 basehttp 17076 10448 "GET /register/ HTTP/1.1" 200 23405
+ERROR 2025-11-08 14:34:48,996 log 17076 10448 Internal Server Error: /register/user/
+Traceback (most recent call last):
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: core_userprofile.user_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\edit.py", line 182, in post
+    return super().post(request, *args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\edit.py", line 151, in post
+    return self.form_valid(form)
+           ~~~~~~~~~~~~~~~^^^^^^
+  File "E:\HemoVital_Project\core\views.py", line 159, in form_valid
+    user = form.save()
+  File "E:\HemoVital_Project\core\forms.py", line 56, in save
+    user.save()
+    ~~~~~~~~~^^
+  File "E:\HemoVital_Project\core\models.py", line 47, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\contrib\auth\base_user.py", line 65, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1023, in save_base
+    post_save.send(
+    ~~~~~~~~~~~~~~^
+        sender=origin,
+        ^^^^^^^^^^^^^^
+    ...<4 lines>...
+        using=using,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\dispatch\dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "E:\HemoVital_Project\core\models.py", line 453, in create_user_profile
+    UserProfile.objects.create(user=instance)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\core\models.py", line 90, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: UNIQUE constraint failed: core_userprofile.user_id
+ERROR 2025-11-08 14:34:49,057 basehttp 17076 10448 "POST /register/user/ HTTP/1.1" 500 235514
+INFO 2025-11-08 14:40:17,936 autoreload 17076 15692 E:\HemoVital_Project\core\forms.py changed, reloading.
+INFO 2025-11-08 14:40:21,606 autoreload 19644 20836 Watching for file changes with StatReloader
+INFO 2025-11-08 14:40:46,346 autoreload 19644 20836 E:\HemoVital_Project\core\forms.py changed, reloading.
+INFO 2025-11-08 14:40:49,051 autoreload 3804 18476 Watching for file changes with StatReloader
+INFO 2025-11-08 14:41:10,872 autoreload 3804 18476 E:\HemoVital_Project\core\forms.py changed, reloading.
+INFO 2025-11-08 14:41:12,794 autoreload 20080 10876 Watching for file changes with StatReloader
+INFO 2025-11-08 14:41:43,856 autoreload 20080 10876 E:\HemoVital_Project\core\forms.py changed, reloading.
+INFO 2025-11-08 14:41:45,503 autoreload 10652 15580 Watching for file changes with StatReloader
+INFO 2025-11-08 14:42:39,378 autoreload 10652 15580 E:\HemoVital_Project\core\forms.py changed, reloading.
+INFO 2025-11-08 14:42:41,744 autoreload 11232 19016 Watching for file changes with StatReloader
+INFO 2025-11-08 14:43:31,859 basehttp 11232 3712 "GET / HTTP/1.1" 200 30120
+WARNING 2025-11-08 14:43:32,675 basehttp 11232 3712 "GET /static/images/favicon.ico HTTP/1.1" 404 1981
+INFO 2025-11-08 14:43:35,294 basehttp 11232 13160 "GET /register/ HTTP/1.1" 200 23405
+INFO 2025-11-08 14:43:35,355 basehttp 11232 16848 "GET /static/core/js/register_simple.js HTTP/1.1" 304 0
+INFO 2025-11-08 14:43:35,355 basehttp 11232 13160 "GET /static/core/css/register_simple.css HTTP/1.1" 304 0
+INFO 2025-11-08 14:44:35,729 basehttp 11232 20988 "POST /register/user/ HTTP/1.1" 200 24288
+ERROR 2025-11-08 14:45:36,870 log 11232 8964 Internal Server Error: /register/user/
+Traceback (most recent call last):
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: core_userprofile.user_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\edit.py", line 182, in post
+    return super().post(request, *args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\edit.py", line 151, in post
+    return self.form_valid(form)
+           ~~~~~~~~~~~~~~~^^^^^^
+  File "E:\HemoVital_Project\core\views.py", line 159, in form_valid
+    user = form.save()
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\contrib\auth\forms.py", line 265, in save
+    user = self.set_password_and_save(user, commit=commit)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\contrib\auth\forms.py", line 154, in set_password_and_save
+    user.save()
+    ~~~~~~~~~^^
+  File "E:\HemoVital_Project\core\models.py", line 47, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\contrib\auth\base_user.py", line 65, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1023, in save_base
+    post_save.send(
+    ~~~~~~~~~~~~~~^
+        sender=origin,
+        ^^^^^^^^^^^^^^
+    ...<4 lines>...
+        using=using,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\dispatch\dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "E:\HemoVital_Project\core\models.py", line 453, in create_user_profile
+    UserProfile.objects.create(user=instance)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\core\models.py", line 90, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: UNIQUE constraint failed: core_userprofile.user_id
+ERROR 2025-11-08 14:45:36,913 basehttp 11232 8964 "POST /register/user/ HTTP/1.1" 500 239995
+WARNING 2025-11-08 14:45:37,106 log 11232 8964 Not Found: /favicon.ico
+WARNING 2025-11-08 14:45:37,109 basehttp 11232 8964 "GET /favicon.ico HTTP/1.1" 404 13097
+INFO 2025-11-08 14:46:36,824 basehttp 11232 8964 "POST /register/user/ HTTP/1.1" 200 24262
+INFO 2025-11-08 14:48:13,599 basehttp 11232 8964 "POST /register/user/ HTTP/1.1" 200 24170
+ERROR 2025-11-08 14:49:22,209 log 11232 8964 Internal Server Error: /register/user/
+Traceback (most recent call last):
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: core_userprofile.user_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\edit.py", line 182, in post
+    return super().post(request, *args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\edit.py", line 151, in post
+    return self.form_valid(form)
+           ~~~~~~~~~~~~~~~^^^^^^
+  File "E:\HemoVital_Project\core\views.py", line 159, in form_valid
+    user = form.save()
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\contrib\auth\forms.py", line 265, in save
+    user = self.set_password_and_save(user, commit=commit)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\contrib\auth\forms.py", line 154, in set_password_and_save
+    user.save()
+    ~~~~~~~~~^^
+  File "E:\HemoVital_Project\core\models.py", line 47, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\contrib\auth\base_user.py", line 65, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1023, in save_base
+    post_save.send(
+    ~~~~~~~~~~~~~~^
+        sender=origin,
+        ^^^^^^^^^^^^^^
+    ...<4 lines>...
+        using=using,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\dispatch\dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "E:\HemoVital_Project\core\models.py", line 453, in create_user_profile
+    UserProfile.objects.create(user=instance)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\core\models.py", line 90, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: UNIQUE constraint failed: core_userprofile.user_id
+ERROR 2025-11-08 14:49:22,227 basehttp 11232 8964 "POST /register/user/ HTTP/1.1" 500 240047
+INFO 2025-11-08 14:50:38,165 basehttp 11232 8964 "GET / HTTP/1.1" 200 30120
+INFO 2025-11-08 14:50:40,288 basehttp 11232 8964 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-11-08 14:50:42,135 basehttp 11232 8964 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4182
+INFO 2025-11-08 14:50:42,176 basehttp 11232 8964 "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-11-08 14:50:42,187 basehttp 11232 11540 "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-11-08 14:50:42,190 basehttp 11232 8964 "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-11-08 14:50:42,201 basehttp 11232 17760 "GET /static/admin/css/login.css HTTP/1.1" 304 0
+INFO 2025-11-08 14:50:42,204 basehttp 11232 17032 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2025-11-08 14:50:42,205 basehttp 11232 8964 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2025-11-08 14:50:42,206 basehttp 11232 3512 "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-11-08 14:50:49,095 basehttp 11232 3512 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-11-08 14:50:49,264 basehttp 11232 3512 "GET /admin/ HTTP/1.1" 200 20814
+INFO 2025-11-08 14:50:49,302 basehttp 11232 3512 "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+INFO 2025-11-08 14:50:49,310 basehttp 11232 17032 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+INFO 2025-11-08 14:50:49,311 basehttp 11232 3512 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+INFO 2025-11-08 14:50:52,921 basehttp 11232 3512 "GET /admin/core/customuser/ HTTP/1.1" 200 28128
+INFO 2025-11-08 14:50:52,952 basehttp 11232 3512 "GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+INFO 2025-11-08 14:50:52,968 basehttp 11232 17032 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+INFO 2025-11-08 14:50:52,968 basehttp 11232 17760 "GET /static/admin/js/core.js HTTP/1.1" 304 0
+INFO 2025-11-08 14:50:52,969 basehttp 11232 11540 "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+INFO 2025-11-08 14:50:52,969 basehttp 11232 8964 "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+INFO 2025-11-08 14:50:52,972 basehttp 11232 9000 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+INFO 2025-11-08 14:50:52,977 basehttp 11232 17032 "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+INFO 2025-11-08 14:50:52,979 basehttp 11232 11540 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+INFO 2025-11-08 14:50:52,988 basehttp 11232 17760 "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+INFO 2025-11-08 14:50:52,993 basehttp 11232 9000 "GET /static/admin/img/search.svg HTTP/1.1" 304 0
+INFO 2025-11-08 14:50:52,995 basehttp 11232 8964 "GET /static/admin/img/icon-no.svg HTTP/1.1" 304 0
+INFO 2025-11-08 14:50:53,006 basehttp 11232 8964 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 304 0
+INFO 2025-11-08 14:50:53,014 basehttp 11232 8964 "GET /static/admin/js/filters.js HTTP/1.1" 304 0
+INFO 2025-11-08 14:50:53,067 basehttp 11232 3512 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 14:50:53,120 basehttp 11232 3512 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+INFO 2025-11-08 14:50:53,122 basehttp 11232 8964 "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 304 0
+INFO 2025-11-08 14:50:53,125 basehttp 11232 8964 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 304 0
+INFO 2025-11-08 14:52:16,774 autoreload 11232 19016 E:\HemoVital_Project\core\forms.py changed, reloading.
+INFO 2025-11-08 14:52:19,596 autoreload 14936 19468 Watching for file changes with StatReloader
+INFO 2025-11-08 14:57:07,839 autoreload 10568 14228 Watching for file changes with StatReloader
+INFO 2025-11-08 14:57:15,847 basehttp 10568 15332 "GET / HTTP/1.1" 200 30110
+INFO 2025-11-08 14:57:22,262 basehttp 10568 15332 "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-11-08 14:57:22,518 basehttp 10568 15332 "GET /admin/ HTTP/1.1" 200 20814
+INFO 2025-11-08 14:57:25,867 basehttp 10568 15332 "GET /admin/core/customuser/ HTTP/1.1" 200 28128
+INFO 2025-11-08 14:57:25,967 basehttp 10568 15332 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 14:57:29,083 basehttp 10568 15332 "GET /admin/core/userprofile/ HTTP/1.1" 200 25724
+INFO 2025-11-08 14:57:29,182 basehttp 10568 15332 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 14:57:36,118 basehttp 10568 15332 "GET /admin/core/customuser/ HTTP/1.1" 200 28128
+INFO 2025-11-08 14:57:36,207 basehttp 10568 15332 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 14:58:32,770 autoreload 17472 17600 Watching for file changes with StatReloader
+INFO 2025-11-08 14:58:38,516 basehttp 17472 18600 "GET / HTTP/1.1" 200 30110
+INFO 2025-11-08 14:58:45,010 basehttp 17472 18600 "GET /logout/ HTTP/1.1" 302 0
+INFO 2025-11-08 14:58:45,037 basehttp 17472 18600 "GET / HTTP/1.1" 200 30580
+INFO 2025-11-08 14:58:47,280 basehttp 17472 18600 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-11-08 14:58:47,362 basehttp 17472 18600 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4182
+INFO 2025-11-08 14:58:54,437 basehttp 17472 18600 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-11-08 14:58:54,629 basehttp 17472 18600 "GET /admin/ HTTP/1.1" 200 20814
+INFO 2025-11-08 14:58:58,118 basehttp 17472 18600 "GET /admin/core/customuser/ HTTP/1.1" 200 28128
+INFO 2025-11-08 14:58:58,207 basehttp 17472 18600 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 14:59:05,975 basehttp 17472 18600 "GET /admin/core/hospitalprofile/ HTTP/1.1" 200 19929
+INFO 2025-11-08 14:59:06,056 basehttp 17472 18600 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 14:59:37,162 basehttp 17472 18600 "GET /admin/core/customuser/ HTTP/1.1" 200 28128
+INFO 2025-11-08 14:59:37,262 basehttp 17472 18600 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 14:59:41,465 basehttp 17472 18600 "GET /admin/ HTTP/1.1" 200 20814
+INFO 2025-11-08 14:59:44,734 basehttp 17472 18600 "GET /admin/core/customuser/ HTTP/1.1" 200 28128
+INFO 2025-11-08 14:59:44,813 basehttp 17472 18600 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 15:03:56,809 autoreload 13908 16108 Watching for file changes with StatReloader
+INFO 2025-11-08 15:04:21,129 basehttp 13908 7332 "GET / HTTP/1.1" 200 30110
+WARNING 2025-11-08 15:04:21,700 basehttp 13908 7332 "GET /static/images/favicon.ico HTTP/1.1" 404 1981
+INFO 2025-11-08 15:04:24,163 basehttp 13908 3708 "GET /admin/ HTTP/1.1" 200 20814
+WARNING 2025-11-08 15:04:24,576 log 13908 3708 Not Found: /favicon.ico
+WARNING 2025-11-08 15:04:24,581 basehttp 13908 3708 "GET /favicon.ico HTTP/1.1" 404 13097
+INFO 2025-11-08 15:04:28,500 basehttp 13908 1116 "GET /admin/core/userprofile/ HTTP/1.1" 200 26326
+INFO 2025-11-08 15:04:28,656 basehttp 13908 1116 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 15:04:36,647 basehttp 13908 1116 "GET /admin/core/customuser/ HTTP/1.1" 200 28777
+INFO 2025-11-08 15:04:36,704 basehttp 13908 1116 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 15:04:47,731 basehttp 13908 1116 "GET /admin/core/userprofile/ HTTP/1.1" 200 26326
+INFO 2025-11-08 15:04:47,789 basehttp 13908 1116 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 15:05:21,416 basehttp 13908 1116 "GET /admin/core/hospitalprofile/ HTTP/1.1" 200 19929
+INFO 2025-11-08 15:05:21,483 basehttp 13908 1116 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 15:09:57,672 basehttp 13908 14548 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-11-08 15:09:57,818 basehttp 13908 14548 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4182
+INFO 2025-11-08 15:10:07,681 basehttp 13908 14548 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-11-08 15:10:07,783 basehttp 13908 14548 "GET /admin/ HTTP/1.1" 200 20814
+INFO 2025-11-08 15:51:35,404 autoreload 11916 10872 Watching for file changes with StatReloader
+INFO 2025-11-08 15:52:04,991 basehttp 11916 15840 "GET /admin/core/customuser/ HTTP/1.1" 200 28777
+INFO 2025-11-08 15:52:05,181 basehttp 11916 15840 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 15:52:07,720 basehttp 11916 18380 "GET / HTTP/1.1" 200 30110
+INFO 2025-11-08 15:52:15,063 basehttp 11916 18380 "GET /admin/ HTTP/1.1" 200 20814
+INFO 2025-11-08 15:52:18,020 basehttp 11916 252 "GET /admin/core/customuser/ HTTP/1.1" 200 28777
+INFO 2025-11-08 15:52:18,121 basehttp 11916 252 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 15:52:22,448 basehttp 11916 252 "GET /admin/core/customuser/10/change/ HTTP/1.1" 200 35033
+INFO 2025-11-08 15:52:22,500 basehttp 11916 252 "GET /static/admin/css/forms.css HTTP/1.1" 304 0
+INFO 2025-11-08 15:52:22,510 basehttp 11916 252 "GET /static/admin/css/widgets.css HTTP/1.1" 304 0
+INFO 2025-11-08 15:52:22,600 basehttp 11916 17176 "GET /static/admin/js/SelectFilter2.js HTTP/1.1" 200 15845
+INFO 2025-11-08 15:52:22,603 basehttp 11916 5876 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 15:52:22,634 basehttp 11916 10088 "GET /static/admin/js/SelectBox.js HTTP/1.1" 200 4530
+INFO 2025-11-08 15:52:22,653 basehttp 11916 5876 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-11-08 15:52:22,727 basehttp 11916 10088 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-11-08 15:52:23,049 basehttp 11916 10088 "GET /static/admin/img/selector-icons.svg HTTP/1.1" 200 3291
+INFO 2025-11-08 15:52:39,075 basehttp 11916 1296 "GET /admin/core/userprofile/ HTTP/1.1" 200 26326
+INFO 2025-11-08 15:52:39,211 basehttp 11916 1296 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 15:53:06,699 basehttp 11916 11104 "GET /admin/core/hospitalprofile/ HTTP/1.1" 200 19929
+INFO 2025-11-08 15:53:06,778 basehttp 11916 11104 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 15:53:10,160 basehttp 11916 11104 "GET /admin/core/hospitalprofile/10/change/ HTTP/1.1" 200 28862
+INFO 2025-11-08 15:53:10,248 basehttp 11916 13788 "GET /static/admin/js/calendar.js HTTP/1.1" 200 9141
+INFO 2025-11-08 15:53:10,291 basehttp 11916 4596 "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+INFO 2025-11-08 15:53:10,293 basehttp 11916 11104 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 15:53:10,644 basehttp 11916 11104 "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+INFO 2025-11-08 15:53:41,812 basehttp 11916 20908 "GET /admin/core/hospitalprofile/ HTTP/1.1" 200 19929
+INFO 2025-11-08 15:53:41,891 basehttp 11916 20908 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 15:53:47,972 basehttp 11916 20908 "GET /admin/core/customuser/ HTTP/1.1" 200 28777
+INFO 2025-11-08 15:53:48,084 basehttp 11916 20908 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 15:53:49,930 basehttp 11916 20908 "GET /admin/core/customuser/add/ HTTP/1.1" 200 20461
+INFO 2025-11-08 15:53:49,990 basehttp 11916 2204 "GET /static/admin/css/unusable_password_field.css HTTP/1.1" 200 663
+INFO 2025-11-08 15:53:50,009 basehttp 11916 20908 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 15:53:50,089 basehttp 11916 2204 "GET /static/admin/js/unusable_password_field.js HTTP/1.1" 200 1480
+ERROR 2025-11-08 15:54:18,822 log 11916 2204 Internal Server Error: /admin/core/customuser/add/
+Traceback (most recent call last):
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: NOT NULL constraint failed: core_hospitalprofile.admin_dob
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\contrib\admin\options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\utils\decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\utils\decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\contrib\admin\sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\decorators\debug.py", line 143, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\utils\decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\utils\decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\contrib\auth\admin.py", line 124, in add_view
+    return self._add_view(request, form_url, extra_context)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\contrib\auth\admin.py", line 152, in _add_view
+    return super().add_view(request, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\contrib\admin\options.py", line 1984, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\utils\decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\utils\decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\contrib\admin\options.py", line 1843, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\contrib\admin\options.py", line 1894, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\contrib\admin\options.py", line 1314, in save_model
+    obj.save()
+    ~~~~~~~~^^
+  File "E:\HemoVital_Project\core\models.py", line 47, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\contrib\auth\base_user.py", line 65, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1023, in save_base
+    post_save.send(
+    ~~~~~~~~~~~~~~^
+        sender=origin,
+        ^^^^^^^^^^^^^^
+    ...<4 lines>...
+        using=using,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\dispatch\dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "E:\HemoVital_Project\core\models.py", line 399, in create_user_profile
+    HospitalProfile.objects.create(user=instance)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: NOT NULL constraint failed: core_hospitalprofile.admin_dob
+ERROR 2025-11-08 15:54:18,876 basehttp 11916 2204 "POST /admin/core/customuser/add/ HTTP/1.1" 500 297880
+INFO 2025-11-08 15:54:22,140 basehttp 11916 2204 "GET /admin/core/customuser/add/ HTTP/1.1" 200 20461
+INFO 2025-11-08 15:54:25,118 basehttp 11916 2204 "GET /admin/core/userprofile/ HTTP/1.1" 200 26326
+INFO 2025-11-08 15:54:25,198 basehttp 11916 2204 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 15:56:39,932 basehttp 11916 2204 "POST /admin/logout/ HTTP/1.1" 302 0
+INFO 2025-11-08 15:56:39,968 basehttp 11916 2204 "GET / HTTP/1.1" 200 30120
+INFO 2025-11-08 15:56:41,655 basehttp 11916 2204 "GET /register/ HTTP/1.1" 200 23405
+INFO 2025-11-08 15:56:41,703 basehttp 11916 2204 "GET /static/core/js/register_simple.js HTTP/1.1" 304 0
+INFO 2025-11-08 15:56:43,410 basehttp 11916 2204 "GET /login/ HTTP/1.1" 200 14557
+INFO 2025-11-08 15:56:43,452 basehttp 11916 2204 "GET /static/core/css/login.css HTTP/1.1" 304 0
+INFO 2025-11-08 15:56:43,455 basehttp 11916 20908 "GET /static/core/js/login.js HTTP/1.1" 304 0
+INFO 2025-11-08 15:56:51,862 basehttp 11916 20908 "GET /register/ HTTP/1.1" 200 23405
+ERROR 2025-11-08 15:58:48,704 log 11916 20908 Internal Server Error: /register/hospital/
+Traceback (most recent call last):
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: core_userprofile.user_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\edit.py", line 182, in post
+    return super().post(request, *args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\edit.py", line 151, in post
+    return self.form_valid(form)
+           ~~~~~~~~~~~~~~~^^^^^^
+  File "E:\HemoVital_Project\core\views.py", line 178, in form_valid
+    user = form.save()
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\contrib\auth\forms.py", line 265, in save
+    user = self.set_password_and_save(user, commit=commit)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\contrib\auth\forms.py", line 154, in set_password_and_save
+    user.save()
+    ~~~~~~~~~^^
+  File "E:\HemoVital_Project\core\models.py", line 47, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\contrib\auth\base_user.py", line 65, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1023, in save_base
+    post_save.send(
+    ~~~~~~~~~~~~~~^
+        sender=origin,
+        ^^^^^^^^^^^^^^
+    ...<4 lines>...
+        using=using,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\dispatch\dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "E:\HemoVital_Project\core\models.py", line 453, in create_user_profile
+    UserProfile.objects.create(user=instance)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\core\models.py", line 90, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: UNIQUE constraint failed: core_userprofile.user_id
+ERROR 2025-11-08 15:58:48,737 basehttp 11916 20908 "POST /register/hospital/ HTTP/1.1" 500 240579
+INFO 2025-11-08 15:58:58,092 basehttp 11916 20908 "GET /login/ HTTP/1.1" 200 14557
+INFO 2025-11-08 15:59:09,951 basehttp 11916 20908 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-11-08 15:59:10,052 basehttp 11916 20908 "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-11-08 15:59:10,554 basehttp 11916 20908 "GET /donor/dashboard/ HTTP/1.1" 200 12909
+INFO 2025-11-08 15:59:10,613 basehttp 11916 20908 "GET /static/core/css/dashboard_base.css HTTP/1.1" 304 0
+INFO 2025-11-08 15:59:10,615 basehttp 11916 2204 "GET /static/core/css/donor_dashboard.css HTTP/1.1" 304 0
+INFO 2025-11-08 15:59:10,664 basehttp 11916 2204 "GET /static/core/css/chatbot.css HTTP/1.1" 304 0
+INFO 2025-11-08 15:59:10,669 basehttp 11916 16712 "GET /static/core/js/dashboard_base.js HTTP/1.1" 304 0
+INFO 2025-11-08 15:59:10,682 basehttp 11916 11620 "GET /static/core/js/chatbot.js HTTP/1.1" 304 0
+WARNING 2025-11-08 15:59:10,695 basehttp 11916 19544 "GET /static/core/js/donor_dashboard.js HTTP/1.1" 404 2005
+WARNING 2025-11-08 15:59:10,778 log 11916 20908 Not Found: /media/profile_photos/default.png
+WARNING 2025-11-08 15:59:10,779 basehttp 11916 20908 "GET /media/profile_photos/default.png HTTP/1.1" 404 12946
+WARNING 2025-11-08 15:59:12,685 basehttp 11916 20908 "GET /static/core/images/favicon.ico HTTP/1.1" 404 1996
+INFO 2025-11-08 15:59:14,503 basehttp 11916 11620 "GET / HTTP/1.1" 200 30112
+INFO 2025-11-08 15:59:18,316 basehttp 11916 11620 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-11-08 15:59:18,463 basehttp 11916 11620 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 3707
+INFO 2025-11-08 15:59:27,235 basehttp 11916 11620 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-11-08 15:59:27,425 basehttp 11916 11620 "GET /admin/ HTTP/1.1" 200 20814
+INFO 2025-11-08 15:59:30,540 basehttp 11916 11620 "GET /admin/core/customuser/ HTTP/1.1" 200 29419
+INFO 2025-11-08 15:59:30,650 basehttp 11916 11620 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 15:59:39,522 basehttp 11916 11620 "POST /admin/logout/ HTTP/1.1" 302 0
+INFO 2025-11-08 15:59:39,548 basehttp 11916 11620 "GET / HTTP/1.1" 200 30120
+INFO 2025-11-08 15:59:40,797 basehttp 11916 11620 "GET /register/ HTTP/1.1" 200 23405
+INFO 2025-11-08 15:59:40,828 basehttp 11916 11620 "GET /static/core/css/register_simple.css HTTP/1.1" 304 0
+INFO 2025-11-08 15:59:56,382 autoreload 11916 10872 E:\HemoVital_Project\core\forms.py changed, reloading.
+INFO 2025-11-08 16:00:00,382 autoreload 2636 13088 Watching for file changes with StatReloader
+INFO 2025-11-08 16:00:08,375 basehttp 2636 3872 "GET /register/ HTTP/1.1" 200 23405
+INFO 2025-11-08 16:00:08,461 basehttp 2636 3872 "GET /static/core/css/base.css HTTP/1.1" 200 18477
+INFO 2025-11-08 16:00:08,475 basehttp 2636 2392 "GET /static/core/css/register_simple.css HTTP/1.1" 200 7184
+INFO 2025-11-08 16:00:08,533 basehttp 2636 2432 "GET /static/core/js/base.js HTTP/1.1" 200 14887
+INFO 2025-11-08 16:00:08,561 basehttp 2636 17088 "GET /static/core/js/register_simple.js HTTP/1.1" 200 3323
+WARNING 2025-11-08 16:00:13,937 basehttp 2636 17088 "GET /static/images/favicon.ico HTTP/1.1" 404 1981
+INFO 2025-11-08 16:01:30,295 basehttp 2636 12776 "POST /register/hospital/ HTTP/1.1" 200 24201
+INFO 2025-11-08 16:01:34,368 basehttp 2636 12776 "GET /login/ HTTP/1.1" 200 14557
+INFO 2025-11-08 16:01:42,601 basehttp 2636 12776 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-11-08 16:01:42,673 basehttp 2636 12776 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4182
+WARNING 2025-11-08 16:01:44,136 log 2636 12776 Not Found: /favicon.ico
+WARNING 2025-11-08 16:01:44,137 basehttp 2636 12776 "GET /favicon.ico HTTP/1.1" 404 13097
+INFO 2025-11-08 16:02:04,899 basehttp 2636 12776 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-11-08 16:02:05,089 basehttp 2636 12776 "GET /admin/ HTTP/1.1" 200 20814
+INFO 2025-11-08 16:02:07,825 basehttp 2636 12776 "GET /admin/core/customuser/ HTTP/1.1" 200 29419
+INFO 2025-11-08 16:02:07,925 basehttp 2636 12776 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:02:12,296 basehttp 2636 12776 "GET /admin/core/hospitalanalytics/ HTTP/1.1" 200 19497
+INFO 2025-11-08 16:02:12,377 basehttp 2636 12776 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:02:16,034 basehttp 2636 12776 "GET /admin/core/customuser/ HTTP/1.1" 200 29419
+INFO 2025-11-08 16:02:16,156 basehttp 2636 12776 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:02:30,972 basehttp 2636 12776 "GET /admin/core/customuser/23/change/ HTTP/1.1" 200 34999
+INFO 2025-11-08 16:02:31,060 basehttp 2636 12776 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:02:36,176 basehttp 2636 12776 "GET /admin/core/userprofile/ HTTP/1.1" 200 26916
+INFO 2025-11-08 16:02:36,290 basehttp 2636 12776 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:02:39,744 basehttp 2636 12776 "GET /admin/core/userprofile/23/change/ HTTP/1.1" 200 32291
+INFO 2025-11-08 16:02:39,870 basehttp 2636 12776 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:02:40,197 basehttp 2636 12776 "GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
+INFO 2025-11-08 16:02:53,994 basehttp 2636 12776 "GET /admin/core/userprofile/ HTTP/1.1" 200 26916
+INFO 2025-11-08 16:02:54,094 basehttp 2636 12776 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:03:06,668 basehttp 2636 12776 "GET /admin/core/userprofile/18/change/ HTTP/1.1" 200 32409
+INFO 2025-11-08 16:03:06,756 basehttp 2636 12776 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:03:13,559 basehttp 2636 12776 "GET /admin/core/customuser/ HTTP/1.1" 200 29419
+INFO 2025-11-08 16:03:13,660 basehttp 2636 12776 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:03:15,341 basehttp 2636 12776 "GET /admin/core/customuser/23/change/ HTTP/1.1" 200 34999
+INFO 2025-11-08 16:03:15,419 basehttp 2636 12776 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:03:45,933 basehttp 2636 12776 "POST /admin/core/customuser/23/change/ HTTP/1.1" 302 0
+INFO 2025-11-08 16:03:46,172 basehttp 2636 12776 "GET /admin/core/customuser/ HTTP/1.1" 200 29647
+INFO 2025-11-08 16:03:46,273 basehttp 2636 12776 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:03:49,921 basehttp 2636 12776 "GET /admin/core/hospitalprofile/ HTTP/1.1" 200 19929
+INFO 2025-11-08 16:03:50,033 basehttp 2636 12776 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:03:54,070 basehttp 2636 12776 "GET /admin/core/hospitalprofile/ HTTP/1.1" 200 19929
+INFO 2025-11-08 16:03:54,141 basehttp 2636 12776 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-11-08 16:03:54,141 basehttp 2636 12492 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-11-08 16:03:54,142 basehttp 2636 15864 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-11-08 16:03:54,198 basehttp 2636 16268 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-11-08 16:03:54,201 basehttp 2636 12492 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-11-08 16:03:54,269 basehttp 2636 10068 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-11-08 16:03:54,271 basehttp 2636 16268 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-11-08 16:03:54,274 basehttp 2636 12776 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-11-08 16:03:54,294 basehttp 2636 16508 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:03:54,306 basehttp 2636 12492 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2025-11-08 16:03:54,346 basehttp 2636 12776 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-11-08 16:03:54,362 basehttp 2636 15864 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-11-08 16:03:54,373 basehttp 2636 12776 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-11-08 16:03:54,391 basehttp 2636 12492 "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+INFO 2025-11-08 16:03:54,443 basehttp 2636 16268 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-11-08 16:03:54,454 basehttp 2636 10068 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-11-08 16:03:54,491 basehttp 2636 10068 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-11-08 16:03:54,522 basehttp 2636 10068 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-11-08 16:03:54,783 basehttp 2636 16508 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-11-08 16:03:54,836 basehttp 2636 16508 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-11-08 16:03:54,836 basehttp 2636 10068 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-11-08 16:03:54,868 basehttp 2636 16268 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+WARNING 2025-11-08 16:03:55,249 log 2636 16268 Not Found: /favicon.ico
+WARNING 2025-11-08 16:03:55,251 basehttp 2636 16268 "GET /favicon.ico HTTP/1.1" 404 13097
+INFO 2025-11-08 16:04:00,274 basehttp 2636 16268 "GET /admin/core/hospitalprofile/?q=mahesh HTTP/1.1" 200 17733
+INFO 2025-11-08 16:04:00,386 basehttp 2636 16268 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:04:05,722 basehttp 2636 16268 "GET /admin/core/hospitalprofile/?q=jyoti HTTP/1.1" 200 19623
+INFO 2025-11-08 16:04:05,857 basehttp 2636 16268 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:04:12,539 basehttp 2636 16268 "GET /admin/core/userprofile/ HTTP/1.1" 200 26919
+INFO 2025-11-08 16:04:12,650 basehttp 2636 16268 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:04:15,484 basehttp 2636 16268 "GET /admin/core/userprofile/23/change/ HTTP/1.1" 200 32294
+INFO 2025-11-08 16:04:15,574 basehttp 2636 16268 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:04:42,011 basehttp 2636 16268 "GET /admin/core/customuser/ HTTP/1.1" 200 29425
+INFO 2025-11-08 16:04:42,114 basehttp 2636 16268 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:04:44,013 basehttp 2636 16268 "GET /admin/core/customuser/23/change/ HTTP/1.1" 200 35037
+INFO 2025-11-08 16:04:44,106 basehttp 2636 16268 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:04:58,231 basehttp 2636 16268 "GET /admin/core/hospitalprofile/ HTTP/1.1" 200 19929
+INFO 2025-11-08 16:04:58,309 basehttp 2636 16268 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:05:01,524 basehttp 2636 16268 "GET /admin/core/hospitalprofile/11/change/ HTTP/1.1" 200 28890
+INFO 2025-11-08 16:05:01,602 basehttp 2636 16268 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:05:13,084 basehttp 2636 16268 "GET /admin/core/hospitalanalytics/ HTTP/1.1" 200 19497
+INFO 2025-11-08 16:05:13,197 basehttp 2636 16268 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:05:16,177 basehttp 2636 16268 "GET /admin/core/hospitalanalytics/2/change/ HTTP/1.1" 200 24517
+INFO 2025-11-08 16:05:16,288 basehttp 2636 16268 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:05:23,036 basehttp 2636 16268 "POST /admin/logout/ HTTP/1.1" 302 0
+INFO 2025-11-08 16:05:23,067 basehttp 2636 16268 "GET / HTTP/1.1" 200 30120
+WARNING 2025-11-08 16:05:23,535 basehttp 2636 16268 "GET /static/images/favicon.ico HTTP/1.1" 404 1981
+INFO 2025-11-08 16:05:28,104 basehttp 2636 10068 "GET /register/ HTTP/1.1" 200 23405
+ERROR 2025-11-08 16:07:27,154 log 2636 10068 Internal Server Error: /register/hospital/
+Traceback (most recent call last):
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: NOT NULL constraint failed: core_hospitalprofile.admin_dob
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\edit.py", line 182, in post
+    return super().post(request, *args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\edit.py", line 151, in post
+    return self.form_valid(form)
+           ~~~~~~~~~~~~~~~^^^^^^
+  File "E:\HemoVital_Project\core\views.py", line 178, in form_valid
+    user = form.save()
+  File "E:\HemoVital_Project\core\forms.py", line 113, in save
+    user.save()
+    ~~~~~~~~~^^
+  File "E:\HemoVital_Project\core\models.py", line 47, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\contrib\auth\base_user.py", line 65, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1023, in save_base
+    post_save.send(
+    ~~~~~~~~~~~~~~^
+        sender=origin,
+        ^^^^^^^^^^^^^^
+    ...<4 lines>...
+        using=using,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\dispatch\dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "E:\HemoVital_Project\core\models.py", line 399, in create_user_profile
+    HospitalProfile.objects.create(user=instance)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: NOT NULL constraint failed: core_hospitalprofile.admin_dob
+ERROR 2025-11-08 16:07:27,186 basehttp 2636 10068 "POST /register/hospital/ HTTP/1.1" 500 229446
+INFO 2025-11-08 16:08:49,122 basehttp 2636 10068 "POST /register/hospital/ HTTP/1.1" 200 24331
+ERROR 2025-11-08 16:09:45,238 log 2636 10068 Internal Server Error: /register/hospital/
+Traceback (most recent call last):
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: NOT NULL constraint failed: core_hospitalprofile.admin_dob
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\edit.py", line 182, in post
+    return super().post(request, *args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\edit.py", line 151, in post
+    return self.form_valid(form)
+           ~~~~~~~~~~~~~~~^^^^^^
+  File "E:\HemoVital_Project\core\views.py", line 178, in form_valid
+    user = form.save()
+  File "E:\HemoVital_Project\core\forms.py", line 113, in save
+    user.save()
+    ~~~~~~~~~^^
+  File "E:\HemoVital_Project\core\models.py", line 47, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\contrib\auth\base_user.py", line 65, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1023, in save_base
+    post_save.send(
+    ~~~~~~~~~~~~~~^
+        sender=origin,
+        ^^^^^^^^^^^^^^
+    ...<4 lines>...
+        using=using,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\dispatch\dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "E:\HemoVital_Project\core\models.py", line 399, in create_user_profile
+    HospitalProfile.objects.create(user=instance)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: NOT NULL constraint failed: core_hospitalprofile.admin_dob
+ERROR 2025-11-08 16:09:45,256 basehttp 2636 10068 "POST /register/hospital/ HTTP/1.1" 500 229467
+INFO 2025-11-08 16:11:20,195 autoreload 2636 13088 E:\HemoVital_Project\core\models.py changed, reloading.
+INFO 2025-11-08 16:11:22,983 autoreload 11424 19352 Watching for file changes with StatReloader
+INFO 2025-11-08 16:12:12,450 autoreload 14992 17528 Watching for file changes with StatReloader
+INFO 2025-11-08 16:12:20,213 basehttp 14992 12572 "GET / HTTP/1.1" 200 30110
+INFO 2025-11-08 16:12:24,730 basehttp 14992 12572 "GET /logout/ HTTP/1.1" 302 0
+INFO 2025-11-08 16:12:24,761 basehttp 14992 12572 "GET / HTTP/1.1" 200 30580
+INFO 2025-11-08 16:12:26,480 basehttp 14992 12572 "GET /login/ HTTP/1.1" 200 14557
+INFO 2025-11-08 16:12:27,568 basehttp 14992 12572 "GET /register/ HTTP/1.1" 200 23405
+INFO 2025-11-08 16:14:03,426 basehttp 14992 12572 "POST /register/hospital/ HTTP/1.1" 200 24350
+ERROR 2025-11-08 16:15:16,891 log 14992 12572 Internal Server Error: /register/hospital/
+Traceback (most recent call last):
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: core_hospitalprofile.hospital_reg_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\edit.py", line 182, in post
+    return super().post(request, *args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\edit.py", line 151, in post
+    return self.form_valid(form)
+           ~~~~~~~~~~~~~~~^^^^^^
+  File "E:\HemoVital_Project\core\views.py", line 178, in form_valid
+    user = form.save()
+  File "E:\HemoVital_Project\core\forms.py", line 113, in save
+    user.save()
+    ~~~~~~~~~^^
+  File "E:\HemoVital_Project\core\models.py", line 47, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\contrib\auth\base_user.py", line 65, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1023, in save_base
+    post_save.send(
+    ~~~~~~~~~~~~~~^
+        sender=origin,
+        ^^^^^^^^^^^^^^
+    ...<4 lines>...
+        using=using,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\dispatch\dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "E:\HemoVital_Project\core\models.py", line 455, in create_user_profile
+    HospitalProfile.objects.create(user=instance)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: UNIQUE constraint failed: core_hospitalprofile.hospital_reg_id
+ERROR 2025-11-08 16:15:16,930 basehttp 14992 12572 "POST /register/hospital/ HTTP/1.1" 500 229831
+INFO 2025-11-08 16:18:51,067 basehttp 14992 12572 "GET / HTTP/1.1" 200 30120
+INFO 2025-11-08 16:18:53,184 basehttp 14992 12572 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-11-08 16:18:53,236 basehttp 14992 12572 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4182
+INFO 2025-11-08 16:19:01,809 basehttp 14992 12572 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-11-08 16:19:01,952 basehttp 14992 12572 "GET /admin/ HTTP/1.1" 200 20800
+INFO 2025-11-08 16:19:04,477 basehttp 14992 12572 "GET /admin/core/customuser/ HTTP/1.1" 200 31363
+INFO 2025-11-08 16:19:04,589 basehttp 14992 12572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:19:07,501 basehttp 14992 12572 "GET /admin/core/customuser/26/change/ HTTP/1.1" 200 34995
+INFO 2025-11-08 16:19:07,533 basehttp 14992 12572 "GET /static/admin/css/forms.css HTTP/1.1" 304 0
+INFO 2025-11-08 16:19:07,536 basehttp 14992 15276 "GET /static/admin/js/SelectBox.js HTTP/1.1" 304 0
+INFO 2025-11-08 16:19:07,551 basehttp 14992 15276 "GET /static/admin/js/SelectFilter2.js HTTP/1.1" 304 0
+INFO 2025-11-08 16:19:07,552 basehttp 14992 12536 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 304 0
+INFO 2025-11-08 16:19:07,567 basehttp 14992 16340 "GET /static/admin/css/widgets.css HTTP/1.1" 304 0
+INFO 2025-11-08 16:19:07,577 basehttp 14992 16340 "GET /static/admin/js/change_form.js HTTP/1.1" 304 0
+INFO 2025-11-08 16:19:07,634 basehttp 14992 12572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:19:07,698 basehttp 14992 12572 "GET /static/admin/img/selector-icons.svg HTTP/1.1" 304 0
+INFO 2025-11-08 16:19:11,226 basehttp 14992 12572 "GET /admin/core/hospitalanalytics/ HTTP/1.1" 200 19996
+INFO 2025-11-08 16:19:11,327 basehttp 14992 12572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:19:15,510 basehttp 14992 12572 "GET /admin/core/customuser/ HTTP/1.1" 200 31363
+INFO 2025-11-08 16:19:15,643 basehttp 14992 12572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:19:26,456 basehttp 14992 12572 "GET /admin/core/customuser/26/change/ HTTP/1.1" 200 34995
+INFO 2025-11-08 16:19:26,569 basehttp 14992 12572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:19:37,594 basehttp 14992 12572 "GET /admin/core/hospitalprofile/ HTTP/1.1" 200 20589
+INFO 2025-11-08 16:19:37,695 basehttp 14992 12572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:19:41,955 basehttp 14992 12572 "GET /admin/core/hospitalprofile/26/change/ HTTP/1.1" 200 28457
+INFO 2025-11-08 16:19:41,984 basehttp 14992 15276 "GET /static/admin/js/calendar.js HTTP/1.1" 304 0
+INFO 2025-11-08 16:19:41,985 basehttp 14992 16340 "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 304 0
+INFO 2025-11-08 16:19:42,066 basehttp 14992 12572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:19:42,113 basehttp 14992 12572 "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 304 0
+INFO 2025-11-08 16:19:54,059 basehttp 14992 12572 "GET /admin/core/customuser/ HTTP/1.1" 200 31363
+INFO 2025-11-08 16:19:54,193 basehttp 14992 12572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:20:03,940 basehttp 14992 12572 "GET /admin/core/hospitalprofile/ HTTP/1.1" 200 20589
+INFO 2025-11-08 16:20:04,043 basehttp 14992 12572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:20:06,032 basehttp 14992 12572 "GET /admin/core/hospitalprofile/26/change/ HTTP/1.1" 200 28457
+INFO 2025-11-08 16:20:06,134 basehttp 14992 12572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:20:22,085 basehttp 14992 12572 "GET /static/admin/img/calendar-icons.svg HTTP/1.1" 200 2455
+INFO 2025-11-08 16:21:01,719 basehttp 14992 12572 "POST /admin/core/hospitalprofile/26/change/ HTTP/1.1" 302 0
+INFO 2025-11-08 16:21:01,855 basehttp 14992 12572 "GET /admin/core/hospitalprofile/ HTTP/1.1" 200 20834
+INFO 2025-11-08 16:21:01,959 basehttp 14992 12572 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-08 16:21:10,239 basehttp 14992 12572 "POST /admin/logout/ HTTP/1.1" 302 0
+INFO 2025-11-08 16:21:10,274 basehttp 14992 12572 "GET / HTTP/1.1" 200 30120
+INFO 2025-11-08 16:21:12,048 basehttp 14992 12572 "GET /login/ HTTP/1.1" 200 14557
+INFO 2025-11-08 16:21:31,043 basehttp 14992 12572 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-11-08 16:21:31,145 basehttp 14992 12572 "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-11-08 16:21:31,472 basehttp 14992 12572 "GET /hospital/dashboard/ HTTP/1.1" 200 15034
+INFO 2025-11-08 16:21:31,511 basehttp 14992 12572 "GET /static/core/css/dashboard_base.css HTTP/1.1" 304 0
+INFO 2025-11-08 16:21:31,523 basehttp 14992 12536 "GET /static/core/js/chatbot.js HTTP/1.1" 304 0
+INFO 2025-11-08 16:21:31,524 basehttp 14992 16340 "GET /static/core/css/hospital_dashboard.css HTTP/1.1" 304 0
+INFO 2025-11-08 16:21:31,524 basehttp 14992 12572 "GET /static/core/css/chatbot.css HTTP/1.1" 304 0
+INFO 2025-11-08 16:21:31,524 basehttp 14992 15276 "GET /static/core/js/dashboard_base.js HTTP/1.1" 304 0
+INFO 2025-11-08 16:21:31,531 basehttp 14992 15840 "GET /static/core/js/hospital_dashboard.js HTTP/1.1" 304 0
+WARNING 2025-11-08 16:21:32,393 basehttp 14992 15840 "GET /static/core/images/favicon.ico HTTP/1.1" 404 1996
+INFO 2025-11-08 16:21:34,128 basehttp 14992 12572 "GET /hospital/ai/demand-prediction/ HTTP/1.1" 200 90381
+INFO 2025-11-08 16:21:37,820 basehttp 14992 12572 "GET /hospital/ai/analytics/ HTTP/1.1" 200 63883
+INFO 2025-11-08 16:21:38,121 basehttp 14992 12572 "GET /hospital/analytics/data/?type=overview HTTP/1.1" 200 3320
+INFO 2025-11-09 16:40:49,318 autoreload 19704 17704 Watching for file changes with StatReloader
+INFO 2025-11-09 16:41:36,762 basehttp 19704 9772 "GET / HTTP/1.1" 200 30111
+WARNING 2025-11-09 16:41:37,621 basehttp 19704 9772 "GET /static/images/favicon.ico HTTP/1.1" 404 1981
+INFO 2025-11-09 23:09:27,460 autoreload 13132 14992 Watching for file changes with StatReloader
+INFO 2025-11-09 23:10:06,368 basehttp 13132 6508 "GET / HTTP/1.1" 200 30120
+INFO 2025-11-09 23:10:06,523 basehttp 13132 6508 "GET /static/core/css/home.css HTTP/1.1" 304 0
+INFO 2025-11-09 23:10:06,534 basehttp 13132 6568 "GET /static/core/js/home.js HTTP/1.1" 304 0
+WARNING 2025-11-09 23:10:08,995 basehttp 13132 13180 "GET /static/images/favicon.ico HTTP/1.1" 404 1981
+INFO 2025-11-09 23:10:13,286 basehttp 13132 16012 "GET /login/ HTTP/1.1" 200 14557
+INFO 2025-11-09 23:10:36,753 basehttp 13132 16012 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-11-09 23:10:36,808 basehttp 13132 16012 "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-11-09 23:10:37,256 basehttp 13132 16012 "GET /hospital/dashboard/ HTTP/1.1" 200 15504
+INFO 2025-11-09 23:10:37,308 basehttp 13132 12352 "GET /static/core/css/hospital_dashboard.css HTTP/1.1" 304 0
+INFO 2025-11-09 23:10:37,315 basehttp 13132 16012 "GET /static/core/css/dashboard_base.css HTTP/1.1" 304 0
+INFO 2025-11-09 23:10:37,322 basehttp 13132 19432 "GET /static/core/css/chatbot.css HTTP/1.1" 304 0
+INFO 2025-11-09 23:10:37,345 basehttp 13132 17108 "GET /static/core/js/chatbot.js HTTP/1.1" 304 0
+INFO 2025-11-09 23:10:37,345 basehttp 13132 15364 "GET /static/core/js/dashboard_base.js HTTP/1.1" 304 0
+INFO 2025-11-09 23:10:37,346 basehttp 13132 17644 "GET /static/core/js/hospital_dashboard.js HTTP/1.1" 304 0
+WARNING 2025-11-09 23:10:37,807 basehttp 13132 17644 "GET /static/core/images/favicon.ico HTTP/1.1" 404 1996
+INFO 2025-11-09 23:10:40,111 basehttp 13132 17108 "GET /hospital/profile/ HTTP/1.1" 200 18371
+INFO 2025-11-09 23:10:40,143 basehttp 13132 17108 "GET /static/core/css/hospital_profile.css HTTP/1.1" 304 0
+INFO 2025-11-09 23:10:40,216 basehttp 13132 17108 "GET /media/hospital_logos/SDG_IMAGE_WFS97b5.jpg HTTP/1.1" 304 0
+INFO 2025-11-09 23:10:41,806 basehttp 13132 17108 "GET /hospital/ai/analytics/ HTTP/1.1" 200 63883
+INFO 2025-11-09 23:10:42,276 basehttp 13132 17108 "GET /hospital/analytics/data/?type=overview HTTP/1.1" 200 3180
+INFO 2025-11-09 23:10:49,133 basehttp 13132 17108 "GET /hospital/ai/demand-prediction/ HTTP/1.1" 200 90381
+INFO 2025-11-09 23:11:21,354 basehttp 13132 20708 "GET /hospital/ai/donor-retention/ HTTP/1.1" 200 94571
+WARNING 2025-11-09 23:11:23,025 basehttp 13132 20708 "GET /static/images/default-avatar.png HTTP/1.1" 404 2002
+INFO 2025-11-09 23:11:38,483 basehttp 13132 9152 "GET /chatbot/ HTTP/1.1" 200 22090
+INFO 2025-11-09 23:11:45,711 basehttp 13132 9152 "GET /hospital/ai/demand-prediction/ HTTP/1.1" 200 90381
+INFO 2025-11-09 23:12:03,804 basehttp 13132 4024 "GET /hospital/ai/donor-retention/ HTTP/1.1" 200 94571
+WARNING 2025-11-09 23:12:05,407 basehttp 13132 4024 "GET /static/images/default-avatar.png HTTP/1.1" 404 2002
+INFO 2025-11-09 23:12:16,574 basehttp 13132 5272 "GET /hospital/ai/analytics/ HTTP/1.1" 200 63883
+INFO 2025-11-09 23:12:16,830 basehttp 13132 5272 "GET /hospital/analytics/data/?type=overview HTTP/1.1" 200 3180
+INFO 2025-11-12 11:32:49,290 autoreload 4888 1288 Watching for file changes with StatReloader
+INFO 2025-11-12 11:33:46,601 basehttp 4888 12368 "GET / HTTP/1.1" 200 30111
+INFO 2025-11-12 11:33:46,786 basehttp 4888 11952 "GET /static/core/css/base.css HTTP/1.1" 304 0
+INFO 2025-11-12 11:33:46,818 basehttp 4888 12368 "GET /static/core/js/base.js HTTP/1.1" 304 0
+WARNING 2025-11-12 11:33:49,540 basehttp 4888 1616 "GET /static/images/favicon.ico HTTP/1.1" 404 1981
+INFO 2025-11-12 11:33:56,541 basehttp 4888 9296 "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-11-12 11:33:56,989 basehttp 4888 9296 "GET /hospital/dashboard/ HTTP/1.1" 200 15504
+INFO 2025-11-12 11:33:57,056 basehttp 4888 1956 "GET /static/core/css/chatbot.css HTTP/1.1" 304 0
+INFO 2025-11-12 11:33:57,057 basehttp 4888 9296 "GET /static/core/css/dashboard_base.css HTTP/1.1" 304 0
+INFO 2025-11-12 11:33:57,067 basehttp 4888 1956 "GET /static/core/css/hospital_dashboard.css HTTP/1.1" 304 0
+INFO 2025-11-12 11:33:57,070 basehttp 4888 9296 "GET /static/core/js/dashboard_base.js HTTP/1.1" 304 0
+INFO 2025-11-12 11:33:57,072 basehttp 4888 2764 "GET /static/core/js/chatbot.js HTTP/1.1" 304 0
+INFO 2025-11-12 11:33:57,108 basehttp 4888 12416 "GET /static/core/js/hospital_dashboard.js HTTP/1.1" 304 0
+WARNING 2025-11-12 11:33:57,500 basehttp 4888 12416 "GET /static/core/images/favicon.ico HTTP/1.1" 404 1996
+INFO 2025-11-12 11:33:59,715 basehttp 4888 18752 "GET /hospital/ai/analytics/ HTTP/1.1" 200 63883
+INFO 2025-11-12 11:33:59,992 basehttp 4888 18752 "GET /hospital/analytics/data/?type=overview HTTP/1.1" 200 3180
+INFO 2025-11-12 11:34:08,788 basehttp 4888 3784 "GET /hospital/ai/demand-prediction/ HTTP/1.1" 200 90381
+INFO 2025-11-12 11:34:25,629 basehttp 4888 3784 "GET /hospital/ai/donor-retention/ HTTP/1.1" 200 94571
+WARNING 2025-11-12 11:34:27,349 basehttp 4888 3784 "GET /static/images/default-avatar.png HTTP/1.1" 404 2002
+INFO 2025-11-12 11:34:32,463 basehttp 4888 13972 "GET /hospital/request/create/ HTTP/1.1" 200 16571
+INFO 2025-11-12 11:34:32,514 basehttp 4888 13972 "GET /static/core/css/create_request.css HTTP/1.1" 304 0
+INFO 2025-11-12 11:34:33,813 basehttp 4888 13972 "GET /hospital/requests/manage/ HTTP/1.1" 200 24205
+INFO 2025-11-12 11:34:33,855 basehttp 4888 13972 "GET /static/core/css/hospital_manage_request.css HTTP/1.1" 304 0
+INFO 2025-11-12 11:34:36,905 basehttp 4888 13972 "GET /hospital/dashboard/ HTTP/1.1" 200 15504
+INFO 2025-11-12 11:34:41,508 basehttp 4888 13972 "GET / HTTP/1.1" 200 30111
+INFO 2025-11-12 11:34:44,887 basehttp 4888 13972 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-11-12 11:34:45,388 basehttp 4888 13972 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 3706
+INFO 2025-11-12 11:34:45,456 basehttp 4888 5168 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-11-12 11:34:45,461 basehttp 4888 20924 "GET /static/admin/css/login.css HTTP/1.1" 304 0
+INFO 2025-11-12 11:34:45,463 basehttp 4888 13972 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-11-12 11:34:45,479 basehttp 4888 18708 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-11-12 11:34:45,480 basehttp 4888 12440 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-11-12 11:34:45,562 basehttp 4888 2676 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-11-12 11:34:45,634 basehttp 4888 12440 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+WARNING 2025-11-12 11:34:46,011 log 4888 12440 Not Found: /favicon.ico
+WARNING 2025-11-12 11:34:46,013 basehttp 4888 12440 "GET /favicon.ico HTTP/1.1" 404 13097
+INFO 2025-11-12 11:34:53,799 basehttp 4888 12440 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-11-12 11:34:54,023 basehttp 4888 12440 "GET /admin/ HTTP/1.1" 200 20801
+INFO 2025-11-12 11:34:54,055 basehttp 4888 12440 "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+INFO 2025-11-12 11:34:54,105 basehttp 4888 2676 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+INFO 2025-11-12 11:34:54,120 basehttp 4888 12440 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-11-12 11:35:00,239 basehttp 4888 12440 "GET /admin/core/notification/ HTTP/1.1" 200 24270
+INFO 2025-11-12 11:35:00,292 basehttp 4888 12440 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-11-12 11:35:00,349 basehttp 4888 18708 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-11-12 11:35:00,352 basehttp 4888 13972 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-11-12 11:35:00,353 basehttp 4888 5168 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-11-12 11:35:00,357 basehttp 4888 20924 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2025-11-12 11:35:00,385 basehttp 4888 12440 "GET /static/admin/css/forms.css HTTP/1.1" 304 0
+INFO 2025-11-12 11:35:00,456 basehttp 4888 13972 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-11-12 11:35:00,463 basehttp 4888 2676 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-11-12 11:35:00,480 basehttp 4888 12440 "GET /static/admin/img/search.svg HTTP/1.1" 304 0
+INFO 2025-11-12 11:35:00,484 basehttp 4888 18708 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-11-12 11:35:00,500 basehttp 4888 13972 "GET /static/admin/css/widgets.css HTTP/1.1" 304 0
+INFO 2025-11-12 11:35:00,617 basehttp 4888 20924 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-12 11:35:00,658 basehttp 4888 20924 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-11-12 11:35:00,720 basehttp 4888 5168 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-11-12 11:35:00,759 basehttp 4888 20924 "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 304 0
+INFO 2025-11-12 11:35:00,779 basehttp 4888 5168 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-11-12 11:35:00,852 basehttp 4888 20924 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2025-11-12 11:35:06,230 basehttp 4888 20924 "GET /admin/core/notification/1/change/ HTTP/1.1" 200 22510
+INFO 2025-11-12 11:35:06,270 basehttp 4888 5168 "GET /static/admin/js/change_form.js HTTP/1.1" 304 0
+INFO 2025-11-12 11:35:06,275 basehttp 4888 5168 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 304 0
+INFO 2025-11-12 11:35:06,321 basehttp 4888 20924 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-12 11:35:16,250 basehttp 4888 20924 "GET /admin/core/bloodrequest/ HTTP/1.1" 200 22236
+INFO 2025-11-12 11:35:16,341 basehttp 4888 20924 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-12 11:35:18,766 basehttp 4888 20924 "GET /admin/core/bloodrequest/2/change/ HTTP/1.1" 200 29050
+INFO 2025-11-12 11:35:18,814 basehttp 4888 13972 "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 304 0
+INFO 2025-11-12 11:35:18,815 basehttp 4888 5168 "GET /static/admin/js/calendar.js HTTP/1.1" 304 0
+INFO 2025-11-12 11:35:18,855 basehttp 4888 20924 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-12 11:35:19,102 basehttp 4888 5168 "GET /static/admin/img/icon-clock.svg HTTP/1.1" 304 0
+INFO 2025-11-12 11:35:19,102 basehttp 4888 20924 "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 304 0
+INFO 2025-11-12 11:35:27,185 basehttp 4888 20924 "POST /admin/core/bloodrequest/2/change/ HTTP/1.1" 302 0
+INFO 2025-11-12 11:35:27,765 basehttp 4888 20924 "GET /admin/core/bloodrequest/ HTTP/1.1" 200 22468
+INFO 2025-11-12 11:35:27,879 basehttp 4888 20924 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-12 11:35:27,921 basehttp 4888 20924 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 304 0
+INFO 2025-11-12 11:35:29,659 basehttp 4888 20924 "GET /admin/core/bloodrequest/2/change/ HTTP/1.1" 200 29050
+INFO 2025-11-12 11:35:29,770 basehttp 4888 20924 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-12 11:35:35,553 basehttp 4888 20924 "POST /admin/core/bloodrequest/2/change/ HTTP/1.1" 302 0
+INFO 2025-11-12 11:35:35,711 basehttp 4888 20924 "GET /admin/core/bloodrequest/ HTTP/1.1" 200 22468
+INFO 2025-11-12 11:35:35,801 basehttp 4888 20924 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-12 11:35:37,680 basehttp 4888 20924 "GET /admin/core/bloodrequest/1/change/ HTTP/1.1" 200 29064
+INFO 2025-11-12 11:35:37,771 basehttp 4888 20924 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-12 11:35:42,576 basehttp 4888 20924 "POST /admin/core/bloodrequest/1/change/ HTTP/1.1" 302 0
+INFO 2025-11-12 11:35:42,700 basehttp 4888 20924 "GET /admin/core/bloodrequest/ HTTP/1.1" 200 22470
+INFO 2025-11-12 11:35:42,792 basehttp 4888 20924 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-12 11:35:48,341 basehttp 4888 20924 "GET /admin/core/bloodstock/ HTTP/1.1" 200 27915
+INFO 2025-11-12 11:35:48,429 basehttp 4888 20924 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-12 11:35:54,220 basehttp 4888 20924 "GET /admin/core/donation/ HTTP/1.1" 200 20456
+INFO 2025-11-12 11:35:54,311 basehttp 4888 20924 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-12 11:35:56,191 basehttp 4888 20924 "GET /admin/core/donation/1/change/ HTTP/1.1" 200 27136
+INFO 2025-11-12 11:35:56,268 basehttp 4888 5168 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-11-12 11:35:56,302 basehttp 4888 20924 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-12 11:36:05,021 basehttp 4888 20924 "POST /admin/core/donation/1/change/ HTTP/1.1" 302 0
+INFO 2025-11-12 11:36:05,146 basehttp 4888 20924 "GET /admin/core/donation/ HTTP/1.1" 200 20669
+INFO 2025-11-12 11:36:05,247 basehttp 4888 20924 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-12 11:36:08,570 basehttp 4888 20924 "GET /admin/core/globalsetting/ HTTP/1.1" 200 17396
+INFO 2025-11-12 11:36:08,662 basehttp 4888 20924 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-12 11:36:10,453 basehttp 4888 20924 "GET /admin/core/chatbotconversation/ HTTP/1.1" 200 34069
+INFO 2025-11-12 11:36:10,610 basehttp 4888 20924 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-12 11:36:17,347 basehttp 4888 20924 "GET /admin/core/hospitalprofile/ HTTP/1.1" 200 20597
+INFO 2025-11-12 11:36:17,437 basehttp 4888 20924 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-12 11:36:21,294 basehttp 4888 20924 "GET /admin/core/hospitalprofile/10/change/ HTTP/1.1" 200 28836
+INFO 2025-11-12 11:36:21,385 basehttp 4888 20924 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-12 11:36:26,166 basehttp 4888 20924 "GET /admin/core/bloodstock/ HTTP/1.1" 200 27915
+INFO 2025-11-12 11:36:26,345 basehttp 4888 20924 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-12 11:36:40,794 basehttp 4888 20924 "GET /admin/core/bloodstock/ HTTP/1.1" 200 27915
+INFO 2025-11-12 11:36:40,873 basehttp 4888 20924 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-12 11:36:43,320 basehttp 4888 20924 "GET /admin/core/bloodrequest/ HTTP/1.1" 200 22236
+INFO 2025-11-12 11:36:43,410 basehttp 4888 20924 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-12 11:36:45,314 basehttp 4888 20924 "GET /admin/core/bloodrequest/2/change/ HTTP/1.1" 200 29050
+INFO 2025-11-12 11:36:45,393 basehttp 4888 20924 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-12 11:36:50,276 basehttp 4888 20924 "POST /admin/core/bloodrequest/2/change/ HTTP/1.1" 302 0
+INFO 2025-11-12 11:36:50,390 basehttp 4888 20924 "GET /admin/core/bloodrequest/ HTTP/1.1" 200 22468
+INFO 2025-11-12 11:36:50,490 basehttp 4888 20924 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-12 11:36:56,038 basehttp 4888 20924 "GET /admin/core/userprofile/ HTTP/1.1" 200 26919
+INFO 2025-11-12 11:36:56,126 basehttp 4888 20924 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-12 11:37:07,398 basehttp 4888 20924 "GET /admin/core/donation/ HTTP/1.1" 200 20456
+INFO 2025-11-12 11:37:07,511 basehttp 4888 20924 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-12 11:37:10,378 basehttp 4888 20924 "POST /admin/core/donation/ HTTP/1.1" 302 0
+INFO 2025-11-12 11:37:10,679 basehttp 4888 20924 "GET /admin/core/donation/ HTTP/1.1" 200 20456
+INFO 2025-11-12 11:37:10,794 basehttp 4888 20924 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-12 11:37:12,242 basehttp 4888 20924 "POST /admin/logout/ HTTP/1.1" 302 0
+INFO 2025-11-12 11:37:12,269 basehttp 4888 20924 "GET / HTTP/1.1" 200 30120
+INFO 2025-11-12 11:37:14,234 basehttp 4888 3916 "GET /login/ HTTP/1.1" 200 14557
+INFO 2025-11-12 11:37:14,283 basehttp 4888 3916 "GET /static/core/js/login.js HTTP/1.1" 304 0
+INFO 2025-11-12 11:37:14,283 basehttp 4888 9132 "GET /static/core/css/login.css HTTP/1.1" 304 0
+INFO 2025-11-12 11:37:26,861 basehttp 4888 9132 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-11-12 11:37:26,926 basehttp 4888 9132 "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-11-12 11:37:27,133 basehttp 4888 9132 "GET /hospital/dashboard/ HTTP/1.1" 200 15504
+INFO 2025-11-12 11:37:37,722 basehttp 4888 9132 "GET /logout/ HTTP/1.1" 302 0
+INFO 2025-11-12 11:37:37,774 basehttp 4888 9132 "GET / HTTP/1.1" 200 30580
+INFO 2025-11-12 11:37:39,360 basehttp 4888 9132 "GET /chatbot/ HTTP/1.1" 200 21234
+INFO 2025-11-12 11:37:50,564 basehttp 4888 3916 "GET / HTTP/1.1" 200 30120
+INFO 2025-11-12 11:37:52,836 basehttp 4888 3916 "GET /login/ HTTP/1.1" 200 14557
+INFO 2025-11-12 11:40:04,343 basehttp 4888 8872 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-11-12 11:40:04,469 basehttp 4888 8872 "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-11-12 11:40:04,702 basehttp 4888 8872 "GET /donor/dashboard/ HTTP/1.1" 200 12916
+INFO 2025-11-12 11:40:04,751 basehttp 4888 8872 "GET /static/core/css/donor_dashboard.css HTTP/1.1" 304 0
+WARNING 2025-11-12 11:40:04,790 basehttp 4888 472 "GET /static/core/js/donor_dashboard.js HTTP/1.1" 404 2005
+WARNING 2025-11-12 11:40:04,905 log 4888 8872 Not Found: /media/profile_photos/default.png
+WARNING 2025-11-12 11:40:04,907 basehttp 4888 8872 "GET /media/profile_photos/default.png HTTP/1.1" 404 12946
+INFO 2025-11-12 11:40:12,488 basehttp 4888 18384 "GET /donor/leaderboard/ HTTP/1.1" 200 8994
+INFO 2025-11-12 11:40:12,538 basehttp 4888 18384 "GET /static/core/css/leaderboard.css HTTP/1.1" 200 3628
+WARNING 2025-11-12 11:40:12,588 log 4888 8308 Not Found: /media/profile_photos/default.png
+WARNING 2025-11-12 11:40:12,589 basehttp 4888 8308 "GET /media/profile_photos/default.png HTTP/1.1" 404 12946
+INFO 2025-11-12 11:40:15,091 basehttp 4888 8308 "GET /donor/history/ HTTP/1.1" 200 10219
+INFO 2025-11-12 11:40:15,138 basehttp 4888 8308 "GET /static/core/css/donation_history.css HTTP/1.1" 304 0
+WARNING 2025-11-12 11:40:15,202 log 4888 8308 Not Found: /media/profile_photos/default.png
+WARNING 2025-11-12 11:40:15,203 basehttp 4888 8308 "GET /media/profile_photos/default.png HTTP/1.1" 404 12946
+INFO 2025-11-12 11:40:17,307 basehttp 4888 8308 "GET /donor/requests/ HTTP/1.1" 200 26082
+INFO 2025-11-12 11:40:17,343 basehttp 4888 8308 "GET /static/core/css/nearby_requests.css HTTP/1.1" 304 0
+WARNING 2025-11-12 11:40:17,417 log 4888 8308 Not Found: /media/profile_photos/default.png
+WARNING 2025-11-12 11:40:17,419 basehttp 4888 8308 "GET /media/profile_photos/default.png HTTP/1.1" 404 12946
+INFO 2025-11-12 11:40:18,698 basehttp 4888 8308 "GET /donor/history/ HTTP/1.1" 200 10219
+WARNING 2025-11-12 11:40:18,931 log 4888 8308 Not Found: /media/profile_photos/default.png
+WARNING 2025-11-12 11:40:18,933 basehttp 4888 8308 "GET /media/profile_photos/default.png HTTP/1.1" 404 12946
+INFO 2025-11-12 11:40:28,171 basehttp 4888 15604 "GET /donor/dashboard/ HTTP/1.1" 200 12916
+WARNING 2025-11-12 11:40:28,254 basehttp 4888 2336 "GET /static/core/js/donor_dashboard.js HTTP/1.1" 404 2005
+WARNING 2025-11-12 11:40:28,332 log 4888 15604 Not Found: /media/profile_photos/default.png
+WARNING 2025-11-12 11:40:28,341 basehttp 4888 15604 "GET /media/profile_photos/default.png HTTP/1.1" 404 12946
+INFO 2025-11-12 11:40:34,067 basehttp 4888 20560 "GET /logout/ HTTP/1.1" 302 0
+INFO 2025-11-12 11:40:34,100 basehttp 4888 20560 "GET / HTTP/1.1" 200 30580
+INFO 2025-11-12 11:41:20,642 basehttp 4888 17676 "GET /login/ HTTP/1.1" 200 14557
+INFO 2025-11-12 11:41:34,147 basehttp 4888 20024 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-11-12 11:41:34,231 basehttp 4888 20024 "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-11-12 11:41:34,386 basehttp 4888 20024 "GET /hospital/dashboard/ HTTP/1.1" 200 15504
+INFO 2025-11-12 11:47:41,022 basehttp 4888 9132 - Broken pipe from ('127.0.0.1', 53442)
+INFO 2025-11-12 11:52:02,644 basehttp 4888 3668 "GET /hospital/ai/donor-retention/ HTTP/1.1" 200 94571
+WARNING 2025-11-12 11:52:04,748 basehttp 4888 3668 "GET /static/images/default-avatar.png HTTP/1.1" 404 2002
+INFO 2025-11-12 11:52:19,604 basehttp 4888 21208 "GET /chatbot/ HTTP/1.1" 200 22090
+INFO 2025-11-12 11:52:22,734 basehttp 4888 21208 "POST /chatbot/message/ HTTP/1.1" 200 682
+INFO 2025-11-12 11:52:56,317 basehttp 4888 14744 "GET / HTTP/1.1" 200 30111
+INFO 2025-11-12 11:52:59,586 basehttp 4888 14744 "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-11-12 11:52:59,809 basehttp 4888 14744 "GET /hospital/dashboard/ HTTP/1.1" 200 15504
+INFO 2025-11-12 11:53:03,258 basehttp 4888 14744 "GET /hospital/ai/analytics/ HTTP/1.1" 200 63883
+INFO 2025-11-12 11:53:03,716 basehttp 4888 14744 "GET /hospital/analytics/data/?type=overview HTTP/1.1" 200 3171
+INFO 2025-11-12 11:55:20,302 basehttp 4888 12028 "GET /hospital/ai/demand-prediction/ HTTP/1.1" 200 90381
+INFO 2025-11-12 11:56:19,259 basehttp 4888 13520 "GET /hospital/ai/donor-retention/ HTTP/1.1" 200 94571
+WARNING 2025-11-12 11:56:20,992 basehttp 4888 13520 "GET /static/images/default-avatar.png HTTP/1.1" 404 2002
+INFO 2025-11-12 11:56:24,761 basehttp 4888 4512 "GET / HTTP/1.1" 200 30111
+INFO 2025-11-12 11:56:27,291 basehttp 4888 8064 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-11-12 11:56:27,524 basehttp 4888 8064 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 3706
+INFO 2025-11-12 11:56:39,997 basehttp 4888 17536 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-11-12 11:56:40,265 basehttp 4888 17536 "GET /admin/ HTTP/1.1" 200 20786
+INFO 2025-11-12 11:56:43,177 basehttp 4888 17536 "GET /admin/core/bloodstock/ HTTP/1.1" 200 27915
+INFO 2025-11-12 11:56:43,388 basehttp 4888 17536 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-11-12 11:56:58,454 basehttp 4888 2648 "POST /admin/logout/ HTTP/1.1" 302 0
+INFO 2025-11-12 11:56:58,487 basehttp 4888 2648 "GET / HTTP/1.1" 200 30120
+INFO 2025-11-12 11:57:00,096 basehttp 4888 2648 "GET /chatbot/ HTTP/1.1" 200 21234
+INFO 2025-11-12 11:57:02,583 basehttp 4888 2648 "POST /chatbot/message/ HTTP/1.1" 200 682
+INFO 2025-11-12 11:57:10,380 basehttp 4888 13704 "POST /chatbot/message/ HTTP/1.1" 200 682
+INFO 2025-11-12 11:57:15,149 basehttp 4888 13704 "GET / HTTP/1.1" 200 30120
+INFO 2025-12-09 10:55:38,703 autoreload 2020 21264 Watching for file changes with StatReloader
+INFO 2025-12-09 11:11:32,803 autoreload 8860 18592 Watching for file changes with StatReloader
+INFO 2025-12-09 11:12:53,657 basehttp 8860 15916 "GET / HTTP/1.1" 200 30120
+INFO 2025-12-09 11:12:53,732 basehttp 8860 16516 "GET /static/core/css/home.css HTTP/1.1" 200 19005
+INFO 2025-12-09 11:12:53,768 basehttp 8860 12260 "GET /static/core/js/home.js HTTP/1.1" 200 13974
+INFO 2025-12-09 11:12:53,780 basehttp 8860 15916 "GET /static/core/css/base.css HTTP/1.1" 200 18477
+INFO 2025-12-09 11:12:53,877 basehttp 8860 2716 "GET /static/core/js/base.js HTTP/1.1" 200 14887
+WARNING 2025-12-09 11:12:56,080 basehttp 8860 12352 "GET /static/images/favicon.ico HTTP/1.1" 404 1981
+INFO 2025-12-09 11:13:04,361 basehttp 8860 23444 "GET /login/ HTTP/1.1" 200 14557
+INFO 2025-12-09 11:13:04,423 basehttp 8860 23444 "GET /static/core/css/login.css HTTP/1.1" 200 15215
+INFO 2025-12-09 11:13:04,494 basehttp 8860 13664 "GET /static/core/js/login.js HTTP/1.1" 200 12259
+INFO 2025-12-09 11:13:21,682 basehttp 8860 5712 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-09 11:13:21,771 basehttp 8860 5712 "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-09 11:13:22,344 basehttp 8860 5712 "GET /donor/dashboard/ HTTP/1.1" 200 12916
+INFO 2025-12-09 11:13:22,414 basehttp 8860 6820 "GET /static/core/css/chatbot.css HTTP/1.1" 200 680
+INFO 2025-12-09 11:13:22,415 basehttp 8860 5712 "GET /static/core/css/dashboard_base.css HTTP/1.1" 200 6815
+INFO 2025-12-09 11:13:22,423 basehttp 8860 6820 "GET /static/core/js/chatbot.js HTTP/1.1" 200 0
+WARNING 2025-12-09 11:13:22,433 basehttp 8860 18172 "GET /static/core/js/donor_dashboard.js HTTP/1.1" 404 2005
+INFO 2025-12-09 11:13:22,453 basehttp 8860 17916 "GET /static/core/css/donor_dashboard.css HTTP/1.1" 200 8417
+INFO 2025-12-09 11:13:22,463 basehttp 8860 10872 "GET /static/core/js/dashboard_base.js HTTP/1.1" 200 1452
+INFO 2025-12-09 11:13:22,529 basehttp 8860 2176 "GET /media/profile_photos/robot-assistant.png HTTP/1.1" 200 26189
+WARNING 2025-12-09 11:13:22,865 basehttp 8860 2176 "GET /static/core/images/favicon.ico HTTP/1.1" 404 1996
+INFO 2025-12-09 11:13:27,459 basehttp 8860 5752 "GET /donor/requests/ HTTP/1.1" 200 26092
+INFO 2025-12-09 11:13:27,509 basehttp 8860 5752 "GET /static/core/css/nearby_requests.css HTTP/1.1" 200 5379
+INFO 2025-12-09 11:13:28,515 basehttp 8860 5752 "GET /donor/history/ HTTP/1.1" 200 9994
+INFO 2025-12-09 11:13:28,589 basehttp 8860 5752 "GET /static/core/css/donation_history.css HTTP/1.1" 200 4856
+INFO 2025-12-09 11:13:29,729 basehttp 8860 5752 "GET /donor/leaderboard/ HTTP/1.1" 200 9004
+INFO 2025-12-09 11:13:29,773 basehttp 8860 5752 "GET /static/core/css/leaderboard.css HTTP/1.1" 200 3628
+INFO 2025-12-09 11:13:31,500 basehttp 8860 5752 "GET /donor/dashboard/ HTTP/1.1" 200 12916
+WARNING 2025-12-09 11:13:31,564 basehttp 8860 5752 "GET /static/core/js/donor_dashboard.js HTTP/1.1" 404 2005
+INFO 2025-12-09 11:13:33,268 basehttp 8860 15072 "GET /donor/settings/ HTTP/1.1" 200 12123
+INFO 2025-12-09 11:13:33,347 basehttp 8860 15072 "GET /static/core/css/settings.css HTTP/1.1" 200 4195
+INFO 2025-12-09 11:13:35,094 basehttp 8860 21728 "GET /donor/dashboard/ HTTP/1.1" 200 12916
+WARNING 2025-12-09 11:13:35,149 basehttp 8860 21728 "GET /static/core/js/donor_dashboard.js HTTP/1.1" 404 2005
+INFO 2025-12-09 11:13:37,085 basehttp 8860 22460 "GET /chatbot/ HTTP/1.1" 200 22091
+INFO 2025-12-09 11:16:27,340 basehttp 8860 13796 "GET / HTTP/1.1" 200 30112
+INFO 2025-12-09 11:17:37,678 basehttp 8860 13796 "GET / HTTP/1.1" 200 30117
+INFO 2025-12-09 11:17:37,750 basehttp 8860 6336 "GET /static/core/css/home.css HTTP/1.1" 200 19005
+INFO 2025-12-09 11:17:37,756 basehttp 8860 13796 "GET /static/core/css/base.css HTTP/1.1" 200 18477
+INFO 2025-12-09 11:17:37,775 basehttp 8860 9708 "GET /static/core/js/home.js HTTP/1.1" 200 13974
+INFO 2025-12-09 11:17:37,786 basehttp 8860 7332 "GET /static/core/js/base.js HTTP/1.1" 200 14887
+WARNING 2025-12-09 11:18:04,162 basehttp 8860 9560 "GET /static/images/favicon.ico HTTP/1.1" 404 1981
+INFO 2025-12-09 11:18:09,738 basehttp 8860 5732 "GET / HTTP/1.1" 200 30117
+INFO 2025-12-09 11:18:44,378 basehttp 8860 22284 "GET / HTTP/1.1" 200 30125
+INFO 2025-12-09 11:18:44,494 basehttp 8860 22892 "GET /static/core/css/home.css HTTP/1.1" 200 19005
+INFO 2025-12-09 11:18:44,495 basehttp 8860 22284 "GET /static/core/css/base.css HTTP/1.1" 200 18477
+INFO 2025-12-09 11:18:44,507 basehttp 8860 11112 "GET /static/core/js/base.js HTTP/1.1" 200 14887
+INFO 2025-12-09 11:18:44,512 basehttp 8860 19436 "GET /static/core/js/home.js HTTP/1.1" 200 13974
+WARNING 2025-12-09 11:18:57,032 basehttp 8860 19436 "GET /static/images/favicon.ico HTTP/1.1" 404 1981
+INFO 2025-12-09 11:19:55,478 basehttp 8860 12776 "GET / HTTP/1.1" 200 30125
+INFO 2025-12-09 11:20:58,004 basehttp 8860 17924 "GET / HTTP/1.1" 200 30125
+INFO 2025-12-09 11:26:47,657 basehttp 8860 19284 "GET / HTTP/1.1" 200 30125
+INFO 2025-12-09 12:01:30,428 basehttp 8860 4960 "GET /chatbot/ HTTP/1.1" 200 21234
+INFO 2025-12-09 12:01:42,973 basehttp 8860 4960 "POST /chatbot/message/ HTTP/1.1" 200 202
+INFO 2025-12-09 12:01:57,344 basehttp 8860 4960 "POST /chatbot/message/ HTTP/1.1" 200 213
+INFO 2025-12-09 12:02:03,956 basehttp 8860 4960 "GET / HTTP/1.1" 200 30125
+INFO 2025-12-09 13:13:22,693 basehttp 8860 15696 "GET /login/ HTTP/1.1" 200 14557
+INFO 2025-12-09 13:13:22,755 basehttp 8860 556 "GET /static/core/js/login.js HTTP/1.1" 200 12259
+INFO 2025-12-09 13:13:22,763 basehttp 8860 15696 "GET /static/core/css/login.css HTTP/1.1" 200 15215
+INFO 2025-12-09 13:13:33,478 basehttp 8860 15696 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-09 13:13:33,567 basehttp 8860 15696 "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-09 13:13:33,807 basehttp 8860 15696 "GET /hospital/dashboard/ HTTP/1.1" 200 15504
+INFO 2025-12-09 13:13:33,852 basehttp 8860 9624 "GET /static/core/js/chatbot.js HTTP/1.1" 200 0
+INFO 2025-12-09 13:13:33,856 basehttp 8860 15696 "GET /static/core/css/dashboard_base.css HTTP/1.1" 200 6815
+INFO 2025-12-09 13:13:33,870 basehttp 8860 20696 "GET /static/core/css/hospital_dashboard.css HTTP/1.1" 200 5974
+INFO 2025-12-09 13:13:33,880 basehttp 8860 556 "GET /static/core/css/chatbot.css HTTP/1.1" 200 680
+INFO 2025-12-09 13:13:33,894 basehttp 8860 12028 "GET /static/core/js/dashboard_base.js HTTP/1.1" 200 1452
+INFO 2025-12-09 13:13:33,916 basehttp 8860 10192 "GET /static/core/js/hospital_dashboard.js HTTP/1.1" 200 3238
+INFO 2025-12-09 13:13:38,962 basehttp 8860 3128 "GET /hospital/request/create/ HTTP/1.1" 200 16571
+INFO 2025-12-09 13:13:38,995 basehttp 8860 3128 "GET /static/core/css/create_request.css HTTP/1.1" 200 3489
+INFO 2025-12-09 13:14:20,509 basehttp 8860 3128 "POST /hospital/request/create/ HTTP/1.1" 200 16859
+ERROR 2025-12-09 13:14:37,276 log 8860 3128 Internal Server Error: /hospital/request/create/
+Traceback (most recent call last):
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\contrib\auth\mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\edit.py", line 182, in post
+    return super().post(request, *args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\edit.py", line 151, in post
+    return self.form_valid(form)
+           ~~~~~~~~~~~~~~~^^^^^^
+  File "E:\HemoVital_Project\core\views.py", line 570, in form_valid
+    return redirect(self.get_success_url())
+                    ~~~~~~~~~~~~~~~~~~~~^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\edit.py", line 120, in get_success_url
+    url = self.success_url.format(**self.object.__dict__)
+                                    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute '__dict__'. Did you mean: '__dir__'?
+ERROR 2025-12-09 13:14:37,288 basehttp 8860 3128 "POST /hospital/request/create/ HTTP/1.1" 500 104724
+WARNING 2025-12-09 13:14:37,499 log 8860 3128 Not Found: /favicon.ico
+WARNING 2025-12-09 13:14:37,503 basehttp 8860 3128 "GET /favicon.ico HTTP/1.1" 404 13097
+INFO 2025-12-09 13:14:40,083 basehttp 8860 3128 "GET /hospital/request/create/ HTTP/1.1" 200 17056
+INFO 2025-12-09 13:14:42,285 basehttp 8860 3128 "GET /hospital/request/create/ HTTP/1.1" 200 16571
+ERROR 2025-12-09 13:15:16,638 log 8860 3128 Internal Server Error: /hospital/request/create/
+Traceback (most recent call last):
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\contrib\auth\mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\edit.py", line 182, in post
+    return super().post(request, *args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\edit.py", line 151, in post
+    return self.form_valid(form)
+           ~~~~~~~~~~~~~~~^^^^^^
+  File "E:\HemoVital_Project\core\views.py", line 570, in form_valid
+    return redirect(self.get_success_url())
+                    ~~~~~~~~~~~~~~~~~~~~^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\edit.py", line 120, in get_success_url
+    url = self.success_url.format(**self.object.__dict__)
+                                    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute '__dict__'. Did you mean: '__dir__'?
+ERROR 2025-12-09 13:15:16,642 basehttp 8860 3128 "POST /hospital/request/create/ HTTP/1.1" 500 104812
+INFO 2025-12-09 13:15:17,507 basehttp 8860 3128 "GET /hospital/request/create/ HTTP/1.1" 200 17056
+INFO 2025-12-09 13:15:20,788 basehttp 8860 3128 "GET /hospital/dashboard/ HTTP/1.1" 200 17148
+INFO 2025-12-09 13:15:25,801 basehttp 8860 3128 "GET /hospital/request/create/ HTTP/1.1" 200 16571
+WARNING 2025-12-09 13:15:53,070 basehttp 8860 19404 "GET /static/core/images/favicon.ico HTTP/1.1" 404 1996
+ERROR 2025-12-09 13:16:03,990 log 8860 8700 Internal Server Error: /hospital/request/create/
+Traceback (most recent call last):
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\contrib\auth\mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\edit.py", line 182, in post
+    return super().post(request, *args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\edit.py", line 151, in post
+    return self.form_valid(form)
+           ~~~~~~~~~~~~~~~^^^^^^
+  File "E:\HemoVital_Project\core\views.py", line 570, in form_valid
+    return redirect(self.get_success_url())
+                    ~~~~~~~~~~~~~~~~~~~~^^
+  File "E:\HemoVital_Project\venv\Lib\site-packages\django\views\generic\edit.py", line 120, in get_success_url
+    url = self.success_url.format(**self.object.__dict__)
+                                    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute '__dict__'. Did you mean: '__dir__'?
+ERROR 2025-12-09 13:16:03,993 basehttp 8860 8700 "POST /hospital/request/create/ HTTP/1.1" 500 104717
+INFO 2025-12-09 13:16:05,880 basehttp 8860 8700 "GET /hospital/request/create/ HTTP/1.1" 200 17056
+INFO 2025-12-09 13:16:09,316 basehttp 8860 8700 "GET /hospital/dashboard/ HTTP/1.1" 200 17969
+INFO 2025-12-09 13:16:14,798 basehttp 8860 8700 "GET /hospital/request/create/ HTTP/1.1" 200 16571
+INFO 2025-12-09 13:16:16,055 basehttp 8860 8700 "GET /hospital/requests/manage/ HTTP/1.1" 200 29097
+INFO 2025-12-09 13:16:16,089 basehttp 8860 8700 "GET /static/core/css/hospital_manage_request.css HTTP/1.1" 200 4665
+INFO 2025-12-09 13:16:17,625 basehttp 8860 8700 "GET /hospital/stock/ HTTP/1.1" 200 16872
+INFO 2025-12-09 13:16:17,663 basehttp 8860 8700 "GET /static/core/css/blood_stock.css HTTP/1.1" 200 3263
+INFO 2025-12-09 13:16:41,952 basehttp 8860 8700 "POST /hospital/stock/ HTTP/1.1" 302 0
+INFO 2025-12-09 13:16:42,031 basehttp 8860 8700 "GET /hospital/stock/ HTTP/1.1" 200 17193
+INFO 2025-12-09 13:16:45,188 basehttp 8860 8700 "GET /hospital/request/create/ HTTP/1.1" 200 16571
+INFO 2025-12-09 13:16:46,182 basehttp 8860 8700 "GET /hospital/stock/ HTTP/1.1" 200 16878
+INFO 2025-12-09 13:16:48,137 basehttp 8860 8700 "GET /hospital/profile/ HTTP/1.1" 200 18371
+INFO 2025-12-09 13:16:48,170 basehttp 8860 8700 "GET /static/core/css/hospital_profile.css HTTP/1.1" 200 3781
+INFO 2025-12-09 13:16:48,265 basehttp 8860 4092 "GET /media/hospital_logos/SDG_IMAGE_WFS97b5.jpg HTTP/1.1" 200 80551
+INFO 2025-12-09 13:16:50,506 basehttp 8860 4092 "GET /hospital/ai/analytics/ HTTP/1.1" 200 63883
+INFO 2025-12-09 13:16:54,412 basehttp 8860 4092 "GET /hospital/analytics/data/?type=overview HTTP/1.1" 200 3179
+INFO 2025-12-09 13:17:06,570 basehttp 8860 14880 "GET /hospital/ai/analytics/ HTTP/1.1" 200 63883
+INFO 2025-12-09 13:17:06,896 basehttp 8860 14880 "GET /hospital/analytics/data/?type=overview HTTP/1.1" 200 3179
+INFO 2025-12-09 13:17:12,596 basehttp 8860 5804 "GET /hospital/ai/demand-prediction/ HTTP/1.1" 200 90381
+INFO 2025-12-09 13:17:20,165 basehttp 8860 15252 "GET /hospital/ai/demand-prediction/ HTTP/1.1" 200 90381
+INFO 2025-12-09 13:17:26,312 basehttp 8860 15252 "GET /hospital/ai/donor-retention/ HTTP/1.1" 200 94571
+WARNING 2025-12-09 13:17:27,955 basehttp 8860 15252 "GET /static/images/default-avatar.png HTTP/1.1" 404 2002
+INFO 2025-12-09 13:17:36,972 basehttp 8860 1888 "GET /hospital/ai/donor-retention/ HTTP/1.1" 200 94571
+WARNING 2025-12-09 13:17:38,837 basehttp 8860 1888 "GET /static/images/default-avatar.png HTTP/1.1" 404 2002
+ERROR 2025-12-09 13:17:41,360 log 8860 12304 Internal Server Error: /hospital/analytics/data/
+ERROR 2025-12-09 13:17:41,362 basehttp 8860 12304 "GET /hospital/analytics/data/?type=active_requests HTTP/1.1" 500 78
+INFO 2025-12-09 13:17:43,164 basehttp 8860 12304 "GET /hospital/request/create/ HTTP/1.1" 200 16571
+INFO 2025-12-09 13:17:46,088 basehttp 8860 12304 "GET /hospital/dashboard/ HTTP/1.1" 200 17969
+INFO 2025-12-09 13:17:58,493 basehttp 8860 12304 "GET / HTTP/1.1" 200 30116
+INFO 2025-12-09 13:18:21,987 basehttp 8860 12304 "GET /logout/ HTTP/1.1" 302 0
+INFO 2025-12-09 13:18:22,008 basehttp 8860 12304 "GET / HTTP/1.1" 200 30585
+INFO 2025-12-09 13:18:33,634 basehttp 8860 12304 "GET /login/ HTTP/1.1" 200 14557
+INFO 2025-12-09 13:18:46,193 basehttp 8860 12304 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-09 13:18:46,244 basehttp 8860 12304 "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-09 13:18:46,398 basehttp 8860 12304 "GET /donor/dashboard/ HTTP/1.1" 200 12916
+WARNING 2025-12-09 13:18:46,446 basehttp 8860 2388 "GET /static/core/js/donor_dashboard.js HTTP/1.1" 404 2005
+INFO 2025-12-09 13:18:46,447 basehttp 8860 12304 "GET /static/core/css/donor_dashboard.css HTTP/1.1" 200 8417
+INFO 2025-12-09 13:18:46,506 basehttp 8860 23508 "GET /media/profile_photos/robot-assistant.png HTTP/1.1" 200 26189
+INFO 2025-12-09 13:18:51,070 basehttp 8860 23508 "GET /donor/dashboard/ HTTP/1.1" 200 12916
+WARNING 2025-12-09 13:18:51,099 basehttp 8860 23508 "GET /static/core/js/donor_dashboard.js HTTP/1.1" 404 2005
+INFO 2025-12-09 13:18:54,481 basehttp 8860 12304 "GET /donor/profile/ HTTP/1.1" 200 14739
+INFO 2025-12-09 13:18:54,515 basehttp 8860 12304 "GET /static/core/css/donor_profile.css HTTP/1.1" 200 4239
+INFO 2025-12-09 13:19:02,976 basehttp 8860 12304 "GET / HTTP/1.1" 200 30117
+INFO 2025-12-09 13:19:23,246 basehttp 8860 12304 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-12-09 13:19:23,571 basehttp 8860 12304 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 3707
+INFO 2025-12-09 13:19:23,596 basehttp 8860 19908 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-12-09 13:19:23,607 basehttp 8860 12304 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-12-09 13:19:23,674 basehttp 8860 19908 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-12-09 13:19:23,674 basehttp 8860 12304 "GET /static/admin/css/login.css HTTP/1.1" 200 951
+INFO 2025-12-09 13:19:23,682 basehttp 8860 12304 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-12-09 13:19:23,711 basehttp 8860 19392 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-12-09 13:19:23,746 basehttp 8860 12304 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-12-09 13:19:29,395 basehttp 8860 12304 "POST /admin/login/?next=/admin/ HTTP/1.1" 200 3879
+INFO 2025-12-09 13:19:36,944 basehttp 8860 12304 "POST /admin/login/?next=/admin/ HTTP/1.1" 200 3881
+INFO 2025-12-09 13:19:56,526 basehttp 8860 12304 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 3707
+INFO 2025-12-09 13:20:03,719 basehttp 8860 12304 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-12-09 13:20:03,856 basehttp 8860 12304 "GET /admin/ HTTP/1.1" 200 20786
+INFO 2025-12-09 13:20:03,883 basehttp 8860 12304 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-12-09 13:20:03,920 basehttp 8860 19908 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-12-09 13:20:03,922 basehttp 8860 19392 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-12-09 13:20:08,971 basehttp 8860 19392 "GET /admin/core/userprofile/ HTTP/1.1" 200 26919
+INFO 2025-12-09 13:20:08,995 basehttp 8860 19392 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-12-09 13:20:09,025 basehttp 8860 12304 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-12-09 13:20:09,062 basehttp 8860 12304 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-12-09 13:20:09,063 basehttp 8860 1856 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2025-12-09 13:20:09,097 basehttp 8860 14692 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-12-09 13:20:09,098 basehttp 8860 12304 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-12-09 13:20:09,133 basehttp 8860 14692 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-12-09 13:20:09,144 basehttp 8860 19908 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-12-09 13:20:09,149 basehttp 8860 12304 "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+INFO 2025-12-09 13:20:09,161 basehttp 8860 10828 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-12-09 13:20:09,205 basehttp 8860 19392 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-12-09 13:20:09,232 basehttp 8860 19392 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-12-09 13:20:09,259 basehttp 8860 1856 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-12-09 13:20:09,295 basehttp 8860 19392 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2025-12-09 13:20:09,296 basehttp 8860 1856 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-12-09 13:20:12,983 basehttp 8860 1856 "GET /admin/core/userprofile/12/change/ HTTP/1.1" 200 32587
+INFO 2025-12-09 13:20:13,007 basehttp 8860 1856 "GET /static/admin/css/forms.css HTTP/1.1" 200 8525
+INFO 2025-12-09 13:20:13,019 basehttp 8860 19908 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11973
+INFO 2025-12-09 13:20:13,041 basehttp 8860 12304 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-12-09 13:20:13,047 basehttp 8860 19392 "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+INFO 2025-12-09 13:20:13,055 basehttp 8860 1856 "GET /static/admin/js/calendar.js HTTP/1.1" 200 9141
+INFO 2025-12-09 13:20:13,074 basehttp 8860 10828 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-12-09 13:20:13,078 basehttp 8860 1856 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-12-09 13:20:13,149 basehttp 8860 10828 "GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
+INFO 2025-12-09 13:20:13,158 basehttp 8860 1856 "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+INFO 2025-12-09 13:20:20,139 basehttp 8860 1856 "POST /admin/core/userprofile/12/change/ HTTP/1.1" 302 0
+INFO 2025-12-09 13:20:20,207 basehttp 8860 1856 "GET /admin/core/userprofile/ HTTP/1.1" 200 27148
+INFO 2025-12-09 13:20:20,275 basehttp 8860 1856 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-12-09 13:20:26,533 basehttp 8860 1856 "POST /admin/logout/ HTTP/1.1" 302 0
+INFO 2025-12-09 13:20:26,549 basehttp 8860 1856 "GET / HTTP/1.1" 200 30125
+INFO 2025-12-09 13:20:28,865 basehttp 8860 1856 "GET /login/ HTTP/1.1" 200 14557
+INFO 2025-12-09 13:20:35,927 basehttp 8860 1856 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-09 13:20:35,975 basehttp 8860 1856 "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-09 13:20:36,065 basehttp 8860 1856 "GET /donor/dashboard/ HTTP/1.1" 200 17537
+WARNING 2025-12-09 13:20:36,109 basehttp 8860 1856 "GET /static/core/js/donor_dashboard.js HTTP/1.1" 404 2005
+INFO 2025-12-09 13:20:58,537 basehttp 8860 10828 "GET /donor/requests/ HTTP/1.1" 200 30027
+INFO 2025-12-09 13:20:58,581 basehttp 8860 10828 "GET /static/core/css/nearby_requests.css HTTP/1.1" 200 5379
+INFO 2025-12-09 13:21:48,637 basehttp 8860 10828 "GET /donor/profile/ HTTP/1.1" 200 14739
+INFO 2025-12-09 13:22:03,371 basehttp 8860 10828 "GET /donor/requests/ HTTP/1.1" 200 30027
+INFO 2025-12-09 13:22:17,825 basehttp 8860 10828 "POST /donor/respond/ HTTP/1.1" 200 108
+INFO 2025-12-09 13:22:21,327 basehttp 8860 6576 - Broken pipe from ('127.0.0.1', 56638)
+INFO 2025-12-09 13:22:21,394 basehttp 8860 13948 "GET /donor/requests/ HTTP/1.1" 200 30027
+INFO 2025-12-09 13:22:22,433 basehttp 8860 13948 "GET /donor/dashboard/ HTTP/1.1" 200 17546
+WARNING 2025-12-09 13:22:22,458 basehttp 8860 13948 "GET /static/core/js/donor_dashboard.js HTTP/1.1" 404 2005
+INFO 2025-12-09 13:22:28,657 basehttp 8860 14512 "GET /donor/leaderboard/ HTTP/1.1" 200 9004
+INFO 2025-12-09 13:22:28,715 basehttp 8860 14512 "GET /static/core/css/leaderboard.css HTTP/1.1" 200 3628
+INFO 2025-12-09 13:22:29,592 basehttp 8860 14512 "GET /donor/history/ HTTP/1.1" 200 10225
+INFO 2025-12-09 13:22:29,630 basehttp 8860 14512 "GET /static/core/css/donation_history.css HTTP/1.1" 200 4856
+INFO 2025-12-09 13:22:32,704 basehttp 8860 14512 "GET /donor/requests/ HTTP/1.1" 200 30027
+INFO 2025-12-09 13:22:34,107 basehttp 8860 14512 "GET /donor/dashboard/ HTTP/1.1" 200 17546
+WARNING 2025-12-09 13:22:34,143 basehttp 8860 14512 "GET /static/core/js/donor_dashboard.js HTTP/1.1" 404 2005
+INFO 2025-12-09 13:22:48,835 basehttp 8860 18552 "GET / HTTP/1.1" 200 30117
+INFO 2025-12-09 13:54:28,374 basehttp 8860 19200 "GET /donor/requests/ HTTP/1.1" 200 30027
+INFO 2025-12-09 13:59:37,972 basehttp 8860 11760 "GET /chatbot/ HTTP/1.1" 200 22091
+INFO 2025-12-09 14:10:21,380 basehttp 8860 3832 "GET /chatbot/ HTTP/1.1" 200 22091
+INFO 2025-12-09 14:19:22,787 basehttp 8860 22864 "GET /chatbot/ HTTP/1.1" 200 22091
+INFO 2025-12-09 14:28:54,774 basehttp 8860 1452 "GET /donor/dashboard/ HTTP/1.1" 200 17546
+WARNING 2025-12-09 14:28:55,059 basehttp 8860 1452 "GET /static/core/js/donor_dashboard.js HTTP/1.1" 404 2005
+INFO 2025-12-09 14:29:12,423 basehttp 8860 14752 "GET /donor/requests/ HTTP/1.1" 200 30027
+INFO 2025-12-09 14:30:08,740 basehttp 8860 14752 - Broken pipe from ('127.0.0.1', 50765)
+INFO 2025-12-09 14:30:08,800 basehttp 8860 7712 "GET /chatbot/ HTTP/1.1" 200 22091
+INFO 2025-12-09 15:03:49,405 basehttp 8860 23248 "GET /donor/dashboard/ HTTP/1.1" 200 17546
+WARNING 2025-12-09 15:03:49,481 basehttp 8860 23248 "GET /static/core/js/donor_dashboard.js HTTP/1.1" 404 2005
+INFO 2025-12-09 15:03:51,764 basehttp 8860 23528 "GET /donor/profile/ HTTP/1.1" 200 14739
+INFO 2025-12-09 15:04:21,000 basehttp 8860 23528 "GET /donor/requests/ HTTP/1.1" 200 30026
+INFO 2025-12-09 15:19:26,938 basehttp 8860 12624 "GET /donor/requests/ HTTP/1.1" 200 30014
+INFO 2025-12-09 15:22:56,278 basehttp 8860 12624 "GET /about/ HTTP/1.1" 200 35130
+INFO 2025-12-09 15:22:56,361 basehttp 8860 12624 "GET /static/core/css/about.css HTTP/1.1" 200 5725
+INFO 2025-12-09 15:23:05,245 basehttp 8860 12624 "GET /contact/ HTTP/1.1" 200 14606
+INFO 2025-12-09 15:23:05,316 basehttp 8860 12624 "GET /static/core/css/contact.css HTTP/1.1" 200 4891
+INFO 2025-12-09 15:29:24,745 basehttp 8860 18900 "GET /about/ HTTP/1.1" 200 35130
+INFO 2025-12-09 15:33:52,995 basehttp 8860 22596 "GET /about/ HTTP/1.1" 200 35130
+INFO 2025-12-09 15:33:54,165 basehttp 8860 22596 "GET /contact/ HTTP/1.1" 200 14606
+INFO 2025-12-09 15:34:16,432 basehttp 8860 22596 "GET /about/ HTTP/1.1" 200 35130
+INFO 2025-12-09 15:37:38,846 basehttp 8860 13696 "GET / HTTP/1.1" 200 30117
+INFO 2025-12-09 15:47:30,964 basehttp 8860 3348 "GET /about/ HTTP/1.1" 200 35130
+INFO 2025-12-09 15:47:41,211 basehttp 8860 3348 "GET /contact/ HTTP/1.1" 200 14606
+INFO 2025-12-09 15:59:57,524 basehttp 8860 20420 "GET /about/ HTTP/1.1" 200 35130
+INFO 2025-12-09 15:59:58,525 basehttp 8860 20420 "GET / HTTP/1.1" 200 30117
+INFO 2025-12-09 19:15:45,811 autoreload 10556 19636 Watching for file changes with StatReloader
+INFO 2025-12-09 19:17:13,030 basehttp 10556 21116 "GET / HTTP/1.1" 200 30117
+WARNING 2025-12-09 19:17:15,460 basehttp 10556 21116 "GET /static/images/favicon.ico HTTP/1.1" 404 1981
+INFO 2025-12-09 19:17:22,560 basehttp 10556 16296 "GET /about/ HTTP/1.1" 200 35130
+INFO 2025-12-09 19:21:01,835 basehttp 10556 18748 "GET / HTTP/1.1" 200 30117
+INFO 2025-12-09 19:21:20,284 basehttp 10556 18748 "GET /contact/ HTTP/1.1" 200 14606
+INFO 2025-12-09 19:21:26,987 basehttp 10556 18748 "GET /about/ HTTP/1.1" 200 35130
+INFO 2026-01-08 13:14:49,053 autoreload 13504 15608 Watching for file changes with StatReloader
+INFO 2026-01-08 13:16:07,515 basehttp 13504 17360 "GET / HTTP/1.1" 200 30125
+INFO 2026-01-08 13:16:07,750 basehttp 13504 19948 "GET /static/core/css/home.css HTTP/1.1" 200 19005
+INFO 2026-01-08 13:16:07,782 basehttp 13504 17360 "GET /static/core/css/base.css HTTP/1.1" 200 18477
+INFO 2026-01-08 13:16:08,564 basehttp 13504 12128 "GET /static/core/js/base.js HTTP/1.1" 200 14887
+INFO 2026-01-08 13:16:08,569 basehttp 13504 1788 "GET /static/core/js/home.js HTTP/1.1" 200 13974
+WARNING 2026-01-08 13:16:09,615 basehttp 13504 1788 "GET /static/images/favicon.ico HTTP/1.1" 404 1981
+INFO 2026-01-08 13:16:30,351 basehttp 13504 12128 "GET /login/ HTTP/1.1" 200 14557
+INFO 2026-01-08 13:16:30,498 basehttp 13504 12128 "GET /static/core/css/login.css HTTP/1.1" 200 15215
+INFO 2026-01-08 13:16:30,720 basehttp 13504 17360 "GET /static/core/js/login.js HTTP/1.1" 200 12259
+INFO 2026-01-08 13:16:42,868 basehttp 13504 17360 "GET /admin/ HTTP/1.1" 302 0
+INFO 2026-01-08 13:16:43,714 basehttp 13504 17360 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4182
+INFO 2026-01-08 13:16:43,774 basehttp 13504 12128 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2026-01-08 13:16:43,776 basehttp 13504 17360 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2026-01-08 13:16:43,819 basehttp 13504 20764 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2026-01-08 13:16:43,853 basehttp 13504 1736 "GET /static/admin/css/login.css HTTP/1.1" 200 951
+INFO 2026-01-08 13:16:43,864 basehttp 13504 16860 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2026-01-08 13:16:43,951 basehttp 13504 19948 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2026-01-08 13:16:44,038 basehttp 13504 16860 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+WARNING 2026-01-08 13:16:44,070 log 13504 16860 Not Found: /favicon.ico
+WARNING 2026-01-08 13:16:44,078 basehttp 13504 16860 "GET /favicon.ico HTTP/1.1" 404 13097
+INFO 2026-01-08 13:16:53,258 basehttp 13504 16860 "GET /login/ HTTP/1.1" 200 14557
+INFO 2026-01-08 13:16:55,165 basehttp 13504 16860 "GET /login/ HTTP/1.1" 200 14557
+INFO 2026-01-08 13:17:15,308 basehttp 13504 16860 "POST /login/ HTTP/1.1" 302 0
+INFO 2026-01-08 13:17:15,384 basehttp 13504 16860 "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2026-01-08 13:17:16,160 basehttp 13504 16860 "GET /donor/dashboard/ HTTP/1.1" 200 12925
+WARNING 2026-01-08 13:17:16,243 basehttp 13504 17360 "GET /static/core/js/donor_dashboard.js HTTP/1.1" 404 2005
+INFO 2026-01-08 13:17:16,251 basehttp 13504 11320 "GET /static/core/js/chatbot.js HTTP/1.1" 200 0
+INFO 2026-01-08 13:17:16,251 basehttp 13504 19948 "GET /static/core/css/chatbot.css HTTP/1.1" 200 680
+INFO 2026-01-08 13:17:16,328 basehttp 13504 1736 "GET /static/core/css/donor_dashboard.css HTTP/1.1" 200 8417
+INFO 2026-01-08 13:17:16,332 basehttp 13504 16860 "GET /static/core/css/dashboard_base.css HTTP/1.1" 200 6815
+INFO 2026-01-08 13:17:16,362 basehttp 13504 12128 "GET /static/core/js/dashboard_base.js HTTP/1.1" 200 1452
+INFO 2026-01-08 13:17:16,445 basehttp 13504 20764 "GET /media/profile_photos/robot-assistant.png HTTP/1.1" 200 26189
+WARNING 2026-01-08 13:17:16,475 basehttp 13504 20764 "GET /static/core/images/favicon.ico HTTP/1.1" 404 1996
+INFO 2026-01-08 13:17:57,156 basehttp 13504 12128 "GET /donor/leaderboard/ HTTP/1.1" 200 9004
+INFO 2026-01-08 13:17:57,231 basehttp 13504 12128 "GET /static/core/css/leaderboard.css HTTP/1.1" 200 3628
+INFO 2026-01-08 13:18:00,458 basehttp 13504 12128 "GET /donor/history/ HTTP/1.1" 200 10225
+INFO 2026-01-08 13:18:00,556 basehttp 13504 12128 "GET /static/core/css/donation_history.css HTTP/1.1" 200 4856
+INFO 2026-01-08 13:18:04,843 basehttp 13504 12128 "GET /donor/requests/ HTTP/1.1" 200 26092
+INFO 2026-01-08 13:18:04,907 basehttp 13504 12128 "GET /static/core/css/nearby_requests.css HTTP/1.1" 200 5379
+INFO 2026-01-08 13:18:07,273 basehttp 13504 12128 "GET /donor/history/ HTTP/1.1" 200 10225
+INFO 2026-01-08 13:18:09,953 basehttp 13504 12128 "GET /donor/leaderboard/ HTTP/1.1" 200 9004
+INFO 2026-01-08 13:18:12,124 basehttp 13504 12128 "GET /donor/profile/ HTTP/1.1" 200 14739
+INFO 2026-01-08 13:18:12,176 basehttp 13504 12128 "GET /static/core/css/donor_profile.css HTTP/1.1" 200 4239
+INFO 2026-01-08 13:18:15,840 basehttp 13504 12128 "GET /donor/settings/ HTTP/1.1" 200 12123
+INFO 2026-01-08 13:18:15,903 basehttp 13504 12128 "GET /static/core/css/settings.css HTTP/1.1" 200 4195
+INFO 2026-01-08 13:18:20,824 basehttp 13504 12128 "GET /donor/dashboard/ HTTP/1.1" 200 12925
+WARNING 2026-01-08 13:18:20,876 basehttp 13504 12128 "GET /static/core/js/donor_dashboard.js HTTP/1.1" 404 2005
+INFO 2026-01-08 13:18:26,977 basehttp 13504 16860 "GET /logout/ HTTP/1.1" 302 0
+INFO 2026-01-08 13:18:27,023 basehttp 13504 16860 "GET / HTTP/1.1" 200 30585
+INFO 2026-01-08 13:18:29,480 basehttp 13504 16860 "GET /login/ HTTP/1.1" 200 14557
+INFO 2026-01-08 13:18:48,394 basehttp 13504 17520 "POST /login/ HTTP/1.1" 302 0
+INFO 2026-01-08 13:18:48,473 basehttp 13504 17520 "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2026-01-08 13:18:49,009 basehttp 13504 17520 "GET /hospital/dashboard/ HTTP/1.1" 200 17969
+INFO 2026-01-08 13:18:49,098 basehttp 13504 17520 "GET /static/core/css/hospital_dashboard.css HTTP/1.1" 200 5974
+INFO 2026-01-08 13:18:49,112 basehttp 13504 13144 "GET /static/core/js/hospital_dashboard.js HTTP/1.1" 200 3238
+INFO 2026-01-08 13:19:12,526 basehttp 13504 13144 "GET /hospital/request/create/ HTTP/1.1" 200 16571
+INFO 2026-01-08 13:19:12,596 basehttp 13504 13144 "GET /static/core/css/create_request.css HTTP/1.1" 200 3489
+INFO 2026-01-08 13:19:20,879 basehttp 13504 13144 "GET /hospital/requests/manage/ HTTP/1.1" 200 29097
+INFO 2026-01-08 13:19:20,939 basehttp 13504 13144 "GET /static/core/css/hospital_manage_request.css HTTP/1.1" 200 4665
+INFO 2026-01-08 13:19:24,368 basehttp 13504 13144 "GET /hospital/stock/ HTTP/1.1" 200 16878
+INFO 2026-01-08 13:19:24,429 basehttp 13504 13144 "GET /static/core/css/blood_stock.css HTTP/1.1" 200 3263
+INFO 2026-01-08 13:19:26,262 basehttp 13504 13144 "GET /hospital/profile/ HTTP/1.1" 200 18371
+INFO 2026-01-08 13:19:26,339 basehttp 13504 13144 "GET /static/core/css/hospital_profile.css HTTP/1.1" 200 3781
+INFO 2026-01-08 13:19:26,409 basehttp 13504 17520 "GET /media/hospital_logos/SDG_IMAGE_WFS97b5.jpg HTTP/1.1" 200 80551
+INFO 2026-01-08 13:19:27,843 basehttp 13504 17520 "GET /hospital/ai/analytics/ HTTP/1.1" 200 63883
+INFO 2026-01-08 13:19:28,244 basehttp 13504 17520 "GET /hospital/analytics/data/?type=overview HTTP/1.1" 200 3182
+INFO 2026-01-08 13:20:02,927 basehttp 13504 19988 "GET /hospital/ai/demand-prediction/ HTTP/1.1" 200 90381
+INFO 2026-01-08 13:33:06,755 basehttp 13504 2292 "GET / HTTP/1.1" 200 30116
+INFO 2026-01-08 13:33:19,527 basehttp 13504 2292 "GET /chatbot/ HTTP/1.1" 200 22090
+INFO 2026-01-08 13:33:28,115 basehttp 13504 2292 "POST /chatbot/message/ HTTP/1.1" 200 682
+INFO 2026-01-08 13:33:34,547 basehttp 13504 2292 "GET / HTTP/1.1" 200 30116
+INFO 2026-01-15 13:16:11,846 autoreload 19376 1884 Watching for file changes with StatReloader
+INFO 2026-01-15 13:17:10,071 basehttp 19376 21392 "GET / HTTP/1.1" 200 30125
+INFO 2026-01-15 13:17:10,270 basehttp 19376 22468 "GET /static/core/css/base.css HTTP/1.1" 200 18477
+INFO 2026-01-15 13:17:10,345 basehttp 19376 2052 "GET /static/core/css/home.css HTTP/1.1" 200 19005
+INFO 2026-01-15 13:17:11,702 basehttp 19376 18204 "GET /static/core/js/base.js HTTP/1.1" 200 14887
+INFO 2026-01-15 13:17:11,703 basehttp 19376 22168 "GET /static/core/js/home.js HTTP/1.1" 200 13974
+WARNING 2026-01-15 13:17:11,943 basehttp 19376 22168 "GET /static/images/favicon.ico HTTP/1.1" 404 1981
+INFO 2026-01-15 13:17:32,362 basehttp 19376 16084 "GET /login/ HTTP/1.1" 200 14557
+INFO 2026-01-15 13:17:32,443 basehttp 19376 16084 "GET /static/core/css/login.css HTTP/1.1" 200 15215
+INFO 2026-01-15 13:17:32,858 basehttp 19376 17536 "GET /static/core/js/login.js HTTP/1.1" 200 12259
+INFO 2026-01-15 13:17:41,972 basehttp 19376 17536 "POST /login/ HTTP/1.1" 302 0
+INFO 2026-01-15 13:17:42,029 basehttp 19376 17536 "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2026-01-15 13:17:47,676 basehttp 19376 17536 "GET /hospital/dashboard/ HTTP/1.1" 200 17969
+INFO 2026-01-15 13:17:47,745 basehttp 19376 16084 "GET /static/core/css/chatbot.css HTTP/1.1" 200 680
+INFO 2026-01-15 13:17:47,749 basehttp 19376 15704 "GET /static/core/js/chatbot.js HTTP/1.1" 200 0
+INFO 2026-01-15 13:17:47,778 basehttp 19376 8564 "GET /static/core/css/hospital_dashboard.css HTTP/1.1" 200 5974
+INFO 2026-01-15 13:17:47,833 basehttp 19376 17536 "GET /static/core/css/dashboard_base.css HTTP/1.1" 200 6815
+INFO 2026-01-15 13:17:47,889 basehttp 19376 17224 "GET /static/core/js/dashboard_base.js HTTP/1.1" 200 1452
+INFO 2026-01-15 13:17:48,092 basehttp 19376 23920 "GET /static/core/js/hospital_dashboard.js HTTP/1.1" 200 3238
+WARNING 2026-01-15 13:17:50,975 basehttp 19376 23920 "GET /static/core/images/favicon.ico HTTP/1.1" 404 1996
+INFO 2026-01-15 13:17:58,115 basehttp 19376 17224 "GET /hospital/request/create/ HTTP/1.1" 200 16571
+INFO 2026-01-15 13:17:58,175 basehttp 19376 17224 "GET /static/core/css/create_request.css HTTP/1.1" 200 3489
+INFO 2026-01-15 13:19:37,041 basehttp 19376 20176 "GET /hospital/stock/ HTTP/1.1" 200 16878
+INFO 2026-01-15 13:19:37,461 basehttp 19376 20176 "GET /static/core/css/blood_stock.css HTTP/1.1" 200 3263
+INFO 2026-01-15 13:19:44,493 basehttp 19376 20176 "GET /hospital/requests/manage/ HTTP/1.1" 200 29097
+INFO 2026-01-15 13:19:44,603 basehttp 19376 20176 "GET /static/core/css/hospital_manage_request.css HTTP/1.1" 200 4665
+INFO 2026-01-15 13:20:56,643 autoreload 17284 1656 Watching for file changes with StatReloader
+INFO 2026-01-15 13:21:04,373 basehttp 17284 6640 "GET / HTTP/1.1" 200 30116
+WARNING 2026-01-15 13:21:04,815 basehttp 17284 17060 "GET /static/images/favicon.ico HTTP/1.1" 404 1981
+INFO 2026-01-15 13:21:09,320 basehttp 17284 3680 "GET /admin/ HTTP/1.1" 302 0
+INFO 2026-01-15 13:21:09,699 basehttp 17284 3680 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 3706
+INFO 2026-01-15 13:21:09,758 basehttp 17284 8756 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2026-01-15 13:21:09,762 basehttp 17284 3680 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2026-01-15 13:21:09,771 basehttp 17284 5740 "GET /static/admin/css/login.css HTTP/1.1" 200 951
+INFO 2026-01-15 13:21:09,771 basehttp 17284 12616 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2026-01-15 13:21:09,780 basehttp 17284 384 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2026-01-15 13:21:09,797 basehttp 17284 1876 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2026-01-15 13:21:09,816 basehttp 17284 384 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+WARNING 2026-01-15 13:21:10,067 log 17284 384 Not Found: /favicon.ico
+WARNING 2026-01-15 13:21:10,068 basehttp 17284 384 "GET /favicon.ico HTTP/1.1" 404 13097
+INFO 2026-01-15 13:21:15,945 basehttp 17284 384 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2026-01-15 13:21:16,102 basehttp 17284 384 "GET /admin/ HTTP/1.1" 200 20787
+INFO 2026-01-15 13:21:16,132 basehttp 17284 384 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2026-01-15 13:21:16,153 basehttp 17284 1876 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2026-01-15 13:21:16,157 basehttp 17284 384 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2026-01-15 13:21:19,362 basehttp 17284 384 "GET /admin/core/aipredictionlog/ HTTP/1.1" 200 51927
+INFO 2026-01-15 13:21:19,416 basehttp 17284 5740 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2026-01-15 13:21:19,452 basehttp 17284 3680 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2026-01-15 13:21:19,452 basehttp 17284 8756 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2026-01-15 13:21:19,461 basehttp 17284 384 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2026-01-15 13:21:19,489 basehttp 17284 5740 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2026-01-15 13:21:19,517 basehttp 17284 3680 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2026-01-15 13:21:19,518 basehttp 17284 8756 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2026-01-15 13:21:19,533 basehttp 17284 12616 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2026-01-15 13:21:19,553 basehttp 17284 1876 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:21:19,609 basehttp 17284 12616 "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+INFO 2026-01-15 13:21:19,674 basehttp 17284 12616 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2026-01-15 13:21:19,675 basehttp 17284 384 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2026-01-15 13:21:19,743 basehttp 17284 384 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2026-01-15 13:21:29,467 basehttp 17284 384 "GET /admin/core/badge/ HTTP/1.1" 200 15955
+INFO 2026-01-15 13:21:29,503 basehttp 17284 384 "GET /static/admin/css/forms.css HTTP/1.1" 200 8525
+INFO 2026-01-15 13:21:29,518 basehttp 17284 384 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11973
+INFO 2026-01-15 13:21:29,559 basehttp 17284 12616 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:21:29,600 basehttp 17284 12616 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2026-01-15 13:21:32,683 basehttp 17284 12616 "GET /admin/core/bloodcamp/ HTTP/1.1" 200 17058
+INFO 2026-01-15 13:21:32,753 basehttp 17284 12616 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:21:34,454 basehttp 17284 12616 "GET /admin/core/bloodrequest/ HTTP/1.1" 200 24519
+INFO 2026-01-15 13:21:34,510 basehttp 17284 12616 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:21:39,068 basehttp 17284 12616 "GET /admin/core/userprofile/ HTTP/1.1" 200 26919
+INFO 2026-01-15 13:21:39,105 basehttp 17284 384 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2026-01-15 13:21:39,136 basehttp 17284 12616 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:21:45,692 basehttp 17284 12616 "GET /admin/core/customuser/ HTTP/1.1" 200 31363
+INFO 2026-01-15 13:21:45,729 basehttp 17284 384 "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+INFO 2026-01-15 13:21:45,792 basehttp 17284 12616 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:21:45,881 basehttp 17284 12616 "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+INFO 2026-01-15 13:21:52,815 basehttp 17284 12616 "GET /admin/core/passwordresettoken/ HTTP/1.1" 200 18159
+INFO 2026-01-15 13:21:52,916 basehttp 17284 12616 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:21:54,451 basehttp 17284 12616 "GET /admin/core/hospitalprofile/ HTTP/1.1" 200 20597
+INFO 2026-01-15 13:21:54,520 basehttp 17284 12616 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:21:58,131 basehttp 17284 12616 "GET /admin/core/hospitalanalytics/ HTTP/1.1" 200 20009
+INFO 2026-01-15 13:21:58,198 basehttp 17284 12616 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:21:59,791 basehttp 17284 12616 "GET /admin/core/hospitalprofile/ HTTP/1.1" 200 20597
+INFO 2026-01-15 13:21:59,849 basehttp 17284 12616 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:22:02,862 basehttp 17284 12616 "GET /admin/core/hospitalanalytics/ HTTP/1.1" 200 20009
+INFO 2026-01-15 13:22:02,931 basehttp 17284 12616 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:22:08,156 basehttp 17284 12616 "GET /admin/core/globalsetting/ HTTP/1.1" 200 17396
+INFO 2026-01-15 13:22:08,224 basehttp 17284 12616 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:22:10,225 basehttp 17284 12616 "GET /admin/core/donoranalytics/ HTTP/1.1" 200 24449
+INFO 2026-01-15 13:22:10,294 basehttp 17284 12616 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:22:23,334 basehttp 17284 1936 "GET /admin/core/donation/ HTTP/1.1" 200 21336
+INFO 2026-01-15 13:22:23,403 basehttp 17284 1936 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:22:34,226 basehttp 17284 4868 "GET /admin/core/chatbotconversation/ HTTP/1.1" 200 35195
+INFO 2026-01-15 13:22:34,294 basehttp 17284 4868 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:23:46,662 basehttp 17284 4868 "GET /admin/core/passwordresettoken/ HTTP/1.1" 200 18159
+INFO 2026-01-15 13:23:46,730 basehttp 17284 4868 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:23:50,903 basehttp 17284 4868 "GET /admin/core/userprofile/ HTTP/1.1" 200 26919
+INFO 2026-01-15 13:23:50,970 basehttp 17284 4868 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:23:56,141 basehttp 17284 4868 "GET /admin/core/userprofile/13/change/ HTTP/1.1" 200 32551
+INFO 2026-01-15 13:23:56,276 basehttp 17284 4868 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:23:56,289 basehttp 17284 23268 "GET /static/admin/js/calendar.js HTTP/1.1" 200 9141
+INFO 2026-01-15 13:23:56,313 basehttp 17284 4868 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2026-01-15 13:23:56,328 basehttp 17284 19348 "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+INFO 2026-01-15 13:23:56,337 basehttp 17284 4868 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2026-01-15 13:23:56,409 basehttp 17284 19348 "GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
+INFO 2026-01-15 13:23:56,410 basehttp 17284 4868 "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+INFO 2026-01-15 13:24:03,303 basehttp 17284 4868 "GET /admin/core/hospitalprofile/ HTTP/1.1" 200 20597
+INFO 2026-01-15 13:24:03,460 basehttp 17284 4868 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:24:05,695 basehttp 17284 4868 "GET /admin/core/hospitalprofile/10/change/ HTTP/1.1" 200 28836
+INFO 2026-01-15 13:24:05,841 basehttp 17284 4868 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:24:16,631 basehttp 17284 4868 "GET /admin/core/hospitalprofile/ HTTP/1.1" 200 20597
+INFO 2026-01-15 13:24:16,698 basehttp 17284 4868 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:24:18,966 basehttp 17284 4868 "GET /admin/core/donation/ HTTP/1.1" 200 21336
+INFO 2026-01-15 13:24:19,052 basehttp 17284 4868 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:24:20,717 basehttp 17284 4868 "GET /admin/core/donoranalytics/ HTTP/1.1" 200 24449
+INFO 2026-01-15 13:24:20,806 basehttp 17284 4868 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:24:25,221 basehttp 17284 4868 "GET /admin/core/aipredictionlog/ HTTP/1.1" 200 51927
+INFO 2026-01-15 13:24:25,289 basehttp 17284 4868 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:24:28,057 basehttp 17284 4868 "GET /admin/core/donoranalytics/ HTTP/1.1" 200 24449
+INFO 2026-01-15 13:24:28,213 basehttp 17284 4868 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:25:47,209 basehttp 17284 4868 "GET /admin/core/aipredictionlog/ HTTP/1.1" 200 51927
+INFO 2026-01-15 13:25:47,278 basehttp 17284 4868 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:25:56,506 basehttp 17284 4868 "GET /admin/core/bloodrequest/ HTTP/1.1" 200 24519
+INFO 2026-01-15 13:25:56,573 basehttp 17284 4868 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:26:16,049 basehttp 17284 4868 "GET /admin/core/chatbotconversation/ HTTP/1.1" 200 35195
+INFO 2026-01-15 13:26:16,117 basehttp 17284 4868 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:26:20,755 basehttp 17284 4868 "GET /admin/core/donation/ HTTP/1.1" 200 21336
+INFO 2026-01-15 13:26:20,834 basehttp 17284 4868 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:26:50,019 basehttp 17284 4868 "GET /admin/core/donoranalytics/ HTTP/1.1" 200 24449
+INFO 2026-01-15 13:26:50,086 basehttp 17284 4868 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:27:04,100 basehttp 17284 4868 "GET /admin/core/hospitalanalytics/ HTTP/1.1" 200 20009
+INFO 2026-01-15 13:27:04,168 basehttp 17284 4868 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:27:07,541 basehttp 17284 4868 "GET /admin/core/hospitalprofile/ HTTP/1.1" 200 20597
+INFO 2026-01-15 13:27:07,608 basehttp 17284 4868 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:27:18,019 basehttp 17284 4868 "GET /admin/core/hospitalprofile/26/change/ HTTP/1.1" 200 28827
+INFO 2026-01-15 13:27:18,086 basehttp 17284 4868 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:29:16,347 basehttp 17284 4868 "GET /admin/core/notification/ HTTP/1.1" 200 31838
+INFO 2026-01-15 13:29:16,414 basehttp 17284 4868 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:29:38,952 basehttp 17284 4868 "GET /admin/core/customuser/ HTTP/1.1" 200 31363
+INFO 2026-01-15 13:29:39,022 basehttp 17284 4868 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:29:48,105 basehttp 17284 4868 "GET /admin/core/userprofile/ HTTP/1.1" 200 26919
+INFO 2026-01-15 13:29:48,172 basehttp 17284 4868 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-01-15 13:29:53,130 basehttp 17284 4868 "GET /admin/ HTTP/1.1" 200 20787
+INFO 2026-01-15 13:29:56,288 basehttp 17284 4868 "GET /admin/core/userprofile/ HTTP/1.1" 200 26919
+INFO 2026-01-15 13:29:57,183 basehttp 17284 4868 "GET /admin/core/customuser/ HTTP/1.1" 200 31363
+INFO 2026-01-15 13:29:57,464 basehttp 17284 4868 "GET /admin/core/notification/ HTTP/1.1" 200 31838
+INFO 2026-01-15 13:30:00,419 basehttp 17284 4868 "POST /admin/logout/ HTTP/1.1" 302 0
+INFO 2026-01-15 13:30:00,431 basehttp 17284 4868 "GET / HTTP/1.1" 200 30125
+INFO 2026-01-16 01:14:50,836 autoreload 20984 10864 Watching for file changes with StatReloader
+INFO 2026-01-16 01:15:51,409 basehttp 20984 19848 "GET / HTTP/1.1" 200 30125
+INFO 2026-01-16 01:15:53,654 basehttp 20984 19848 "GET /static/core/css/base.css HTTP/1.1" 200 18477
+INFO 2026-01-16 01:15:53,873 basehttp 20984 4184 "GET /static/core/css/home.css HTTP/1.1" 200 19005
+INFO 2026-01-16 01:16:00,164 basehttp 20984 21800 "GET /static/core/js/home.js HTTP/1.1" 200 13974
+INFO 2026-01-16 01:16:02,534 basehttp 20984 20844 "GET /static/core/js/base.js HTTP/1.1" 200 14887
+WARNING 2026-01-16 01:16:13,679 basehttp 20984 20844 "GET /static/images/favicon.ico HTTP/1.1" 404 1981
+INFO 2026-01-16 01:16:49,086 basehttp 20984 22952 "GET /about/ HTTP/1.1" 200 34273
+INFO 2026-01-16 01:16:49,401 basehttp 20984 22952 "GET /static/core/css/about.css HTTP/1.1" 200 5725
+INFO 2026-01-16 01:16:54,757 basehttp 20984 22952 "GET /contact/ HTTP/1.1" 200 13749
+INFO 2026-01-16 01:16:54,956 basehttp 20984 22952 "GET /static/core/css/contact.css HTTP/1.1" 200 4891
+INFO 2026-01-16 01:17:13,391 basehttp 20984 16020 "GET /login/ HTTP/1.1" 200 14557
+INFO 2026-01-16 01:17:13,435 basehttp 20984 16020 "GET /static/core/css/login.css HTTP/1.1" 200 15215
+INFO 2026-01-16 01:17:13,649 basehttp 20984 24120 "GET /static/core/js/login.js HTTP/1.1" 200 12259
+INFO 2026-01-16 01:17:19,106 basehttp 20984 14796 "GET /register/ HTTP/1.1" 200 23405
+INFO 2026-01-16 01:17:19,170 basehttp 20984 14796 "GET /static/core/css/register_simple.css HTTP/1.1" 200 7184
+INFO 2026-01-16 01:17:19,271 basehttp 20984 13132 "GET /static/core/js/register_simple.js HTTP/1.1" 200 3323
+INFO 2026-01-16 01:17:28,183 basehttp 20984 18208 "GET / HTTP/1.1" 200 30125
+INFO 2026-01-16 01:17:31,397 basehttp 20984 18208 "GET /chatbot/ HTTP/1.1" 200 21234
+INFO 2026-01-16 01:17:36,231 basehttp 20984 14576 "POST /chatbot/message/ HTTP/1.1" 200 682
+INFO 2026-01-16 01:17:40,873 basehttp 20984 14576 "GET / HTTP/1.1" 200 30125

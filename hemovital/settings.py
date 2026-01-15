@@ -40,6 +40,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
 ]
 
 ROOT_URLCONF = 'hemovital.urls'
@@ -64,12 +66,15 @@ TEMPLATES = [
 WSGI_APPLICATION = 'hemovital.wsgi.application'
 
 # Database
+import dj_database_url
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}"
+    )
 }
+
+
 
 # For PostgreSQL (uncomment if using)
 # DATABASES = {
@@ -109,6 +114,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 # Media files
 MEDIA_URL = '/media/'
@@ -151,7 +158,7 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='HemoVital <noreply@hemovital.com>')
 
 # AI/ML Services Configuration - Gemini API
-GEMINI_API_KEY="AIzaSyAr7sXQ_IXOHGWf6iBAfGG0NbMIrmCe4K8"
+GEMINI_API_KEY=config("GEMINI_API_KEY")
 
 # HemoVital Specific Settings
 HEMOVITAL_SETTINGS = {

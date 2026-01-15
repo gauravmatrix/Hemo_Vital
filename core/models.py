@@ -93,7 +93,7 @@ class HospitalProfile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True, related_name='hospitalprofile')
     admin_full_name = models.CharField(max_length=255)
     admin_gender = models.CharField(max_length=10, choices=UserProfile.Gender.choices)
-    admin_dob = models.DateField()
+    admin_dob = models.DateField(null=True, blank=True)
     admin_designation = models.CharField(max_length=100)
     hospital_name = models.CharField(max_length=255)
     hospital_reg_id = models.CharField(max_length=100, unique=True)
